@@ -1,4 +1,4 @@
-# 2023-09-17 12:45
+# 2023-09-18 22:05
 
 # ======= A ======= #
 # 阿里云
@@ -44,6 +44,7 @@ HOST, httpdns.baidubce.com, REJECT
 HOST, lc.map.baidu.com, REJECT
 # 百度网盘
 HOST, mobads.baidu.com, REJECT
+HOST, sf3-fe-tos.pglstatp-toutiao.com, REJECT
 # 百度贴吧
 IP-CIDR, 180.76.76.200/32, REJECT
 # 哔哩哔哩
