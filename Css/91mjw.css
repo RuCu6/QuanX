@@ -1,0 +1,11 @@
+/*body[class*="ui-navtop"] {padding-top: 0px!important}*/
+
+[class*="search_not focusslide_s_m"] {padding-top: 0px!important}
+iframe[frameborder*="no"] {display:none!important}
+[class*="stui-db"] {display:none!important}
+[ontouchstart*="this.click"] {display:none!important}
+[title="2021"] {display:none!important}
+img[style*="position:fixed"] {display:none!important}
+a[class*="calb"] {display:none!important}
+[src*=".gif"] {display:none!important}
+*::after {display:none!important}

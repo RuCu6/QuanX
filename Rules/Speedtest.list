@@ -1,0 +1,19 @@
+# https://github.com/blackmatrix7/ios_rule_script/blob/release/rule/QuantumultX/Speedtest/Speedtest.list
+# 2023-04-07 14:50:21
+
+HOST, speed.dler.io, Speedtest
+HOST-SUFFIX, cdnst.net, Speedtest
+HOST-SUFFIX, cellmaps.com, Speedtest
+HOST-SUFFIX, ekahau.cloud, Speedtest
+HOST-SUFFIX, ekahau.com, Speedtest
+HOST-SUFFIX, fast.com, Speedtest
+HOST-SUFFIX, ookla.com, Speedtest
+HOST-SUFFIX, ooklaserver.net, Speedtest
+HOST-SUFFIX, pingtest.net, Speedtest
+HOST-SUFFIX, speed.cloudflare.com, Speedtest
+HOST-SUFFIX, speed.dler.io, Speedtest
+HOST-SUFFIX, speedtest.co, Speedtest
+HOST-SUFFIX, speedtest.net, Speedtest
+HOST-SUFFIX, speedtestcustom.com, Speedtest
+HOST-SUFFIX, webtest.net, Speedtest
+HOST-KEYWORD, speedtest, Speedtest

@@ -1,0 +1,18 @@
+#!name = YouTube
+#!desc = 移除广告
+#!author = Maasea RuCu6
+#!update = 2023-07-05 21:50
+
+# ⚠️⚠️
+# Quantumult X 必须在 [general] 部分加入以下代码: udp_drop_list=443
+
+# 请求体
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\? url script-request-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube-request.js
+
+# 响应体
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube-response.js
+
+# 播放页广告
+^https:\/\/[\w-]+\.googlevideo\.com\/initplayback\?.+&oad url reject-dict
+
+hostname = rr*.googlevideo.com, youtubei.googleapis.com

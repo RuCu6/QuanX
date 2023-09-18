@@ -1,0 +1,9 @@
+#!name = IT之家
+#!desc = 移除首页广告
+#!author = RuCu6 Keywos
+#!update = 2023-08-21 10:25
+
+# 首页,轮播图,置顶文章,信息流广告
+^https:\/\/napi\.ithome\.com\/api\/(news\/index|topmenu\/getfeeds) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/ithome.js
+
+hostname = napi.ithome.com

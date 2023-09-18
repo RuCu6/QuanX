@@ -1,0 +1,10 @@
+div#popup{display:none!important}
+div.shortcuts-mobile-overlay{display:none!important}
+div[style^="padding: 35px"]{display:none!important}
+div.mxprofoot{display:none!important}
+.module-adslist{display:none!important}
+a[href*="/ihezu.run"]{display:none!important}
+.share-btn{display:none!important}
+.player-rm > a[target="_blank"]{display:none!important}
+.icon-share{display:none!important}
+.tips-box{display:none!important}

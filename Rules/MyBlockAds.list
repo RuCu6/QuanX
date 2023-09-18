@@ -1,0 +1,224 @@
+# 2023-09-17 12:45
+
+# ======= A ======= #
+# 阿里云
+IP-CIDR, 203.107.1.1/24, REJECT
+# 爱奇艺
+HOST, api.iqiyi.com, REJECT
+# Apple
+HOST, advertising.apple.com, REJECT
+HOST, api-adservices.apple.com, REJECT
+HOST, apple.comscoreresearch.com, REJECT
+HOST, banners.itunes.apple.com, REJECT
+HOST, iad.apple.com, REJECT
+HOST, iadcontent.apple.com, REJECT
+HOST, iadctest.qwapi.com, REJECT
+HOST, iadmoo.apple.com, REJECT
+HOST, iadworkbench.apple.com, REJECT
+HOST, launch.apple.com, REJECT
+HOST, metrics.apple.com, REJECT
+HOST, qwapi.apple.com, REJECT
+HOST, securemetrics.apple.com, REJECT
+HOST, webproxy-advp.iad-apple.com, REJECT
+HOST, webproxy-advp.iad-apple.com.akadns.net, REJECT
+HOST-SUFFIX, advp.apple.com, REJECT
+HOST-SUFFIX, iadsdk.apple.com, REJECT
+# 安全浏览限制解除
+HOST, lookup.api.bsb.baidu.com, REJECT
+HOST, proxy.safebrowsing.apple, REJECT
+HOST, safebrowsing.g.applimg.com, REJECT
+HOST, safebrowsing.googleapis.com, REJECT
+HOST, safebrowsing.urlsec.qq.com, REJECT
+HOST, token.safebrowsing.apple, REJECT
+HOST, vs6.bj2ct.u3.ucweb.com, REJECT
+HOST-SUFFIX, safebrowsing.apple, REJECT
+HOST-SUFFIX, u3.ucweb.com, REJECT
+
+# ======= B ======= #
+# 百度
+HOST-SUFFIX, pos.baidu.com, REJECT
+# 百度地图
+HOST, afd.baidu.com, REJECT
+HOST, afdconf.baidu.com, REJECT
+HOST, httpdns.baidubce.com, REJECT
+HOST, lc.map.baidu.com, REJECT
+# 百度网盘
+HOST, mobads.baidu.com, REJECT
+# 百度贴吧
+IP-CIDR, 180.76.76.200/32, REJECT
+# 哔哩哔哩
+HOST, mall.bilibili.com, REJECT
+HOST, passport.bilibili.com, REJECT
+
+# ======= C ======= #
+# 彩云天气
+HOST, ad.cyapi.cn, REJECT
+# 昌原云充
+HOST, m.adyounger.com, REJECT
+# ChatGPT
+HOST, o33249.ingest.sentry.io, REJECT
+# Clue 智库
+HOST, api.helloclue.com, REJECT
+HOST, brahe.apptimize.com, REJECT
+HOST, collector.clue.run, REJECT
+HOST, images.ctfassets.net, REJECT
+HOST, mapi.apptimize.com, REJECT
+HOST, md-i-s.apptimize.com, REJECT
+
+# ======= F ======= #
+# Foreca & Google
+HOST, adservice.google.com, REJECT
+HOST, googleads.g.doubleclick-cn.net, REJECT
+HOST, googleads.g.doubleclick.net, REJECT
+HOST, pagead2.googlesyndication.com, REJECT
+HOST, pubads.g.doubleclick.net, REJECT
+HOST, www.googleadservices.com, REJECT
+HOST-KEYWORD, adservice.google.com., REJECT
+
+# ======= G ======= #
+# 高德地图
+HOST, amap-aos-info-nogw.amap.com, REJECT
+HOST, awaken.amap.com, REJECT
+HOST, free-aos-cdn-image.amap.com, REJECT
+# 工商银行 开屏广告
+HOST, pageviewp.icbc.com.cn, REJECT
+# 广告联盟
+HOST, is.snssdk.com, REJECT
+HOST, mi.gdt.qq.com, REJECT
+HOST, open.e.kuaishou.com, REJECT
+HOST-SUFFIX, pangolin-sdk-toutiao-b.com, REJECT
+HOST-SUFFIX, pangolin-sdk-toutiao.com, REJECT
+HOST-SUFFIX, pangolin-sdk-toutiao1.com, REJECT
+HOST-SUFFIX, pangolin.snssdk.com, REJECT
+
+# ======= H ======= #
+# 海尔智家
+HOST-SUFFIX, ehaier.com, REJECT
+
+# ======= K ======= #
+# 酷我音乐
+HOST, ad.tencentmusic.com, REJECT
+HOST, g.koowo.com, REJECT
+HOST, mobilead.kuwo.cn, REJECT
+HOST, rich.kuwo.cn, REJECT
+HOST, tmead.y.qq.com, REJECT
+HOST, tmeadcomm.y.qq.com, REJECT
+
+# ======= L ======= #
+# 蓝奏云
+HOST, statics.woozooo.com, REJECT
+
+# ======= M ======= #
+# 芒果TV
+HOST, dflow.bz.mgtv.com, REJECT
+HOST, encounter.bz.mgtv.com, REJECT
+HOST, floor.bz.mgtv.com, REJECT
+HOST, img.da.mgtv.com, REJECT
+HOST, layer.bz.mgtv.com, REJECT
+HOST, mob.bz.mgtv.com, REJECT
+HOST, mobile.da.mgtv.com, REJECT
+HOST, rc-topic-api.bz.mgtv.com, REJECT
+HOST, v2.da.mgtv.com, REJECT
+HOST, video.da.mgtv.com, REJECT
+HOST, vip.bz.mgtv.com, REJECT
+HOST, ys.da.mgtv.com, REJECT
+# 美团
+HOST, al-log.d.meituan.net, REJECT
+HOST, babel-statistics-android.d.meituan.net, REJECT
+HOST, maplocatesdksnapshot.d.meituan.net, REJECT
+HOST, metrics-picture.d.meituan.net, REJECT
+HOST, route-stats.d.meituan.net, REJECT
+# 美颜相机
+HOST, aaid.uyunad.com, REJECT
+HOST, adui.tg.meitu.com, REJECT
+
+# ======= O ======= #
+# Outlook
+HOST, acdn.adnxs.com, REJECT
+HOST, mediation.adnxs.com, REJECT
+HOST, sin3-ib.adnxs.com, REJECT
+
+# ======= S ======= #
+# 什么值得买
+HOST, api.zuihuimai.com, REJECT
+# 数字联盟
+HOST-SUFFIX, shuzilm.cn, REJECT
+
+# ======= T ======= #
+# 腾讯 无法使用的推送服务
+HOST, tpns.qq.com, REJECT
+# 腾讯视频
+HOST, adsmind.gdtimg.com, REJECT
+HOST, btrace.qq.com, REJECT
+HOST, btrace.video.qq.com, REJECT
+HOST, info4.video.qq.com, REJECT
+HOST, info6.video.qq.com, REJECT
+HOST, ios.video.mpush.qq.com, REJECT
+HOST, mtrace.qq.com, REJECT
+HOST, p.l.qq.com, REJECT
+HOST, pgdt.gtimg.cn, REJECT
+HOST, rpt.gdt.qq.com, REJECT
+HOST-SUFFIX, trace.qq.com, REJECT
+
+# ======= W ======= #
+# 网上国网
+HOST, h5-api.feiersmart.com, REJECT
+# 网易云音乐
+HOST, gdt.qq.com, REJECT
+HOST, httpdns.n.netease.com, REJECT
+HOST, iadmat.nosdn.127.net, REJECT
+HOST, iadmusicmat.music.126.net, REJECT
+HOST, iadmusicmatvideo.music.126.net, REJECT
+HOST-SUFFIX, 163jiasu.com, REJECT
+# 微博 开屏广告
+HOST, adstrategy.biz.weibo.com, REJECT
+HOST, kadmimage.biz.weibo.com, REJECT
+HOST, sdkaction.biz.weibo.com, REJECT
+HOST, sdkclick.biz.weibo.com, REJECT
+HOST, sdkmonitor.biz.weibo.com, REJECT
+
+# ======= X ======= #
+# 小米
+HOST, sdkconfig.ad.xiaomi.com, REJECT
+# 迅雷 解除版权限制
+;HOST, hub5btmain.v6.shub.sandai.net, REJECT
+;HOST, hub5emu.v6.shub.sandai.net, REJECT
+;HOST, hub5idx.v6.shub.sandai.net, REJECT
+
+# ======= Y ======= #
+# 优酷 & 菜鸟
+HOST, adsmind.ugdtimg.com, REJECT
+HOST, amdc.m.youku.com, REJECT
+HOST, apiv4-iyes.youku.com, REJECT
+HOST, httpdns.alicdn.com, REJECT
+HOST, huichuan-mc.sm.cn, REJECT
+HOST, huichuan.sm.cn, REJECT
+HOST, iyes.youku.com, REJECT
+HOST, m-vali.cp31.ott.cibntv.net, REJECT
+HOST, mc.atm.youku.com, REJECT
+HOST, vali-g1.cp31.ott.cibntv.net, REJECT
+HOST, vali-ugc.cp31.ott.cibntv.net, REJECT
+HOST, yk-ssp.ad.youku.com, REJECT
+HOST, ykad-data.youku.com, REJECT
+# 云闪付 开屏广告
+HOST, ads.95516.com, REJECT
+HOST, cm-10-138.getui.com, REJECT
+HOST, sdk-conf.getui.com, REJECT
+HOST, sdk.open.talk.getui.net, REJECT
+HOST, switch.cup.com.cn, REJECT
+HOST, tysdk.95516.com, REJECT
+
+# ======= Z ======= #
+# 知乎
+HOST, appcloud.zhihu.com, REJECT
+HOST, appcloud2.in.zhihu.com, REJECT
+HOST, crash2.zhihu.com, REJECT
+HOST, mqtt.zhihu.com, REJECT
+HOST, sugar.zhihu.com, REJECT
+HOST, zxid-m.mobileservice.cn, REJECT
+IP-CIDR, 103.41.167.237/32, REJECT
+IP-CIDR, 118.89.204.198/32, REJECT
+IP6-CIDR, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT
+# 字节跳动
+HOST, ad.zijieapi.com, REJECT
+HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
