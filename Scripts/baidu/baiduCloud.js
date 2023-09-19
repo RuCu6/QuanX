@@ -1,4 +1,4 @@
-// 2023-09-18 22:00
+// 2023-09-19 18:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -60,33 +60,28 @@ if (url.includes("/api/getsyscfg?")) {
     }
   }
 } else if (url.includes("/membership/user?")) {
-  if (obj?.product_infos) {
-    obj.product_infos = [
+  obj = {
+    product_infos: [
       {
         cur_svip_type: "Crack",
-        product_name: "svip9_nd",
-        product_description: "超级会员",
+        product_name: "svip2_nd",
+        product_description: "解锁倍速+画质",
         function_num: 510004015,
         start_time: 1672502400,
-        buy_description: "",
-        buy_time: 0,
-        product_id: 8,
+        buy_description: "无下载加速",
+        buy_time: 980784000,
+        product_id: "问好",
         auto_upgrade_to_svip: 0,
-        end_time: 3786883200,
+        end_time: 4070880000,
         cluster: "vip",
         detail_cluster: "svip",
         status: 0
       }
-    ];
-  }
-  if (obj?.level_info) {
-    obj.level_info = {
-      history_value: 1000,
-      current_level: 10,
-      current_value: 1000,
-      history_level: 1
-    };
-  }
+    ],
+    level_info: {
+      current_level: 10
+    }
+  };
 }
 
 $done({ body: JSON.stringify(obj) });
