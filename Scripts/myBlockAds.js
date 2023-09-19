@@ -1,4 +1,4 @@
-// 2023-09-18 19:45
+// 2023-09-19 11:00
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -167,18 +167,6 @@ if (body) {
         body = JSON.stringify(obj);
       } catch (error) {
         console.log(`小米商城-物流页推广, 出现异常: ` + error);
-      }
-      break;
-    // 小米商城-详情页推荐搭配
-    case /^https:\/\/api\.m\.mi\.com\/v1\/product\/productView/.test(url):
-      try {
-        let obj = JSON.parse(body);
-        if (obj?.data?.real_product_info) {
-          delete obj.data.real_product_info;
-        }
-        body = JSON.stringify(obj);
-      } catch (error) {
-        console.log(`小米商城-详情页推荐搭配, 出现异常: ` + error);
       }
       break;
     default:
