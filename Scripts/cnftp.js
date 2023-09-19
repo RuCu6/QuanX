@@ -1,4 +1,4 @@
-// 2023-09-16 07:20
+// 2023-09-19 10:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -9,7 +9,7 @@ let obj = JSON.parse($response.body);
 
 if (isIQY) {
   if (url.includes("/bottom_theme?")) {
-    // 底部菜单
+    // 爱奇艺 底部tab
     if (obj?.cards?.length > 0) {
       let card = obj.cards[0];
       if (card?.items?.length > 0) {
@@ -24,7 +24,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("/common_switch?")) {
-    // 通用配置
+    // 爱奇艺 通用配置
     if (obj?.content?.resource) {
       const item = [
         "activities",
@@ -41,12 +41,12 @@ if (isIQY) {
       }
     }
   } else if (url.includes("/control/")) {
-    // 左上角天气图标
+    // 爱奇艺 首页左上角天气图标
     if (obj?.content?.weather) {
       delete obj.content.weather;
     }
   } else if (url.includes("/getMyMenus?")) {
-    // 我的页面
+    // 爱奇艺 我的页面
     if (obj?.data?.length > 0) {
       obj.data = obj.data.filter(
         (i) =>
@@ -56,7 +56,7 @@ if (isIQY) {
       );
     }
   } else if (url.includes("/home_top_menu?")) {
-    // 顶部菜单
+    // 爱奇艺 顶部tab
     if (obj?.cards?.length > 0) {
       let card = obj.cards[0];
       if (card?.items?.length > 0) {
@@ -69,14 +69,14 @@ if (isIQY) {
         }
       }
     } else if (obj?.nav_group_data?.length > 0) {
-      // 右上角版块 仅保留我的频道
+      // 右上角菜单 仅保留我的频道
       // 好像不生效
       obj.nav_group_data = obj.nav_group_data.filter(
         (i) => i?.group_key === "default_group"
       );
     }
   } else if (url.includes("/mixer?")) {
-    // 开屏页 播放页
+    // 爱奇艺 开屏广告 播放广告
     if (obj?.errorCode === 0) {
       const item = ["adSlots", "splashLottieFile", "splashUiConfig"];
       for (let i of item) {
@@ -84,7 +84,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("/search.video.iqiyi.com/")) {
-    // 搜索框填充
+    // 爱奇艺 搜索框填充
     if (obj?.cache_expired_sec) {
       obj.cache_expired_sec = 1;
     }
@@ -95,7 +95,7 @@ if (isIQY) {
       obj.show_style.roll_period = 1000;
     }
   } else if (url.includes("/views_category/")) {
-    // 各菜单列表 剧集 电影 综艺
+    // 爱奇艺 各菜单列表 剧集 电影 综艺 信息流
     if (obj?.base?.statistics?.ad_str) {
       delete obj.base.statistics.ad_str;
     }
@@ -128,7 +128,7 @@ if (isIQY) {
       obj.cards = newCards;
     }
   } else if (url.includes("/views_comment/")) {
-    // 播放页评论区
+    // 爱奇艺 播放页评论区
     if (obj?.cards?.length > 0) {
       // 评论资源位
       obj.cards = obj.cards.filter(
@@ -140,7 +140,7 @@ if (isIQY) {
       );
     }
   } else if (url.includes("/views_home/")) {
-    // 信息流样式1
+    // 爱奇艺 信息流样式1
     if (obj?.cards?.length > 0) {
       obj.cards = obj.cards.filter(
         (i) =>
@@ -153,7 +153,7 @@ if (isIQY) {
       );
     }
   } else if (url.includes("/views_plt/")) {
-    // 播放详情页
+    // 爱奇艺 播放详情页组件
     if (obj?.kv_pair) {
       // 云影院卡片 vip优惠购买卡片
       const item = ["cloud_cinema", "vip_fixed_card"];
@@ -201,7 +201,7 @@ if (isIQY) {
       );
     }
   } else if (url.includes("/views_search/")) {
-    // 搜索页
+    // 爱奇艺 搜索结果列表
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
@@ -238,7 +238,7 @@ if (isIQY) {
       obj.cards = newCards;
     }
   } else if (url.includes("/waterfall/")) {
-    // 信息流样式2
+    // 爱奇艺 信息流样式2
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
@@ -268,7 +268,7 @@ if (isIQY) {
   }
 } else if (isMG) {
   if (url.includes("/dynamic/v1/channel/index/")) {
-    // 首页信息流
+    // 芒果 首页信息流
     if (obj?.adInfo) {
       delete obj.adInfo;
     }
@@ -318,12 +318,15 @@ if (isIQY) {
       obj.moduleIDS = obj.moduleIDS.filter((i) => i?.moduleEntityId !== "2237");
     }
   } else if (url.includes("/dynamic/v1/channel/vrsList/")) {
-    // 首页顶部菜单
+    // 芒果 顶部tab
     if (obj?.data?.length > 0) {
       let newItems = [];
       for (let item of obj.data) {
         if (item?.vclassType === "15") {
           // 短视频
+          continue;
+        } else if (item?.vclassId === 100055) {
+          // 澳门奇妙游
           continue;
         } else {
           newItems.push(item);
@@ -332,11 +335,15 @@ if (isIQY) {
       obj.data = newItems;
     }
   } else if (url.includes("/mobile/config?")) {
+    // 芒果 底部tab
     const item = [
       "XmVideoB",
       "XmsellSwitch",
       "damang_duanju_tab",
-      "relative_ads"
+      "damang_tab",
+      "dc_adConfig",
+      "relative_ads",
+      "second_floor_guide_switch"
     ];
     for (let i of item) {
       if (obj?.data?.[i]) {
@@ -347,6 +354,7 @@ if (isIQY) {
       obj.data.XmFsLvlCatAddr = "";
     }
   } else if (url.includes("/mobile/recommend/v2?")) {
+    // 芒果 搜索框填充词
     if (obj?.data?.default) {
       obj.data.default = { 0: ["搜索内容"] };
     }
@@ -357,7 +365,7 @@ if (isIQY) {
       obj.data.interval = 1000;
     }
   } else if (url.includes("/odin/c1/channel/index?")) {
-    // 首页信息流
+    // 芒果 首页信息流
     if (obj?.data?.length > 0) {
       let newItems = [];
       for (let item of obj.data) {
@@ -371,7 +379,7 @@ if (isIQY) {
       obj.data = newItems;
     }
   } else if (url.includes("/v3/module/list?")) {
-    // 我的页面组件
+    // 芒果 我的页面组件
     if (obj?.data?.list?.length > 0) {
       let newList = [];
       for (let item of obj.data.list) {
@@ -428,6 +436,7 @@ if (isIQY) {
       obj.data.list = newList;
     }
   } else if (url.includes("/v10/video/info?")) {
+    // 芒果 播放详情页组件
     if (obj?.data?.categoryList?.length > 0) {
       // 1正片 2花絮片段 6设备信息 7未知 8看了还会看 9精华打包 10未知 14vip
       // 15未知 17周边大放送 18未知 20出品人 22未知 30未知 31系列推荐
@@ -439,7 +448,7 @@ if (isIQY) {
   }
 } else if (isYK) {
   if (url.includes("/collect-api/get_push_interval_config_wx?")) {
-    // 热剧弹窗
+    // 优酷 热剧弹窗
     if (obj?.data) {
       const item = ["tipContent", "tipContentNew"];
       for (let i of item) {
@@ -447,7 +456,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("columbus.gateway.new.execute")) {
-    // 播放详情页组件
+    // 优酷 播放详情页组件
     if (obj?.data?.["2019030100"]?.data) {
       let objData = obj.data["2019030100"].data;
       if (objData?.data?.global) {
@@ -503,7 +512,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("columbus.home.feed/")) {
-    // 首页信息流
+    // 优酷 首页信息流
     if (obj?.data?.["2019061000"]?.data) {
       let objData = obj.data["2019061000"].data;
       if (objData?.nodes?.length > 0) {
@@ -536,7 +545,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("columbus.home.query/")) {
-    // 首页 剧集 电影 各栏目信息流
+    // 优酷 各菜单列表 剧集 电影 综艺 信息流
     if (obj?.data?.["2019061000"]?.data) {
       let objData = obj.data["2019061000"].data;
       if (objData?.data?.indexPositionResult?.length > 0) {
@@ -639,7 +648,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("columbus.uc.query/")) {
-    // 我的页面
+    // 优酷 我的页面组件
     if (obj?.data?.["2019061000"]?.data) {
       let objData = obj.data["2019061000"].data;
       if (objData?.nodes?.length > 0) {
@@ -711,7 +720,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("columbus.ycp.query/")) {
-    // 评论区
+    // 优酷 播放页评论区
     if (obj?.data?.["2019061000"]?.data) {
       let objData = obj.data["2019061000"].data;
       if (objData?.nodes?.length > 0) {
@@ -765,7 +774,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("haidai.lantern.appconfig.get/")) {
-    // 底部菜单
+    // 优酷 底部tab
     if (obj?.data?.model?.configInfo?.bottomNavigate) {
       let bottom = obj.data.model.configInfo.bottomNavigate;
       if (bottom?.data?.bottomTabList?.length > 0) {
@@ -780,12 +789,12 @@ if (isIQY) {
       }
     }
   } else if (url.includes("huluwa.dispatcher.youthmode.config2/")) {
-    // 青少年模式弹窗
+    // 优酷 青少年模式弹窗
     if (obj?.data?.result) {
       obj.data.result = {};
     }
   } else if (url.includes("play.ups.appinfo.get/")) {
-    // 开屏广告 播放广告
+    // 优酷 开屏广告 播放广告
     if (obj?.data?.data) {
       const item = ["ad", "watermark", "ykad"];
       for (let i of item) {
@@ -793,6 +802,7 @@ if (isIQY) {
       }
     }
   } else if (url.includes("soku.yksearch/")) {
+    // 优酷 搜索页面组件
     if (obj?.data?.nodes?.length > 0) {
       // 仅保留搜索tab
       obj.data.nodes = obj.data.nodes.filter((i) => i?.hasOwnProperty("data"));
