@@ -1,4 +1,4 @@
-// 2023-09-19 10:00
+// 2023-09-20 18:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -377,6 +377,38 @@ if (isIQY) {
         }
       }
       obj.data = newItems;
+    }
+  } else if (url.includes("/v1/vod/info?")) {
+    // 芒果 播放页详情页组件
+    if (obj?.data?.config?.ad) {
+      // 播放广告
+      obj.data.config.ad.wmShowTime = 0;
+    }
+    if (obj?.data?.config?.videoRcMod) {
+      // 播放弹窗
+      obj.data.config.videoRcMod.toastStatus = 0;
+      obj.data.config.videoRcMod.toastTime = 0;
+    }
+    if (obj?.data?.tabs?.length > 0) {
+      // 播放tab 1视频 2讨论
+      obj.data.tabs = obj.data.tabs.filter((i) =>
+        ["1", "2"]?.includes(i?.type)
+      );
+    }
+    if (obj?.data?.template?.modules?.length > 0) {
+      // 播放页组件
+      // 101简介 102点赞评论收藏 201正片列表 205会员衍生模块 206音频有声剧
+      obj.data.template.modules = obj.data.template.modules.filter(
+        (i) =>
+          ![
+            202, // 精彩短片
+            203, // 精选特辑
+            301, // 热门内容
+            601, // 周边大放送
+            701, // 通栏广告
+            702 // 大风车浮层广告
+          ]?.includes(i?.dataType)
+      );
     }
   } else if (url.includes("/v3/module/list?")) {
     // 芒果 我的页面组件
