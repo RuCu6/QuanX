@@ -1,4 +1,4 @@
-// 2023-09-13 13:20
+// 2023-09-20 16:35
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -136,6 +136,12 @@ if (url.includes("/api/cloud/config/all")) {
       (i) => !i.target?.metrics_area?.text?.includes("合作推广")
     );
   }
+} else if (url.includes("/topstory/hot-lists/total")) {
+  // 热榜排行榜
+  if (obj?.data?.length > 0) {
+    // 品牌甄选
+    obj.data = obj.data.filter((i) => !i?.hasOwnProperty("ad"));
+  }
 } else if (url.includes("/topstory/recommend")) {
   // 推荐信息流
   if (obj?.data?.length > 0) {
@@ -160,45 +166,38 @@ if (url.includes("/api/cloud/config/all")) {
           if (videoID) {
             i.common_card.feed_content.video.id = videoID;
           }
-        } else if (i.extra?.type === "pin") {
+        } else if (i.common_card?.feed_content?.video?.id) {
+          let search = '"feed_content":{"video":{"id":';
+          let str = $response.body.substring(
+            $response.body.indexOf(search) + search.length
+          );
+          let videoID = str.substring(0, str.indexOf(","));
+          i.common_card.feed_content.video.id = videoID;
+        } else if (
+          i.common_card?.footline?.elements?.[0]?.text?.panel_text?.includes(
+            "广告"
+          )
+        ) {
           return false;
-        } else if (i?.extra?.type === "answer") {
-          // 回答内容
-          if (i.common_card?.feed_content?.video?.id) {
-            let search = '"feed_content":{"video":{"id":';
-            let str = $response.body.substring(
-              $response.body.indexOf(search) + search.length
-            );
-            let videoID = str.substring(0, str.indexOf(","));
-            i.common_card.feed_content.video.id = videoID;
-          } else if (
-            i.common_card?.footline?.elements?.[0]?.text?.panel_text?.includes(
-              "广告"
-            )
-          ) {
-            return false;
-          } else if (
-            i.common_card?.feed_content?.source_line?.elements?.[1]?.text?.panel_text?.includes(
-              "盐选"
-            )
-          ) {
-            return false;
-          } else if (i?.promotion_extra) {
-            // 营销信息
-            return false;
-          } else {
-            return true;
-          }
+        } else if (
+          i.common_card?.feed_content?.source_line?.elements?.[1]?.text?.panel_text?.includes(
+            "盐选"
+          )
+        ) {
+          return false;
+        } else if (i?.promotion_extra) {
+          // 营销信息
+          return false;
         }
+        return true;
       } else if (i.type.includes("aggregation_card")) {
         // 横排卡片 知乎热榜
         return false;
       } else if (i.type === "feed_advert") {
         // 伪装成正常内容的卡片
         return false;
-      } else {
-        return true;
       }
+      return true;
     });
     fixPos(obj.data);
   }
