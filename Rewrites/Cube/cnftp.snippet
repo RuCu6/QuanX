@@ -1,13 +1,13 @@
 #!name = cnftp
 #!desc = China Film and Television Platform.
 #!author = RuCu6
-#!update = 2023-09-20 22:30
+#!update = 2023-09-20 22:50
 
 # 爱奇艺 //-i.vip.iqiyi.com, *.iqiyi.com
 # 开屏广告,播放广告
 ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 # 首页,信息流广告,我的页面,左上角天气,二楼,底部菜单,顶部菜单,青少年弹窗
-^http:\/\/[0-9\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
+^http:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 ^http:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 ^https:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 ^https:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
@@ -29,7 +29,8 @@
 # 播放器界面
 ^https:\/\/hb-boom\.api\.mgtv\.com\/release\/pullReleaseInfo url reject-dict
 # 首页,左上角推广,信息流,底部菜单红点,顶部菜单,搜索框
-^http:\/\/[0-9\.]+\/odin\/c1\/(channel\/ads|skin\/config)\? url reject-dict
+^http:\/\/[\d\.]+:\d{5}\/\?cmd=indexes.+ url reject-dict
+^http:\/\/[\d\.]+\/odin\/c1\/(channel\/ads|skin\/config)\? url reject-dict
 ^http:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 ^http:\/\/mobileso\.bz\.mgtv\.com\/spotlight\/search\/v1\? url reject-dict
 ^https:\/\/damang\.api\.mgtv\.com\/station\/album\/red\/dot\? url reject-dict
@@ -46,7 +47,7 @@
 ^https:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 
 # 腾讯视频
-^http:\/\/[0-9\.:]*\/?(defaultts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ url reject
+^http:\/\/[\d\.:]*\/?(defaultts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ url reject
 ^http:\/\/apd-vlive\.apdcdn\.tc\.qq\.com\/vmind\.qqvideo\.tc\.qq\.com\/\w+ url reject
 ^http:\/\/apd-\w+\.v\.smtcdns\.com\/(defaultts|omts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ url reject
 
