@@ -1,4 +1,4 @@
-# 2023-09-18 22:05
+# 2023-09-20 22:30
 
 # ======= A ======= #
 # 阿里云
@@ -111,6 +111,7 @@ HOST, statics.woozooo.com, REJECT
 
 # ======= M ======= #
 # 芒果TV
+HOST, credits.bz.mgtv.com, REJECT
 HOST, dflow.bz.mgtv.com, REJECT
 HOST, encounter.bz.mgtv.com, REJECT
 HOST, floor.bz.mgtv.com, REJECT
