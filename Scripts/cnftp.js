@@ -1,4 +1,4 @@
-// 2023-09-20 18:35
+// 2023-09-21 11:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -28,12 +28,17 @@ if (isIQY) {
     if (obj?.content?.resource) {
       const item = [
         "activities",
+        "ai_guide", // ai指引
         "cast_device_ad",
+        "flow_promotion", // 播放器 右上角免流按钮
+        "growth_award", // 播放器 会员成长积分
         "ip_restriction_ad",
         "member",
+        "ppc_feed_insert",
         "second_floor_guide",
         "speed_ad",
         "vip_tips",
+        "vipgrowth_value", // 播放器 会员成长体系
         "vr"
       ];
       for (let i of item) {
@@ -130,9 +135,10 @@ if (isIQY) {
   } else if (url.includes("/views_comment/")) {
     // 爱奇艺 播放页评论区
     if (obj?.cards?.length > 0) {
-      // 评论资源位
+      // 评论资源位 无alias_name字段的为广告
       obj.cards = obj.cards.filter(
         (i) =>
+          i?.hasOwnProperty("alias_name") &&
           ![
             "comment_resource_card",
             "comment_resource_convention_card"
