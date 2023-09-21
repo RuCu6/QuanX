@@ -1,4 +1,4 @@
-// 2023-09-21 11:45
+// 2023-09-21 15:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -53,12 +53,33 @@ if (isIQY) {
   } else if (url.includes("/getMyMenus?")) {
     // 爱奇艺 我的页面
     if (obj?.data?.length > 0) {
-      obj.data = obj.data.filter(
-        (i) =>
-          !["wd_liebiao_2", "wd_liebiao_3", "wd_liebiao_4"]?.includes(
-            i?.statistic?.block
+      let newMenus = [];
+      for (let item of obj.data) {
+        if (
+          ["wd_liebiao_2", "wd_liebiao_3", "wd_liebiao_4"]?.includes(
+            item?.statistic?.block
           )
-      );
+        ) {
+          continue;
+        } else {
+          if (item?.menuList?.length > 0) {
+            let newLists = [];
+            for (let i of item.menuList) {
+              if (i?.menuType === 121) {
+                // 121有奖限时问卷
+                continue;
+              } else {
+                newLists.push(i);
+              }
+            }
+            item.menuList = newLists;
+            newMenus.push(item);
+          } else {
+            newMenus.push(item);
+          }
+        }
+      }
+      obj.data = newMenus;
     }
   } else if (url.includes("/home_top_menu?")) {
     // 爱奇艺 顶部tab
@@ -147,6 +168,9 @@ if (isIQY) {
     }
   } else if (url.includes("/views_home/")) {
     // 爱奇艺 信息流样式1
+    if (obj?.base?.statistics?.ad_str) {
+      delete obj.base.statistics.ad_str;
+    }
     if (obj?.cards?.length > 0) {
       obj.cards = obj.cards.filter(
         (i) =>
@@ -245,6 +269,9 @@ if (isIQY) {
     }
   } else if (url.includes("/waterfall/")) {
     // 爱奇艺 信息流样式2
+    if (obj?.base?.statistics?.ad_str) {
+      delete obj.base.statistics.ad_str;
+    }
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
