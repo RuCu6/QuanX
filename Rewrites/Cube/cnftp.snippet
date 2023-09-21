@@ -1,7 +1,7 @@
 #!name = cnftp
 #!desc = China Film and Television Platform.
 #!author = RuCu6
-#!update = 2023-09-21 15:35
+#!update = 2023-09-21 16:00
 
 # 爱奇艺 //-i.vip.iqiyi.com, *.iqiyi.com
 # 播放页开通会员提示
@@ -35,8 +35,6 @@
 ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 
 # 芒果tv //*.mgtv.com
-# 其他
-^http:\/\/[\d\.]+:\d{5}\/\?cmd=indexes.+ url reject-dict
 # 首页左上角推广
 ^http:\/\/[\d\.]+\/odin\/c1\/(channel\/ads|skin\/config)\? url reject-dict
 # 底部tab红点
