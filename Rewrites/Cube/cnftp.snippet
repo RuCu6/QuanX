@@ -1,7 +1,7 @@
 #!name = cnftp
 #!desc = China Film and Television Platform.
 #!author = RuCu6
-#!update = 2023-09-21 16:00
+#!update = 2023-09-21 18:05
 
 # 爱奇艺 //-i.vip.iqiyi.com, *.iqiyi.com
 # 播放页开通会员提示
@@ -25,6 +25,8 @@
 ^https:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 # 播放页多余动效
 ^https:\/\/iface2\.iqiyi\.com\/ivos\/interact\/video\/data\? url reject-dict
+# 播放页升级白金会员按钮
+^https:\/\/iface2\.iqiyi\.com\/video\/3\.0\/v_interface_proxy\? url reject-dict
 # 底部tab,顶部tab
 ^https:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 # 青少年弹窗
