@@ -1,4 +1,4 @@
-// 2023-09-21 16:00
+// 2023-09-21 18:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -172,15 +172,33 @@ if (isIQY) {
       delete obj.base.statistics.ad_str;
     }
     if (obj?.cards?.length > 0) {
-      obj.cards = obj.cards.filter(
-        (i) =>
-          ![
+      let newCards = [];
+      for (let card of obj.cards) {
+        if (
+          [
             "ad_mobile_flow", // 信息流广告
             "ad_trueview", //信息流广告
             "focus", // 顶部横版广告
             "qy_home_vip_opr_banner" // 会员营销banner
-          ]?.includes(i?.alias_name)
-      );
+          ]?.includes(card?.alias_name)
+        ) {
+          continue;
+        } else {
+          if (card?.top_banner?.l_blocks?.length > 0) {
+            // 模块右边文字按钮
+            for (let item of card.top_banner.l_blocks) {
+              if (item?.buttons?.length > 0) {
+                // 移除按钮 娱乐资源
+                delete item.buttons;
+              }
+            }
+            newCards.push(card);
+          } else {
+            newCards.push(card);
+          }
+        }
+      }
+      obj.cards = newCards;
     }
   } else if (url.includes("/views_plt/")) {
     // 爱奇艺 播放详情页组件
