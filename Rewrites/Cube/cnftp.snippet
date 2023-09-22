@@ -1,7 +1,7 @@
 #!name = cnftp
 #!desc = China Film and Television Platform.
 #!author = RuCu6
-#!update = 2023-09-21 18:05
+#!update = 2023-09-22 08:20
 
 # 爱奇艺 //-i.vip.iqiyi.com, *.iqiyi.com
 # 播放页开通会员提示
@@ -37,6 +37,8 @@
 ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 
 # 芒果tv //*.mgtv.com
+# 无用请求
+^http:\/\/[\d\.]+:\d{5}\/\?cmd=indexes url reject
 # 首页左上角推广
 ^http:\/\/[\d\.]+\/odin\/c1\/(channel\/ads|skin\/config)\? url reject-dict
 # 底部tab红点
@@ -65,10 +67,8 @@
 ^http:\/\/apd-\w+\.v\.smtcdns\.com\/(defaultts|omts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ url reject
 
 # 优酷 //acs.youku.com, push.m.youku.com, un-acs.youku.com
-# 播放详情页,首页信息流,顶部tab,我的页面
-^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
-# 评论区
-^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.ycp\.query url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
+# 播放详情页,首页信息流,顶部tab,我的页面,评论区
+^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 # 底部tab
 ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cnftp.js
 # 青少年模式弹窗
