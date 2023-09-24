@@ -1,4 +1,4 @@
-// 2023-09-21 18:00
+// 2023-09-24 19:30
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -318,7 +318,21 @@ if (isIQY) {
     }
   }
 } else if (isMG) {
-  if (url.includes("/dynamic/v1/channel/index/")) {
+  if (url.includes("/dynamic/v1/bottom/tab?")) {
+    // ipad芒果 底部tab
+    if (obj?.data?.length > 0) {
+      // 0首页 8大芒 9会员 14一起看 6我的
+      let newTabs = [];
+      for (let tab of obj.data) {
+        if (["8", "14"]?.includes(tab?.vclassType)) {
+          continue;
+        } else {
+          newTabs.push(tab);
+        }
+      }
+      obj.data = newTabs;
+    }
+  } else if (url.includes("/dynamic/v1/channel/index/")) {
     // 芒果 首页信息流
     if (obj?.adInfo) {
       delete obj.adInfo;
@@ -414,6 +428,12 @@ if (isIQY) {
     }
     if (obj?.data?.interval) {
       obj.data.interval = 1000;
+    }
+  } else if (url.includes("/module/list?")) {
+    // ipad芒果 我的页面
+    if (obj?.data?.list?.length > 0) {
+      // vip会员 我的积分
+      obj.data.list = obj.data.list.filter((i) => i?.moduleId !== "202");
     }
   } else if (url.includes("/odin/c1/channel/index?")) {
     // 芒果 首页信息流
