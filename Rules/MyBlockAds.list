@@ -1,4 +1,4 @@
-# 2023-09-23 20:00
+# 2023-09-24 15:10
 
 # ======= A ======= #
 # 阿里云
@@ -170,8 +170,10 @@ HOST-SUFFIX, trace.qq.com, REJECT
 HOST, h5-api.feiersmart.com, REJECT
 # 网易云音乐
 HOST, gdt.qq.com, REJECT
+HOST, httpdns.music.163.com, REJECT
 HOST, httpdns.n.netease.com, REJECT
 HOST, iadmat.nosdn.127.net, REJECT
+HOST, iadmatapk.nosdn.127.net, REJECT
 HOST, iadmusicmat.music.126.net, REJECT
 HOST, iadmusicmatvideo.music.126.net, REJECT
 HOST-SUFFIX, 163jiasu.com, REJECT
