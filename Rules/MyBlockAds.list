@@ -1,4 +1,4 @@
-# 2023-09-27 16:05
+# 2023-09-27 16:20
 
 # ======= A ======= #
 # 阿里云
@@ -160,7 +160,7 @@ HOST, pgdt.gtimg.cn, REJECT
 HOST, rpt.gdt.qq.com, REJECT
 HOST, tytx.m.cn.miaozhen.com, REJECT
 ;HOST, vv.video.qq.com, REJECT
-;HOST, vv6.video.qq.com, REJECT
+HOST, vv6.video.qq.com, REJECT
 HOST-SUFFIX, beacon.qq.com, REJECT
 HOST-SUFFIX, gdt.qq.com, REJECT
 HOST-SUFFIX, tpns.qq.com, REJECT
