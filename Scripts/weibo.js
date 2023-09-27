@@ -1,4 +1,4 @@
-// 2023-09-27 09:00
+// 2023-09-27 09:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -262,7 +262,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
     }
-  } else if (url.includes("/2/groups/allgroups")) {
+  } else if (url.includes("/2/groups/allgroups/v2")) {
     // 顶部tab
     if (obj?.pageDatas?.length > 0) {
       // homeFeed关注 homeHot推荐
