@@ -1,7 +1,7 @@
 #!name = cnftp
 #!desc = China Film and Television Platform.
 #!author = RuCu6
-#!update = 2023-09-27 16:20
+#!update = 2023-09-27 18:35
 
 # 爱奇艺 //-i.vip.iqiyi.com, *.iqiyi.com
 # 播放页开通会员提示
@@ -65,7 +65,8 @@
 ^http:\/\/[\d\.:]*\/?(defaultts\.tc|vmind\.qqvideo\.tc|finderpdd\.video)\.qq\.com\/\w+ url reject
 ^http:\/\/apd-vlive\.apdcdn\.tc\.qq\.com\/vmind\.qqvideo\.tc\.qq\.com\/\w+ url reject
 ^http:\/\/apd-\w+\.v\.smtcdns\.com\/(defaultts|omts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ url reject
-^https?:\/\/vv\.video\.qq\.com\/ url request-body &sppreviewtype=1(.*)&spsrt=1 request-body &sppreviewtype=0$1spsrt=0
+^https?:\/\/vv\.video\.qq\.com\/(diffvmind|getvmind) url reject-dict
+^https?:\/\/vv\.video\.qq\.com\/getvinfo url request-body &spgzip=\d(.*)&sppreviewtype=\d(.*)&spsrt=\d(.*)&adpass=\w+ request-body &spgzip=0$1&sppreviewtype=0$2&spsrt=0$3&adpass=0
 
 # 优酷 //acs.youku.com, push.m.youku.com, un-acs.youku.com
 # 播放详情页,首页信息流,顶部tab,我的页面,评论区
