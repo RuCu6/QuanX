@@ -1,4 +1,4 @@
-# 2023-09-27 16:20
+# 2023-09-28 07:10
 
 # ======= A ======= #
 # 阿里云
@@ -155,15 +155,13 @@ HOST, info4.video.qq.com, REJECT
 HOST, info6.video.qq.com, REJECT
 HOST, ios.video.mpush.qq.com, REJECT
 HOST, mtrace.qq.com, REJECT
+HOST, otheve.beacon.qq.com, REJECT
 HOST, p.l.qq.com, REJECT
 HOST, pgdt.gtimg.cn, REJECT
 HOST, rpt.gdt.qq.com, REJECT
+HOST, tpns.qq.com, REJECT
 HOST, tytx.m.cn.miaozhen.com, REJECT
-;HOST, vv.video.qq.com, REJECT
 HOST, vv6.video.qq.com, REJECT
-HOST-SUFFIX, beacon.qq.com, REJECT
-HOST-SUFFIX, gdt.qq.com, REJECT
-HOST-SUFFIX, tpns.qq.com, REJECT
 HOST-SUFFIX, trace.qq.com, REJECT
 
 # ======= W ======= #
