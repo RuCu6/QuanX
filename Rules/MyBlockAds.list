@@ -1,4 +1,4 @@
-# 2023-09-24 19:30
+# 2023-09-27 16:05
 
 # ======= A ======= #
 # 阿里云
@@ -147,9 +147,7 @@ HOST, api.zuihuimai.com, REJECT
 HOST-SUFFIX, shuzilm.cn, REJECT
 
 # ======= T ======= #
-# 腾讯 无法使用的推送服务
-HOST, tpns.qq.com, REJECT
-# 腾讯视频
+# 腾讯
 HOST, adsmind.gdtimg.com, REJECT
 HOST, btrace.qq.com, REJECT
 HOST, btrace.video.qq.com, REJECT
@@ -160,6 +158,12 @@ HOST, mtrace.qq.com, REJECT
 HOST, p.l.qq.com, REJECT
 HOST, pgdt.gtimg.cn, REJECT
 HOST, rpt.gdt.qq.com, REJECT
+HOST, tytx.m.cn.miaozhen.com, REJECT
+;HOST, vv.video.qq.com, REJECT
+;HOST, vv6.video.qq.com, REJECT
+HOST-SUFFIX, beacon.qq.com, REJECT
+HOST-SUFFIX, gdt.qq.com, REJECT
+HOST-SUFFIX, tpns.qq.com, REJECT
 HOST-SUFFIX, trace.qq.com, REJECT
 
 # ======= W ======= #
