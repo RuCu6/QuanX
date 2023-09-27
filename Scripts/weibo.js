@@ -1,4 +1,4 @@
-// 2023-09-20 11:20
+// 2023-09-27 09:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -261,6 +261,12 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
         }
       }
+    }
+  } else if (url.includes("/2/groups/allgroups")) {
+    // 顶部tab
+    if (obj?.pageDatas?.length > 0) {
+      // homeFeed关注 homeHot推荐
+      obj.pageDatas = obj.pageDatas.filter((i) => i?.pageDataType !== "homeExtend");
     }
   } else if (url.includes("/2/messageflow/notice")) {
     // 消息动态页
