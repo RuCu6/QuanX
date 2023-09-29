@@ -1,4 +1,4 @@
-// 2023-09-29 17:00
+// 2023-09-29 17:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -376,8 +376,8 @@ if (isIQY) {
         if (item?.vclassType === 15) {
           // 短视频
           continue;
-        } else if (item?.vclassId === 100055) {
-          // 澳门奇妙游
+        } else if ([100042, 100055]?.includes(item?.vclassId)) {
+          // 100042暗里着迷 100055澳门奇妙游
           continue;
         } else {
           newItems.push(item);
