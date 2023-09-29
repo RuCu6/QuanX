@@ -1,4 +1,4 @@
-// 2023-09-21 18:00
+// 2023-09-29 17:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -373,7 +373,7 @@ if (isIQY) {
     if (obj?.data?.length > 0) {
       let newItems = [];
       for (let item of obj.data) {
-        if (item?.vclassType === "15") {
+        if (item?.vclassType === 15) {
           // 短视频
           continue;
         } else if (item?.vclassId === 100055) {
