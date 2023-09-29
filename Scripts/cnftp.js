@@ -1,4 +1,4 @@
-// 2023-09-29 17:25
+// 2023-09-29 20:55
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -640,8 +640,8 @@ if (isIQY) {
         let newNodes = [];
         for (let item of objData.nodes) {
           // 第一层级循环
-          if (["CHILD", "COMIC2"]?.includes(item?.data?.nodeKey)) {
-            // 首页 少儿 动漫
+          if (["CHILD", "COMIC2", "20230929GREATWORKMFK"]?.includes(item?.data?.nodeKey)) {
+            // 首页 少儿 动漫 国庆长假免费看
             continue;
           } else {
             if (item?.data?.indexPositionResult?.length > 0) {
