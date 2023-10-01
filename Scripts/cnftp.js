@@ -1,4 +1,4 @@
-// 2023-09-29 20:55
+// 2023-10-01 21:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -353,11 +353,8 @@ if (isIQY) {
           } else {
             newItems.push(item);
           }
-        } else if (item?.moduleEntityId === "842") {
-          // vip首月特惠
-          continue;
-        } else if (item?.moduleEntityId === "2237") {
-          // 2237节目周边 抓娃娃 芒果卡
+        } else if (["842", "2237", "5418"]?.includes(item?.moduleEntityId)) {
+          // 842vip首月特惠 2237横版按钮 5418横版图片
           continue;
         } else {
           newItems.push(item);
@@ -366,7 +363,9 @@ if (isIQY) {
       obj.data = newItems;
     }
     if (obj?.moduleIDS?.length > 0) {
-      obj.moduleIDS = obj.moduleIDS.filter((i) => i?.moduleEntityId !== "2237");
+      obj.moduleIDS = obj.moduleIDS.filter(
+        (i) => ["842", "2237", "5418"]?.includes(i?.moduleEntityId)
+      );
     }
   } else if (url.includes("/dynamic/v1/channel/vrsList/")) {
     // 芒果 顶部tab
@@ -421,7 +420,7 @@ if (isIQY) {
       let newItems = [];
       for (let item of obj.data) {
         if (item?.moduleType === "childslideicon") {
-          // 节目周边 抓娃娃 芒果卡
+          // 横版按钮
           continue;
         } else {
           newItems.push(item);
