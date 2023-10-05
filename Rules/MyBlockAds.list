@@ -1,4 +1,4 @@
-# 2023-10-05 13:50
+# 2023-10-05 16:50
 
 # ======= A ======= #
 # 阿里云
@@ -96,6 +96,11 @@ HOST-SUFFIX, pangolin.snssdk.com, REJECT
 # ======= H ======= #
 # 海尔智家
 HOST-SUFFIX, ehaier.com, REJECT
+
+# ======= J ======= #
+# 建设银行
+HOST, adv.ccb.com, REJECT
+HOST, imageadv.ccb.com, REJECT
 
 # ======= K ======= #
 # 酷我音乐
