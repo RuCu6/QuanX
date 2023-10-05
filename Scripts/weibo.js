@@ -1,4 +1,4 @@
-// 2023-09-27 09:05
+// 2023-10-05 17:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -345,7 +345,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (item?.data) {
             if (!isAd(item.data)) {
               removeFeedAd(item.data);
-              if (item?.data?.title?.structs?.length > 0) {
+              if (
+                item?.data?.title?.text !== "热门" &&
+                item?.data?.title?.structs?.length > 0
+              ) {
                 // 赞过的微博
                 continue;
               }
