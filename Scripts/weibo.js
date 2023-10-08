@@ -1,4 +1,4 @@
-// 2023-10-08 15:50
+// 2023-10-08 16:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -333,6 +333,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               if (ii?.category === "feed") {
                 // 头像挂件,关注按钮
                 removeAvatar(ii.data);
+                if (ii?.data?.page_info?.media_info?.vote_info) {
+                  delete ii.data.page_info.media_info.vote_info;
+                }
                 newItems.push(item);
               }
             }
@@ -545,6 +548,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   // 商品橱窗
                   if (group?.mblog?.common_struct) {
                     delete group.mblog.common_struct;
+                  }
+                  // 投票窗口
+                  if (group?.mblog?.page_info?.media_info?.vote_info) {
+                    delete group.mblog.page_info.media_info.vote_info;
                   }
                   newGroup.push(group);
                 }
