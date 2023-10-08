@@ -1,4 +1,4 @@
-// 2023-10-08 16:20
+// 2023-10-08 19:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -363,6 +363,29 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
       obj.items = newItems;
     }
+  } else if (
+    url.includes("/2/profile/dealatt") ||
+    url.includes("/2/friendships/destroy")
+  ) {
+    // 个人主页点击关注后展示菜单
+    if (obj?.cards) {
+      // 相关推荐卡片
+      delete obj.cards;
+    }
+    if (obj?.toolbar_menus_new?.items?.length > 0) {
+      // 底部菜单
+      obj.toolbar_menus_new.items = obj.toolbar_menus_new.items.filter((i) => {
+        if (i?.identifier === "recommend") {
+          // 相关推荐
+          return false;
+        } else if (/reward_/?.test(i?.identifier)) {
+          // 赞赏
+          return false;
+        } else {
+          return true;
+        }
+      });
+    }
   } else if (url.includes("/2/profile/me")) {
     // 我的页面
     if (obj?.vipHeaderBgImage) {
@@ -435,6 +458,26 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.items = newItems;
+    }
+  } else if (url.includes("/2/profile/userinfo")) {
+    // 个人主页整体界面
+    let footer = obj.footer;
+    if (footer?.data) {
+      let toolbar = footer.data.toolbar_menus_new;
+      if (toolbar?.items?.length > 0) {
+        // 底部菜单
+        toolbar.items = toolbar.items.filter((i) => {
+          if (i?.identifier === "recommend") {
+            // 相关推荐
+            return false;
+          } else if (/reward_/?.test(i?.identifier)) {
+            // 赞赏
+            return false;
+          } else {
+            return true;
+          }
+        });
+      }
     }
   } else if (url.includes("/2/push/active")) {
     // 首页右上角红包图标
