@@ -1,4 +1,4 @@
-// 2023-10-05 17:35
+// 2023-10-08 13:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -702,11 +702,13 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
     const item = [
       "bubble_guide_data", // 评论区弹窗
+      "button_extra_info", // 推荐评论
       "display_info", // 二楼
       "extend_info", // 拓展卡片
       "follow_data", // 关注提醒
       "head_cards", // 超话投票
       "highlight", // 二楼
+      "interaction_extra_info", // ai评论
       "page_alerts", // 超话新帖 新用户通知
       "reward_info", // 公益赞赏
       "source_tag_struct" // 二楼
