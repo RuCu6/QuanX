@@ -1,4 +1,4 @@
-// 2023-10-08 13:10
+// 2023-10-08 15:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -569,6 +569,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               }
               if (card?.mblog?.extend_info) {
                 delete card.mblog.extend_info;
+              }
+              // 商品橱窗
+              if (card?.mblog?.common_struct) {
+                delete card.mblog.common_struct;
               }
               newCards.push(card);
             }
