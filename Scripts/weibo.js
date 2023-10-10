@@ -1,4 +1,4 @@
-// 2023-10-08 19:35
+// 2023-10-10 11:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -333,6 +333,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               if (ii?.category === "feed") {
                 // 头像挂件,关注按钮
                 removeAvatar(ii.data);
+                // 投票窗口
                 if (ii?.data?.page_info?.media_info?.vote_info) {
                   delete ii.data.page_info.media_info.vote_info;
                 }
@@ -348,15 +349,18 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (item?.data) {
             if (!isAd(item.data)) {
               removeFeedAd(item.data);
+              // 投票窗口
+              if (item?.data?.page_info?.media_info?.vote_info) {
+                delete item.data.page_info.media_info.vote_info;
+              }
               if (
                 item?.data?.title?.text !== "热门" &&
                 item?.data?.title?.structs?.length > 0
               ) {
                 // 移除赞过的微博 保留热门内容
                 continue;
-              } else {
-                newItems.push(item);
               }
+              newItems.push(item);
             }
           }
         }
@@ -759,6 +763,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       "button_extra_info", // 推荐评论
       "display_info", // 二楼
       "extend_info", // 拓展卡片
+      "floating_button", // 悬浮购物车按钮
       "follow_data", // 关注提醒
       "head_cards", // 超话投票
       "highlight", // 二楼
