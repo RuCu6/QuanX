@@ -1,4 +1,4 @@
-// 2023-10-10 11:20
+// 2023-10-15 13:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -481,6 +481,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             return true;
           }
         });
+      }
+      if (toolbar?.lottie_guide) {
+        // 弹窗
+        delete toolbar.lottie_guide;
       }
     }
   } else if (url.includes("/2/push/active")) {
