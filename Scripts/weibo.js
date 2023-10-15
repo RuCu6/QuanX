@@ -1,4 +1,4 @@
-// 2023-10-15 13:20
+// 2023-10-15 22:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -631,6 +631,19 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               // 商品橱窗
               if (card?.mblog?.common_struct) {
                 delete card.mblog.common_struct;
+              }
+              // 投票窗口
+              if (card?.mblog?.page_info?.media_info?.vote_info) {
+                delete card.mblog.page_info.media_info.vote_info;
+              }
+              // 隐藏在 cards 里面的投票窗口
+              if (card?.mblog?.page_info?.cards?.length > 0) {
+                let page = card.mblog.page_info;
+                for (let i of page.cards) {
+                  if (i?.media_info?.vote_info) {
+                    delete i.media_info.vote_info;
+                  }
+                }
               }
               newCards.push(card);
             }
