@@ -1,4 +1,4 @@
-// 2023-09-11 21:15
+// 2023-10-21 07:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -36,11 +36,9 @@ if (url.includes("/x/resource/show/skin")) {
   if (obj.data?.bottom) {
     obj.data.bottom = obj.data.bottom.filter(
       (item) =>
-        !(
-          item.name === "发布" ||
-          item.name === "会员购" ||
-          item.name === "節目"
-        )
+        item.name === "首页" ||
+        item.name === "动态" ||
+        item.name === "我的"
     );
     fixPos(obj.data.bottom);
   }
