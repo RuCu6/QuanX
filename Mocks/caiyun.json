@@ -1,0 +1,22 @@
+{
+  "status": "ok",
+  "interval": 2592000,
+  "id": "",
+  "activities": [
+    {
+      "items": [
+        {
+          "text": "",
+          "image_light": "",
+          "link": "",
+          "activity_name": "",
+          "id": "1",
+          "image_dark": ""
+        }
+      ],
+      "type": "activity_icon",
+      "name": "",
+      "carousel": "2592000"
+    }
+  ]
+}
