@@ -1,16 +1,16 @@
 {
   "status": "ok",
   "interval": 2592000,
-  "id": "",
+  "id": "1",
   "activities": [
     {
       "items": [
         {
           "text": "",
-          "image_light": "h",
+          "image_light": "",
           "link": "",
           "activity_name": "",
-          "id": "",
+          "id": "1",
           "image_dark": ""
         }
       ],
