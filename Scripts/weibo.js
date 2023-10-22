@@ -1,4 +1,4 @@
-// 2023-10-22 21:20
+// 2023-10-22 21:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -233,6 +233,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     if (obj?.items?.length > 0) {
       let newItems = [];
       for (let item of obj.items) {
+        // 关注按钮
         removeAvatar(item?.data);
         if (item?.itemId?.includes("_infeed_may_interest_in_")) {
           // 你可能感兴趣的超话
@@ -242,6 +243,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           // 横版博主卡片
           continue;
         }
+        // 投票窗口
+        removeVoteInfo(item?.data);
         newItems.push(item);
       }
       obj.items = newItems;
