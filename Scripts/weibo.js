@@ -1,4 +1,4 @@
-// 2023-10-22 21:45
+// 2023-10-23 12:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -228,6 +228,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       if (obj?.rootComment?.comment_bubble) {
         delete obj.rootComment.comment_bubble;
       }
+    }
+    // 投票窗口
+    if (obj?.status?.page_info) {
+      removeVoteInfo(obj?.status);
     }
   } else if (url.includes("/2/container/asyn")) {
     if (obj?.items?.length > 0) {
@@ -466,6 +470,44 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.items = newItems;
+    }
+  } else if (url.includes("/2/profile/statuses/tab")) {
+    if (obj?.cards?.length > 0) {
+      let newCards = [];
+      for (let card of obj.cards) {
+        if (card?.card_group?.length > 0) {
+          let newGroup = [];
+          for (let group of card.card_group) {
+            let cardType = group.card_type;
+            // 22那年今天
+            if ([22]?.includes(cardType)) {
+              continue;
+            }
+            if (group?.mblog) {
+              // 卡片挂件,关注按钮
+              removeAvatar(group?.mblog);
+              // 投票窗口
+              removeVoteInfo(group?.mblog);
+            }
+            newGroup.push(group);
+          }
+          card.card_group = newGroup;
+          newCards.push(card);
+        } else {
+          if (card?.mblog) {
+            // 卡片挂件,关注按钮
+            removeAvatar(card?.mblog);
+            // 投票窗口
+            removeVoteInfo(card?.mblog);
+          }
+          newCards.push(card);
+        }
+      }
+      obj.cards = newCards;
+    }
+    // 我的热搜
+    if (obj?.cardlistInfo?.page_type === "08") {
+      delete obj.cardlistInfo;
     }
   } else if (url.includes("/2/profile/userinfo")) {
     // 个人主页整体界面
@@ -822,6 +864,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       obj.custom_action_list = newActions;
     }
   } else if (url.includes("/2/statuses/show")) {
+    // 信息流推广
     removeFeedAd(obj);
     // 循环引用中的商品橱窗
     if (obj?.text) {
@@ -831,6 +874,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     if (obj?.reward_info) {
       delete obj.reward_info;
     }
+    // 投票窗口
+    removeVoteInfo(obj);
   } else if (url.includes("/2/statuses/unread_hot_timeline")) {
     // 首页推荐tab信息流
     for (let s of ["ad", "advertises", "trends", "headers"]) {
