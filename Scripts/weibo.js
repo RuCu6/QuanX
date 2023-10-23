@@ -1,4 +1,4 @@
-// 2023-10-23 12:40
+// 2023-10-23 13:30
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -247,8 +247,12 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           // 横版博主卡片
           continue;
         }
-        // 投票窗口
-        removeVoteInfo(item?.data);
+        if (item?.items?.length > 0) {
+          for (let i of item.items) {
+            // 投票窗口
+            removeVoteInfo(i?.data);
+          }
+        }
         newItems.push(item);
       }
       obj.items = newItems;
