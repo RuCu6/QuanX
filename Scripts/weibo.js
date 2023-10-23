@@ -1,4 +1,4 @@
-// 2023-10-23 13:30
+// 2023-10-23 19:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -347,8 +347,14 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               if (ii?.category === "feed") {
                 // 头像挂件,关注按钮
                 removeAvatar(ii?.data);
+                // 信息流推广
+                removeFeedAd(ii?.data);
                 // 投票窗口
                 removeVoteInfo(ii?.data);
+                // 评论指引
+                if (ii?.data?.enable_comment_guide) {
+                  ii.data.enable_comment_guide = false;
+                }
                 newItems.push(item);
               }
             }
@@ -866,6 +872,14 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.custom_action_list = newActions;
+    }
+    // 商品橱窗
+    if (obj?.has_common_struct) {
+      obj.has_common_struct = false;
+    }
+    // 评论指引
+    if (obj?.enable_comment_guide) {
+      obj.enable_comment_guide = false;
     }
   } else if (url.includes("/2/statuses/show")) {
     // 信息流推广
