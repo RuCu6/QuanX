@@ -1,7 +1,7 @@
-# 2023-10-25 08:40
+# 2023-10-25 20:00
 
 # ======= A ======= #
-# 阿里云
+# 阿里云盘
 IP-CIDR, 203.107.1.1/24, REJECT
 # 爱奇艺
 HOST, api.iqiyi.com, REJECT
@@ -153,6 +153,8 @@ HOST, api.zuihuimai.com, REJECT
 HOST-SUFFIX, shuzilm.cn, REJECT
 
 # ======= T ======= #
+# 淘宝
+HOST, poplayer.template.alibaba.com, REJECT
 # 腾讯
 HOST, adsmind.gdtimg.com, REJECT
 HOST, btrace.qq.com, REJECT
