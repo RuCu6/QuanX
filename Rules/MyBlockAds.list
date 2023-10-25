@@ -1,4 +1,4 @@
-# 2023-10-05 16:50
+# 2023-10-25 08:40
 
 # ======= A ======= #
 # 阿里云
@@ -169,10 +169,9 @@ HOST, tpns.qq.com, REJECT
 HOST, tytx.m.cn.miaozhen.com, REJECT
 HOST, vv6.video.qq.com, REJECT
 HOST-SUFFIX, trace.qq.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT
 
 # ======= W ======= #
-# 网上国网
-HOST, h5-api.feiersmart.com, REJECT
 # 网易云音乐
 HOST, gdt.qq.com, REJECT
 HOST, httpdns.music.163.com, REJECT
@@ -199,26 +198,32 @@ HOST, sdkconfig.ad.xiaomi.com, REJECT
 
 # ======= Y ======= #
 # 优酷 & 菜鸟
+HOST, acs.youku.com, REJECT
+HOST, acs4baichuan.m.taobao.com, REJECT
 HOST, adsmind.ugdtimg.com, REJECT
 HOST, amdc.m.youku.com, REJECT
+HOST, api.sm.cn, REJECT
 HOST, apiv4-iyes.youku.com, REJECT
+HOST, baichuan-sdk.alicdn.com, REJECT
 HOST, httpdns.alicdn.com, REJECT
 HOST, huichuan-mc.sm.cn, REJECT
 HOST, huichuan.sm.cn, REJECT
 HOST, iyes.youku.com, REJECT
 HOST, m-vali.cp31.ott.cibntv.net, REJECT
 HOST, mc.atm.youku.com, REJECT
+HOST, nbsdk-baichuan.alicdn.com, REJECT
+HOST, pre-acs.youku.com, REJECT
 HOST, vali-g1.cp31.ott.cibntv.net, REJECT
 HOST, vali-ugc.cp31.ott.cibntv.net, REJECT
 HOST, yk-ssp.ad.youku.com, REJECT
 HOST, ykad-data.youku.com, REJECT
+HOST, youku-acs.m.taobao.com, REJECT
 # 云闪付 开屏广告
 HOST, ads.95516.com, REJECT
-HOST, cm-10-138.getui.com, REJECT
-HOST, sdk-conf.getui.com, REJECT
-HOST, sdk.open.talk.getui.net, REJECT
 HOST, switch.cup.com.cn, REJECT
 HOST, tysdk.95516.com, REJECT
+# Yandex
+HOST, yandexmetrica.com, REJECT
 
 # ======= Z ======= #
 # 知乎
