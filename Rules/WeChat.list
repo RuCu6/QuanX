@@ -1,5 +1,5 @@
 # https://github.com/blackmatrix7/ios_rule_script/blob/release/rule/QuantumultX/WeChat/WeChat.list
-# 2023-04-07 14:51:44
+# 2023-10-25 09:40
 
 HOST, dl.wechat.com, WeChat
 HOST, sgfindershort.wechat.com, WeChat
@@ -20,7 +20,6 @@ HOST-SUFFIX, weixin.qq.com, WeChat
 HOST-SUFFIX, weixinbridge.com, WeChat
 HOST-SUFFIX, weixinsxy.com, WeChat
 HOST-SUFFIX, wxapp.tc.qq.com, WeChat
-HOST-KEYWORD, 43.156.222., WeChat
 IP-CIDR, 101.32.104.4/32, WeChat
 IP-CIDR, 101.32.104.41/32, WeChat
 IP-CIDR, 101.32.104.56/32, WeChat
@@ -31,3 +30,4 @@ IP-CIDR, 101.32.133.53/32, WeChat
 IP-CIDR, 129.226.107.244/32, WeChat
 IP-CIDR, 129.226.3.47/32, WeChat
 IP-CIDR, 162.62.163.63/32, WeChat
+IP-CIDR, 43.156.222.1/24, WeChat
