@@ -1,7 +1,7 @@
 #!name = 菜鸟
 #!desc = 移除推广模块
 #!author = RuCu6 Keywos
-#!update = 2023-10-10 13:15
+#!update = 2023-10-25 19:00
 
 # 其他
 ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch url script-response-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/header.js
@@ -24,8 +24,4 @@
 ^https:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.cncreditmarket\.hit\.getactivityhit\.cn url reject-dict
 ^https:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.com\.cainiao\.longquan\.place\.getpageresourcecontent\.cn url reject-dict
 
-# 支付宝 菜鸟小程序
-^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad url reject-dict
-^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/cainiao.js
-
-hostname = cn-acs.m.cainiao.com, guide-acs.m.taobao.com
+hostname = cn-acs.m.cainiao.com
