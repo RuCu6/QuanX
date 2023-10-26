@@ -1,4 +1,4 @@
-# 2023-10-25 20:00
+# 2023-10-26 00:30
 
 # ======= A ======= #
 # 阿里云盘
@@ -153,8 +153,6 @@ HOST, api.zuihuimai.com, REJECT
 HOST-SUFFIX, shuzilm.cn, REJECT
 
 # ======= T ======= #
-# 淘宝
-HOST, poplayer.template.alibaba.com, REJECT
 # 腾讯
 HOST, adsmind.gdtimg.com, REJECT
 HOST, btrace.qq.com, REJECT
@@ -200,7 +198,7 @@ HOST, sdkconfig.ad.xiaomi.com, REJECT
 
 # ======= Y ======= #
 # 优酷 & 菜鸟
-;HOST, acs.youku.com, REJECT
+HOST, acs.youku.com, REJECT
 HOST, acs4baichuan.m.taobao.com, REJECT
 HOST, adsmind.ugdtimg.com, REJECT
 HOST, amdc.m.youku.com, REJECT
