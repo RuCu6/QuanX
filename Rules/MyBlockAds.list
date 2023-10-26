@@ -198,7 +198,7 @@ HOST, sdkconfig.ad.xiaomi.com, REJECT
 
 # ======= Y ======= #
 # 优酷 & 菜鸟
-HOST, acs.youku.com, REJECT
+;HOST, acs.youku.com, REJECT
 HOST, acs4baichuan.m.taobao.com, REJECT
 HOST, adsmind.ugdtimg.com, REJECT
 HOST, amdc.m.youku.com, REJECT
