@@ -1,4 +1,4 @@
-// 2023-10-28 09:00
+// 2023-10-28 09:45
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -96,10 +96,11 @@ if (body) {
           for (let floor of obj.floors) {
             const items = [
               "bigSaleFloor",
-              "recommendfloor",
-              "newAttentionCard", // 关注的频道
               "iconToolFloor",
-              "noticeFloor"
+              "newAttentionCard", // 关注的频道
+              "newBigSaleFloor", // 双十一
+              "noticeFloor",
+              "recommendfloor"
             ];
             if (items?.includes(floor?.mId)) {
               continue;
