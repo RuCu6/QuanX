@@ -1,4 +1,4 @@
-# 2023-10-28 16:05
+# 2023-10-29 08:00
 
 # ======= A ======= #
 # 阿里云盘
@@ -102,8 +102,9 @@ HOST-SUFFIX, ehaier.com, REJECT
 HOST, adv.ccb.com, REJECT
 HOST, imageadv.ccb.com, REJECT
 # 京东
-HOST, blackhole.m.jd.com, REJECT
-HOST, policy.jd.com, REJECT
+HOST, dns.jd.com, REJECT
+IP-CIDR, 101.124.19.122/32, REJECT
+IP6-CIDR, 2402:db40:5100:1011::5/128, REJECT
 
 # ======= K ======= #
 # 酷我音乐
