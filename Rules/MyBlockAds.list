@@ -1,4 +1,4 @@
-# 2023-10-28 09:45
+# 2023-10-28 16:05
 
 # ======= A ======= #
 # 阿里云盘
@@ -103,6 +103,7 @@ HOST, adv.ccb.com, REJECT
 HOST, imageadv.ccb.com, REJECT
 # 京东
 HOST, blackhole.m.jd.com, REJECT
+HOST, policy.jd.com, REJECT
 
 # ======= K ======= #
 # 酷我音乐
