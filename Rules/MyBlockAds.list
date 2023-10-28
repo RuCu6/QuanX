@@ -1,4 +1,4 @@
-# 2023-10-26 00:30
+# 2023-10-28 09:45
 
 # ======= A ======= #
 # 阿里云盘
@@ -101,6 +101,8 @@ HOST-SUFFIX, ehaier.com, REJECT
 # 建设银行
 HOST, adv.ccb.com, REJECT
 HOST, imageadv.ccb.com, REJECT
+# 京东
+HOST, blackhole.m.jd.com, REJECT
 
 # ======= K ======= #
 # 酷我音乐
