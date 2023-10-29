@@ -1,4 +1,4 @@
-// 2023-10-28 19:00
+// 2023-10-28 19:25
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -7,9 +7,7 @@ let body = $response.body;
 if (body) {
   switch (true) {
     // 嘀嗒出行-开屏广告
-    case /^https:\/\/capis(-?\w*)?\.didapinche\.com\/ad\/cx\/startup\?/.test(
-      url
-    ):
+    case /^https:\/\/capis(-?\w*)?\.didapinche\.com\/ad\/cx\/startup\?/.test(url):
       try {
         let obj = JSON.parse(body);
         if (obj.hasOwnProperty("startupPages")) {
@@ -30,9 +28,7 @@ if (body) {
       }
       break;
     // 多点-开屏广告
-    case /^https:\/\/cmsapi\.dmall\.com\/app\/home\/homepageStartUpPic/.test(
-      url
-    ):
+    case /^https:\/\/cmsapi\.dmall\.com\/app\/home\/homepageStartUpPic/.test(url):
       try {
         let obj = JSON.parse(body);
         for (let i = 0; i < obj["data"]["welcomePage"].length; i++) {
@@ -45,9 +41,7 @@ if (body) {
       }
       break;
     // JavDB
-    case /^https:\/\/(api\.yijingluowangluo\.xyz|jdforrepam\.com)\/api\/v\d\/\w+/.test(
-      url
-    ):
+    case /^https:\/\/(api\.yijingluowangluo\.xyz|jdforrepam\.com)\/api\/v\d\/\w+/.test(url):
       try {
         let obj = JSON.parse(body);
         if (url.includes("/api/v1/ads")) {
@@ -135,23 +129,15 @@ if (body) {
       }
       break;
     // 京东-开屏广告
-    case /^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=start/.test(
-      url
-    ):
+    case /^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=start/.test(url):
       try {
         let obj = JSON.parse(body);
-        for (let i = 0; i < obj.images.length; i++) {
-          for (let j = 0; j < obj.images[i].length; j++) {
-            if (obj.images[i][j].showTimes) {
-              obj.images[i][j].showTimes = 0;
-              obj.images[i][j].onlineTime = "2040-01-01 00:00:00";
-              obj.images[i][j].referralsTime = "2040-01-01 23:59:59";
-              obj.images[i][j].time = 0;
-            }
-          }
+        if (obj?.images?.length > 0) {
+          obj.images = [];
         }
-        obj.countdown = 100;
-        obj.showTimesDaily = 0;
+        if (obj?.showTimesDaily) {
+          obj.showTimesDaily = 0;
+        }
         body = JSON.stringify(obj);
       } catch (error) {
         console.log(`京东-开屏广告, 出现异常: ` + error);
