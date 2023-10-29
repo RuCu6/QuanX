@@ -1,4 +1,4 @@
-// 2023-10-29 10:45
+// 2023-10-29 11:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -668,6 +668,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   // 投票窗口
                   if (group?.mblog?.page_info?.media_info?.vote_info) {
                     delete group.mblog.page_info.media_info.vote_info;
+                  }
+                  // 新版热推
+                  if (group?.mblog?.is_ad === 1) {
+                    continue;
                   }
                   newGroup.push(group);
                 }
