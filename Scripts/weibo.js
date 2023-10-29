@@ -1,4 +1,4 @@
-// 2023-10-29 09:40
+// 2023-10-29 10:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -744,10 +744,6 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             }
             // 投票窗口
             removeVoteInfo(item?.data);
-            // 快转内容
-            if (item?.data?.screen_name_suffix_new?.length > 0) {
-              continue;
-            }
             newItems.push(item);
           } else if (item?.category === "feedBiz") {
             // 管理特别关注按钮
@@ -986,9 +982,6 @@ function isAd(data) {
       return true;
     }
     if (data?.content_auth_info?.content_auth_title?.includes("广告")) {
-      return true;
-    }
-    if (data?.extend_info?.hasOwnProperty("ad")) {
       return true;
     }
   }
