@@ -1,4 +1,4 @@
-// 2023-10-28 19:25
+// 2023-10-29 12:05
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -186,7 +186,7 @@ if (body) {
           if (splash?.base?.sections?.length > 0) {
             for (let items of splash.base.sections) {
               if ("taobao-splash" in items.bizData) {
-                if (items["taobao-splash"]?.data?.length > 0) {
+                if (items?.bizData?.["taobao-splash"]?.data?.length > 0) {
                   for (let item of items.bizData["taobao-splash"].data) {
                     item.times = "0";
                     item.hotStart = "false";
