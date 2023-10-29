@@ -75,8 +75,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           let newGroup = [];
           for (let group of card.card_group) {
             let cardType = group.card_type;
-            // 120,145 视频版块轮播图
-            // 192 横版热门视频 电影 颜值 电视剧等
+            // 120,145 视频版块轮播图 192横版热门视频 电影 颜值 电视剧等
             if ([120, 145, 192]?.includes(cardType)) {
               continue;
             }
@@ -85,7 +84,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               continue;
             }
             if (group?.mblog) {
-              // 移除卡片挂件,关注按钮
+              // 卡片挂件,关注按钮
               removeAvatar(group.mblog);
             }
             newGroup.push(group);
@@ -99,7 +98,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             continue;
           }
           if (card?.mblog) {
-            // 移除 卡片挂件,关注按钮
+            // 卡片挂件,关注按钮
             removeAvatar(card.mblog);
           }
           newCards.push(card);
@@ -119,12 +118,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
   } else if (url.includes("/2/client/publisher_list")) {
     // 首页右上角按钮
     if (obj?.elements?.length > 0) {
-      obj.elements = obj.elements.filter(
-        (a) =>
-          a.app_name === "写微博" ||
-          a.app_name === "图片" ||
-          a.app_name === "视频"
-      );
+      obj.elements = obj.elements.filter((i) => i.app_name === "写微博" || i.app_name === "图片" || i.app_name === "视频");
     }
   } else if (url.includes("/2/comments/build_comments")) {
     // 评论区
@@ -137,10 +131,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item.data.user) {
               // 头像挂件,关注按钮
               removeAvatar(item.data);
-              if (
-                item.data?.user?.name === "超话社区" ||
-                item.data?.user?.name === "微博视频"
-              ) {
+              if (item.data?.user?.name === "超话社区" || item.data?.user?.name === "微博视频") {
                 continue;
               }
             }
@@ -164,11 +155,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item?.type === 6 || item?.type === 15) {
               continue;
             }
-            if (
-              item?.adType === "相关内容" ||
-              item?.adType === "相关评论" ||
-              item?.adType === "推荐"
-            ) {
+            if (item?.adType === "相关内容" || item?.adType === "相关评论" || item?.adType === "推荐") {
               continue;
             }
             newItems.push(item);
@@ -184,10 +171,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (item.user) {
             // 头像挂件,关注按钮
             removeAvatar(item);
-            if (
-              item?.user?.name === "超话社区" ||
-              item?.user?.name === "微博视频"
-            ) {
+            if (item?.user?.name === "超话社区" || item?.user?.name === "微博视频") {
               continue;
             }
           }
@@ -259,9 +243,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
   } else if (url.includes("/2/direct_messages/user_list")) {
     if (obj?.user_list?.length > 0) {
-      obj.user_list = obj.user_list.filter(
-        (i) => !["活动通知", "闪聊"].includes(i?.user?.name)
-      );
+      obj.user_list = obj.user_list.filter((i) => !["活动通知", "闪聊"].includes(i?.user?.name));
     }
   } else if (url.includes("/2/flowlist")) {
     if (obj?.items?.length > 0) {
@@ -280,9 +262,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 顶部tab
     if (obj?.pageDatas?.length > 0) {
       // homeFeed关注 homeHot推荐
-      obj.pageDatas = obj.pageDatas.filter(
-        (i) => i?.pageDataType !== "homeExtend"
-      );
+      obj.pageDatas = obj.pageDatas.filter((i) => i?.pageDataType !== "homeExtend");
     }
   } else if (url.includes("/2/messageflow/notice")) {
     // 消息动态页
@@ -302,12 +282,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     if (obj?.cards?.length > 0) {
       if (obj?.cards?.[0]?.card_group?.length > 0) {
         obj.cards[0].card_group = obj.cards[0].card_group.filter(
-          (c) =>
-            !(
-              c?.actionlog?.ext?.includes("ads_word") ||
-              c?.itemid?.includes("t:51") ||
-              c?.itemid?.includes("ads_word")
-            )
+          (c) => !(c?.actionlog?.ext?.includes("ads_word") || c?.itemid?.includes("t:51") || c?.itemid?.includes("ads_word"))
         );
       }
       obj.cards = obj.cards.filter(
@@ -322,9 +297,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           )
       );
     } else if (obj?.card_group?.length > 0) {
-      obj.card_group = obj.card_group.filter((i) =>
-        i?.desc?.includes("你可能感兴趣的超话")
-      );
+      obj.card_group = obj.card_group.filter((i) => i?.desc?.includes("你可能感兴趣的超话"));
     }
   } else if (url.includes("/2/profile/container_timeline")) {
     // 个人主页关注弹窗
@@ -371,10 +344,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               if (item?.data?.page_info?.media_info?.vote_info) {
                 delete item.data.page_info.media_info.vote_info;
               }
-              if (
-                item?.data?.title?.text !== "热门" &&
-                item?.data?.title?.structs?.length > 0
-              ) {
+              if (item?.data?.title?.text !== "热门" && item?.data?.title?.structs?.length > 0) {
                 // 移除赞过的微博 保留热门内容
                 continue;
               }
@@ -385,10 +355,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
       obj.items = newItems;
     }
-  } else if (
-    url.includes("/2/profile/dealatt") ||
-    url.includes("/2/friendships/destroy")
-  ) {
+  } else if (url.includes("/2/profile/dealatt") || url.includes("/2/friendships/destroy")) {
     // 个人主页点击关注后展示菜单
     if (obj?.cards) {
       // 相关推荐卡片
@@ -427,10 +394,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             for (let d of item.items) {
               if (d.itemId === "mainnums_friends") {
                 let s = d.click.modules[0].scheme;
-                d.click.modules[0].scheme = s.replace(
-                  "231093_-_selfrecomm",
-                  "231093_-_selffollowed"
-                );
+                d.click.modules[0].scheme = s.replace("231093_-_selfrecomm", "231093_-_selffollowed");
               }
             }
           }
@@ -469,10 +433,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             delete item.body;
           }
           newItems.push(item);
-        } else if (
-          itemId === "100505_-_chaohua" ||
-          itemId === "100505_-_recentlyuser"
-        ) {
+        } else if (itemId === "100505_-_chaohua" || itemId === "100505_-_recentlyuser") {
           newItems.push(item);
         } else {
           // 其他项目全部移除
@@ -613,9 +574,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   newItems.push(item);
                 } else if (item?.category === "group") {
                   if (item?.items?.length > 0) {
-                    item.items = item.items.filter(
-                      (i) => i.data?.card_type === 17
-                    );
+                    item.items = item.items.filter((i) => i.data?.card_type === 17);
                     newItems.push(item);
                   }
                 }
@@ -637,10 +596,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               // 先筛选card_group里面的card_type
               // 横版广告图
               continue;
-            } else if (
-              group?.card_type === 42 &&
-              group?.title_extra_text === "广告"
-            ) {
+            } else if (group?.card_type === 42 && group?.title_extra_text === "广告") {
               // 推荐品牌广告
               continue;
             } else if (group?.card_type === 3 && group?.pics?.length > 0) {
@@ -926,9 +882,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
     // 广场页
     if (obj?.channelInfo?.channel_list?.length > 0) {
-      obj.channelInfo.channel_list = obj.channelInfo.channel_list.filter(
-        (t) => t.title !== "广场"
-      );
+      obj.channelInfo.channel_list = obj.channelInfo.channel_list.filter((t) => t.title !== "广场");
     }
   } else if (url.includes("/aj/appicon/list")) {
     if (obj?.data?.list?.length > 0) {
@@ -956,10 +910,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
     }
-  } else if (
-    url.includes("/wbapplua/wbpullad.lua") ||
-    url.includes("/preload/get_ad")
-  ) {
+  } else if (url.includes("/wbapplua/wbpullad.lua") || url.includes("/preload/get_ad")) {
     // 开屏广告
     if (obj?.cached_ad?.ads?.length > 0) {
       for (let item of obj.cached_ad.ads) {
