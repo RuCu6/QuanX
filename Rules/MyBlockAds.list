@@ -1,4 +1,4 @@
-# 2023-10-29 08:00
+# 2023-10-31 07:05
 
 # ======= A ======= #
 # 阿里云盘
@@ -82,7 +82,6 @@ HOST, amap-aos-info-nogw.amap.com, REJECT
 HOST, awaken.amap.com, REJECT
 HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行 开屏广告
-HOST, oisc.icbc.com.cn, REJECT
 HOST, pageviewp.icbc.com.cn, REJECT
 # 广告联盟
 HOST, is.snssdk.com, REJECT
