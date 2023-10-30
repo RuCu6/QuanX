@@ -1,4 +1,4 @@
-// 2023-10-30 15:45
+// 2023-10-30 16:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -675,10 +675,12 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
       obj.cards = newCards;
     }
-  } else if (url.includes("/2/statuses/container_timeline_hot")) {
-    // 商品橱窗
-    if (obj?.common_struct) {
-      delete obj?.common_struct;
+  } else if (url.includes("/2/statuses/container_timeline_hot") || url.includes("/2/statuses/unread_hot_timeline")) {
+    // 首页推荐tab信息流
+    for (let s of ["ad", "advertises", "trends", "headers"]) {
+      if (obj?.[s]) {
+        delete obj[s];
+      }
     }
     if (obj?.items?.length > 0) {
       let newItems = [];
@@ -687,15 +689,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (item?.category === "feed") {
             // 信息流推广
             removeFeedAd(item?.data);
-            if (item?.data?.action_button_icon_dic) {
-              delete item.data.action_button_icon_dic;
-            }
             // 投票窗口
             removeVoteInfo(item?.data);
-            // 博主top100
-            if (item?.data?.tag_struct?.length > 0) {
-              item.data.tag_struct = [];
-            }
             newItems.push(item);
           } else {
             // 移除所有的推广
@@ -704,6 +699,16 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.items = newItems;
+    }
+    if (obj?.statuses?.length > 0) {
+      let newStatuses = [];
+      for (let item of obj.statuses) {
+        if (!isAd(item)) {
+          removeFeedAd(item);
+          newStatuses.push(item);
+        }
+      }
+      obj.statuses = newStatuses;
     }
   } else if (url.includes("/2/statuses/container_timeline?") || url.includes("/2/statuses/container_timeline_unread")) {
     // 首页关注tab信息流
@@ -900,23 +905,6 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
     // 投票窗口
     removeVoteInfo(obj);
-  } else if (url.includes("/2/statuses/unread_hot_timeline")) {
-    // 首页推荐tab信息流
-    for (let s of ["ad", "advertises", "trends", "headers"]) {
-      if (obj?.[s]) {
-        delete obj[s];
-      }
-    }
-    if (obj?.statuses?.length > 0) {
-      let newStatuses = [];
-      for (let s of obj.statuses) {
-        if (!isAd(s)) {
-          removeFeedAd(s);
-          newStatuses.push(s);
-        }
-      }
-      obj.statuses = newStatuses;
-    }
   } else if (url.includes("/2/video/tiny_stream_video_list")) {
     if (obj?.statuses?.length > 0) {
       obj.statuses = obj.statuses.filter((m) => !(m.mblogtypename === "广告"));
