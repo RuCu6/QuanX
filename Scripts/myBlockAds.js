@@ -1,4 +1,4 @@
-// 2023-10-29 12:05
+// 2023-10-30 20:20
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -88,13 +88,14 @@ if (body) {
         if (obj?.floors?.length > 0) {
           let newFloors = [];
           for (let floor of obj.floors) {
+            // orderIdFloor我的订单 keyToolsFloor浏览记录 newWalletIdFloor我的钱包
             const items = [
               "bigSaleFloor",
-              "iconToolFloor", // 京东农场 客服服务
+              "iconToolFloor", // 底部工具栏
               "newAttentionCard", // 关注的频道
               "newBigSaleFloor", // 双十一
-              "noticeFloor", // 顶部横幅 会员优惠
-              "recommendfloor" // 专属推荐
+              "noticeFloor", // 顶部横幅
+              "recommendfloor" // 我的推荐
             ];
             if (items?.includes(floor?.mId)) {
               continue;
@@ -108,11 +109,20 @@ if (body) {
                 if (floor?.data?.commonWindows?.length > 0) {
                   floor.data.commonWindows = [];
                 }
-              } else if (floor?.mId === "userinfo") {
-                // 顶部背景图
-                if (floor?.data?.bgImgInfo?.bgImg) {
-                  delete floor.data.bgImgInfo.bgImg;
+                // 右下角动图
+                if (floor?.data?.floatLayer) {
+                  delete floor.data.floatLayer;
                 }
+              } else if (floor?.mId === "orderIdFloor") {
+                if (floor?.data?.commentRemindInfo?.infos?.length > 0) {
+                  // 发布评价的提醒
+                  floor.data.commentRemindInfo.infos = [];
+                }
+              } else if (floor?.mId === "userinfo") {
+                // 顶部背景图 去掉会导致顶部黑字在黑暗模式中无法显示 暂时保留
+                // if (floor?.data?.bgImgInfo?.bgImg) {
+                //   delete floor.data.bgImgInfo.bgImg;
+                // }
                 // 开通plus会员卡片
                 if (floor?.data?.newPlusBlackCard) {
                   delete floor.data.newPlusBlackCard;
@@ -188,6 +198,7 @@ if (body) {
               if ("taobao-splash" in items.bizData) {
                 if (items?.bizData?.["taobao-splash"]?.data?.length > 0) {
                   for (let item of items.bizData["taobao-splash"].data) {
+                    item.waitTime = "0";
                     item.times = "0";
                     item.hotStart = "false";
                     item.haveVoice = "false";
