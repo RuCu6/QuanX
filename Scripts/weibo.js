@@ -1,4 +1,4 @@
-// 2023-10-29 17:00
+// 2023-10-30 15:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -707,6 +707,22 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             // 快转内容
             if (item?.data?.screen_name_suffix_new?.length > 0) {
               continue;
+            }
+            // 美妆精选季
+            if (item?.data?.title?.text?.includes("精选")) {
+              continue;
+            }
+            // 未关注博主
+            if (item?.data?.user?.following === false) {
+              continue;
+            }
+            // 关闭关注推荐
+            if (item?.data?.user?.unfollowing_recom_switch === 1) {
+              item.data.user.unfollowing_recom_switch = 0;
+            }
+            // 博主top100
+            if (item?.data?.tag_struct?.length > 0) {
+              item.data.tag_struct = [];
             }
             newItems.push(item);
           } else if (item?.category === "feedBiz") {
