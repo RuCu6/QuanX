@@ -1,5 +1,6 @@
 # https://github.com/blackmatrix7/ios_rule_script/blob/release/rule/QuantumultX/AppStore/AppStore.list
-# 2023-04-07 14:47:37
+# 2023-10-30 09:45
 
 HOST, apps.apple.com, AppStore
+HOST, iosapps.itunes.apple.com, AppStore
 HOST, itunes.apple.com, AppStore
