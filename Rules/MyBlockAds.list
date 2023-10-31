@@ -1,4 +1,4 @@
-# 2023-10-31 07:05
+# 2023-10-31 08:40
 
 # ======= A ======= #
 # 阿里云盘
@@ -241,4 +241,5 @@ IP-CIDR, 118.89.204.198/32, REJECT
 IP6-CIDR, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT
 # 字节跳动
 HOST, ad.zijieapi.com, REJECT
+HOST-KEYWORD, asiad.byteactivity, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
