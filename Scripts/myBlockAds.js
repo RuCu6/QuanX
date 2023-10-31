@@ -1,4 +1,4 @@
-// 2023-10-31 21:00
+// 2023-11-01 01:10
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -214,13 +214,18 @@ if (body) {
                     item.enable4G = "false";
                     item.coldStart = "false";
                     item.waitTime = "0";
-                    item.imgUrl = "";
                     item.startTime = "5364633600000";
                     item.endTime = "5364719999000";
                     item.gmtStart = "2140-01-01 00:00:00";
                     item.gmtEnd = "2140-01-01 23:59:59";
                     item.gmtStartMs = "5364633600000";
                     item.gmtEndMs = "5364719999000";
+                    if (item?.imgUrl) {
+                      item.imgUrl = ""
+                    }
+                    if (item?.videoUrl) {
+                      item.videoUrl = "";
+                    }
                   }
                 }
               }
