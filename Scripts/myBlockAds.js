@@ -1,4 +1,4 @@
-// 2023-10-31 19:55
+// 2023-10-31 21:00
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -104,6 +104,10 @@ if (body) {
                 // 弹窗
                 if (floor?.data?.commonPopup) {
                   delete floor.data.commonPopup;
+                }
+                // 弹窗
+                if (floor?.data?.commonPopup_dynamic) {
+                  delete floor.data.commonPopup_dynamic;
                 }
                 // 底部会员续费横幅
                 if (floor?.data?.commonTips?.length > 0) {
