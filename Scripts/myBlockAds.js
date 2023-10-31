@@ -1,4 +1,4 @@
-// 2023-10-30 20:20
+// 2023-10-31 16:05
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -88,10 +88,9 @@ if (body) {
         if (obj?.floors?.length > 0) {
           let newFloors = [];
           for (let floor of obj.floors) {
-            // orderIdFloor我的订单 keyToolsFloor浏览记录 newWalletIdFloor我的钱包
+            // orderIdFloor我的订单 keyToolsFloor浏览记录 newWalletIdFloor我的钱包 iconToolFloor底部工具栏
             const items = [
               "bigSaleFloor",
-              "iconToolFloor", // 底部工具栏
               "newAttentionCard", // 关注的频道
               "newBigSaleFloor", // 双十一
               "noticeFloor", // 顶部横幅
@@ -104,6 +103,10 @@ if (body) {
                 // 弹窗
                 if (floor?.data?.commonPopup) {
                   delete floor.data.commonPopup;
+                }
+                // 底部会员续费横幅
+                if (floor?.data?.commonTips?.length > 0) {
+                  floor.data.commonTips = [];
                 }
                 // 弹窗
                 if (floor?.data?.commonWindows?.length > 0) {
