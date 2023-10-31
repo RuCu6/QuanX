@@ -1,4 +1,4 @@
-// 2023-10-31 16:05
+// 2023-10-31 19:55
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -90,7 +90,8 @@ if (body) {
           for (let floor of obj.floors) {
             // orderIdFloor我的订单 keyToolsFloor浏览记录 newWalletIdFloor我的钱包 iconToolFloor底部工具栏
             const items = [
-              "bigSaleFloor",
+              "bigSaleFloor", // 双十一
+              "buyOften", // 常买常逛
               "newAttentionCard", // 关注的频道
               "newBigSaleFloor", // 双十一
               "noticeFloor", // 顶部横幅
