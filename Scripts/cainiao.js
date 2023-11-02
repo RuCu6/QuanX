@@ -1,4 +1,4 @@
-// 2023-08-08 10:20
+// 2023-11-02 22:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -48,6 +48,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
               "cncy", // 填字赚现金
               "cngy", // 免费领水果
               "cngreen", // 绿色家园
+              "cnhs", // 菜鸟回收
               "gjjf", // 裹酱积分
               "jkymd", // 集卡赢免单
               "ljjq", // 领寄件券
