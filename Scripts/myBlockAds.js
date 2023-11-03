@@ -1,4 +1,4 @@
-// 2023-11-01 01:10
+// 2023-11-03 17:05
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -41,7 +41,7 @@ if (body) {
       }
       break;
     // JavDB
-    case /^https:\/\/(api\.yijingluowangluo\.xyz|jdforrepam\.com)\/api\/v\d\/\w+/.test(url):
+    case /^https:\/\/(api\.hechuangxinxi\.xyz|jdforrepam\.com)\/api\/v\d\/\w+/.test(url):
       try {
         let obj = JSON.parse(body);
         if (url.includes("/api/v1/ads")) {
