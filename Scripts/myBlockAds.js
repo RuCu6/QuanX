@@ -221,7 +221,7 @@ if (body) {
                     item.gmtStartMs = "5364633600000";
                     item.gmtEndMs = "5364719999000";
                     if (item?.imgUrl) {
-                      item.imgUrl = ""
+                      item.imgUrl = "";
                     }
                     if (item?.videoUrl) {
                       item.videoUrl = "";
