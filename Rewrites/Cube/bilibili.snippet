@@ -1,15 +1,15 @@
 #!name = 哔哩哔哩
 #!desc = 没有广告的哔哩哔哩更值得干杯
 #!author = RuCu6 Maasea
-#!update = 2023-11-02 22:30
+#!update = 2023-11-07 20:05
 
 # Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
-^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProtoA.js
 
 # 首页 DefaultWord,推荐,热搜发现,右上角活动,标签页,观影页,直播,直播间商品广告浮窗
 ^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ url reject
