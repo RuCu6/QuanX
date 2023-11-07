@@ -1,4 +1,4 @@
-# 2023-11-06 20:15
+# 2023-11-07 22:10
 
 # ======= A ======= #
 # 阿里巴巴
@@ -88,6 +88,7 @@ HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行 开屏广告
 HOST, pageviewp.icbc.com.cn, REJECT
 # 广告联盟
+HOST, i.snssdk.com, REJECT
 HOST, is.snssdk.com, REJECT
 HOST, mi.gdt.qq.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
@@ -251,6 +252,8 @@ IP-CIDR, 118.89.204.198/32, REJECT
 IP6-CIDR, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT
 # 字节跳动
 HOST, ad.zijieapi.com, REJECT
-HOST, i.snssdk.com, REJECT
-HOST-KEYWORD, asiad.byteactivity, REJECT
-HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
+HOST, asiad.byteactivity.com, REJECT
+HOST, asiad.byteactivity12.com, REJECT
+HOST, p3-ad-sign.byteimg.com, REJECT
+HOST, p6-ad-sign.byteimg.com, REJECT
+HOST, p9-ad-sign.byteimg.com, REJECT
