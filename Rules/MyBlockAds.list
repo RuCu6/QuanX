@@ -1,4 +1,4 @@
-# 2023-11-09 10:45
+# 2023-11-10 12:55
 
 # ======= A ======= #
 # 阿里巴巴
@@ -76,12 +76,10 @@ HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行 开屏广告
 HOST, pageviewp.icbc.com.cn, REJECT
 # 广告联盟
-HOST, i.snssdk.com, REJECT
-HOST, is.snssdk.com, REJECT
 HOST, mi.gdt.qq.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
+HOST-SUFFIX, snssdk.com, REJECT
 HOST-KEYWORD, pangolin-sdk-toutiao, REJECT
-HOST-KEYWORD, pangolin.snssdk.com, REJECT
 HOST-KEYWORD, pglstatp-toutiao, REJECT
 
 # ======= H ======= #
