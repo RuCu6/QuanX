@@ -1,4 +1,4 @@
-// 2023-11-02 22:10
+// 2023-11-12 14:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -117,7 +117,8 @@ if (url.includes("nbfriend.message.conversation.list")) {
       "1410", // 导入拼多多、抖音快递
       "1428", // 幸运号
       "1524", // 抽现金
-      "1525" // 幸运包裹
+      "1525", // 幸运包裹
+      "1638", // 为你精选了一些商品
     ];
     for (let i of item) {
       if (obj.data?.[i]) {
