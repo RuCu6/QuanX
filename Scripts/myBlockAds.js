@@ -1,4 +1,4 @@
-// 2023-11-13 18:40
+// 2023-11-14 07:25
 
 const url = $request.url;
 const isResponse = typeof $response !== "undefined";
@@ -134,10 +134,10 @@ switch (isResponse) {
                 floor.data.commentRemindInfo.infos = [];
               }
             } else if (floor?.mId === "userinfo") {
-              // 顶部背景图 去掉会导致顶部黑字在黑暗模式中无法显示 暂时保留
-              // if (floor?.data?.bgImgInfo?.bgImg) {
-              //   delete floor.data.bgImgInfo.bgImg;
-              // }
+              // 个人页 顶部背景图
+              if (floor?.data?.bgImgInfo?.bgImg) {
+                delete floor.data.bgImgInfo.bgImg;
+              }
               // 开通plus会员卡片
               if (floor?.data?.newPlusBlackCard) {
                 delete floor.data.newPlusBlackCard;
@@ -172,15 +172,20 @@ switch (isResponse) {
     // 京东-首页配置
     try {
       let obj = JSON.parse(body);
-      if (obj?.webViewFloorList?.length > 0) {
-        // 首页二楼
-        obj.webViewFloorList = [];
-      }
+      // 首页 图层列表
       if (obj?.floorList?.length > 0) {
         // float推广浮层 recommend为你推荐 ruleFloat资质与规则 searchIcon右上角消费券 topRotate左上角logo
         obj.floorList = obj.floorList.filter(
           (i) => !["float", "ruleFloat", "searchIcon", "topRotate"]?.includes(i?.type)
         );
+      }
+      // 首页 顶部背景图
+      if (obj?.topBgImgBig) {
+        delete obj.topBgImgBig;
+      }
+      // 首页 下拉二楼
+      if (obj?.webViewFloorList?.length > 0) {
+        obj.webViewFloorList = [];
       }
       body = JSON.stringify(obj);
     } catch (error) {
