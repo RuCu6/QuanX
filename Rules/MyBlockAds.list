@@ -1,4 +1,4 @@
-# 2023-11-11 22:40
+# 2023-11-14 13:45
 
 # ======= A ======= #
 # 阿里巴巴
@@ -194,8 +194,6 @@ HOST, sdkconfig.ad.xiaomi.com, REJECT
 ;HOST, hub5btmain.v6.shub.sandai.net, REJECT
 ;HOST, hub5emu.v6.shub.sandai.net, REJECT
 ;HOST, hub5idx.v6.shub.sandai.net, REJECT
-# XVideos
-HOST-SUFFIX, orbsrv.com, REJECT
 
 # ======= Y ======= #
 # 优酷 & 菜鸟

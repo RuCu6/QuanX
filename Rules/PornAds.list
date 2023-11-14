@@ -1,0 +1,9 @@
+# 2023-11-14 13:45
+
+# https://www.x1hub.com/
+HOST-SUFFIX, jads.co, REJECT
+HOST-SUFFIX, juicyads.com, REJECT
+
+# https://www.xvideos.com/
+HOST, a.orbsrv.com, REJECT
+HOST, s.orbsrv.com, REJECT
