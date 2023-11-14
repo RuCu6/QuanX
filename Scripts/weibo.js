@@ -1,4 +1,4 @@
-// 2023-11-14 17:45
+// 2023-11-14 18:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -250,8 +250,6 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       for (let item of obj.items) {
         if (item?.items?.length > 0) {
           for (let i of item.items) {
-            // 关注按钮
-            removeAvatar(i?.data);
             // 投票窗口
             removeVoteInfo(i?.data);
           }
@@ -481,14 +479,16 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       delete obj.cardlistInfo;
     }
   } else if (url.includes("/2/profile/userinfo")) {
-    // 个人主页整体界面
-    let footer = obj.footer;
-    if (footer?.data) {
-      let toolbar = footer.data.toolbar_menus_new;
+    // 个人详情页
+    if (obj?.footer?.data) {
+      // 底部菜单项目
+      let toolbar = obj.footer.data.toolbar_menus_new;
       if (toolbar?.items?.length > 0) {
-        // 底部菜单
         toolbar.items = toolbar.items.filter((i) => {
-          if (i?.identifier === "recommend") {
+          if (i?.identifier === "urge") {
+            // 催更
+            return false;
+          } else if (i?.identifier === "recommend") {
             // 相关推荐
             return false;
           } else if (/reward_/?.test(i?.identifier)) {
@@ -503,6 +503,18 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         // 弹窗
         delete toolbar.lottie_guide;
       }
+    }
+    // 头部信息
+    if (obj?.header?.data) {
+      let head = obj.header.data.userInfo;
+      // 头像挂件
+      if (head?.avatar_extend_info) {
+        delete head.avatar_extend_info;
+      }
+    }
+    // 全套个性皮肤
+    if (obj?.profileSkin?.data) {
+      delete obj.profileSkin.data;
     }
   } else if (url.includes("/2/push/active")) {
     // 首页右上角红包图标
