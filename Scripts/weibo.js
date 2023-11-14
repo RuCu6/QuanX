@@ -1,4 +1,4 @@
-// 2023-11-04 19:25
+// 2023-11-14 17:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -737,7 +737,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             removeVoteInfo(item?.data);
             // 快转内容
             if (item?.data?.screen_name_suffix_new?.length > 0) {
-              continue;
+              if (item?.data?.screen_name_suffix_new?.[3]?.content === "快转了") {
+                continue;
+              }
             }
             // 美妆精选季
             if (item?.data?.title?.text?.includes("精选")) {
