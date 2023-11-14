@@ -1,4 +1,4 @@
-// 2023-10-31 19:25
+// 2023-11-14 19:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -41,9 +41,32 @@ if (url.includes("/feed/detail")) {
     );
   }
 } else if (url.includes("/main/init")) {
+  // 整体配置
   if (obj.data?.length > 0) {
-    // 944热门搜索 945开屏广告 6390首页Tab
-    obj.data = obj.data.filter((item) => ![944, 945, 6390].includes(item?.entityId));
+    let newData = [];
+    for (let item of obj.data) {
+      // 944热门搜索 945开屏广告 6390首页Tab
+      if ([944, 945, 6390]?.includes(item?.entityId)) {
+        continue;
+      } else {
+        if (item?.entityId === 20131) {
+          // 发现页 顶部项目
+          if (item?.entities?.length > 0) {
+            let newEnt = [];
+            for (let i of item.entities) {
+              if (i?.title === "酷品") {
+                continue;
+              } else {
+                newEnt.push(i);
+              }
+            }
+            item.entities = newEnt;
+          }
+        }
+        newData.push(item);
+      }
+    }
+    obj.data = newData;
   }
 } else if (url.includes("/page/dataList")) {
   if (obj.data?.length > 0) {
