@@ -1,4 +1,4 @@
-// 2023-11-15 13:05
+// 2023-11-15 15:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -43,14 +43,13 @@ if (url.includes("/x/resource/show/skin")) {
     for (let item of obj.data.sections_v2) {
       if (["创作中心", "推荐服务"]?.includes(item?.title) && item?.items?.length > 0) {
         // 不必要项目
-        const dels = ["be_up_title", "button", "tip_icon", "tip_title"];
+        const dels = ["be_up_title", "button", "items", "title", "tip_icon", "tip_title"];
         for (let i of dels) {
           delete item[i];
         }
-        item.title = "";
-        item.items = [];
       }
       if (item?.title === "更多服务") {
+        delete item.title;
         if (item?.items?.length > 0) {
           let newItems = [];
           for (let i of item.items) {
