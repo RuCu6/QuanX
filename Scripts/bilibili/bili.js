@@ -1,4 +1,4 @@
-// 2023-11-15 17:20
+// 2023-11-15 19:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -6,18 +6,18 @@ let obj = JSON.parse($response.body);
 
 // 强制设置的皮肤
 if (url.includes("/x/resource/show/skin")) {
-  if (obj.data?.common_equip) {
+  if (obj?.data?.common_equip) {
     delete obj.data.common_equip;
   }
 } else if (url.includes("/x/resource/show/tab/v2")) {
   // 标签页
-  if (obj.data?.tab) {
+  if (obj?.data?.tab) {
     obj.data.tab = obj.data.tab.filter(
       (item) => item.name === "推荐" || item.name === "热门" || item.name === "动画" || item.name === "影视"
     );
     fixPos(obj.data.tab);
   }
-  if (obj.data?.top) {
+  if (obj?.data?.top) {
     obj.data.top = [
       {
         id: 176,
@@ -29,7 +29,7 @@ if (url.includes("/x/resource/show/skin")) {
       }
     ];
   }
-  if (obj.data?.bottom) {
+  if (obj?.data?.bottom) {
     obj.data.bottom = obj.data.bottom.filter((item) => item.name === "首页" || item.name === "动态" || item.name === "我的");
     fixPos(obj.data.bottom);
   }
@@ -44,24 +44,27 @@ if (url.includes("/x/resource/show/skin")) {
       if (item?.button) {
         delete item.button;
       }
-      if (["创作中心", "推荐服务"]?.includes(item?.title)) {
-        // 不必要项目
-        continue;
-      } else if (item?.title === "更多服务") {
-        if (item?.items?.length > 0) {
-          let newItems = [];
-          for (let i of item.items) {
-            if (/user_center\/feedback/?.test(i?.uri)) {
-              // 联系客服
-              newItems.push(i);
-            } else if (/user_center\/setting/?.test(i?.uri)) {
-              // 设置
-              newItems.push(i);
-            } else {
-              continue;
+      if (item?.title) {
+        if (item?.title === "创作中心" || item?.title === "推荐服务") {
+          // 不必要项目
+          continue;
+        } else if (item?.title === "更多服务") {
+          delete item.title;
+          if (item?.items?.length > 0) {
+            let newItems = [];
+            for (let i of item.items) {
+              if (/user_center\/feedback/?.test(i?.uri)) {
+                // 联系客服
+                newItems.push(i);
+              } else if (/user_center\/setting/?.test(i?.uri)) {
+                // 设置
+                newItems.push(i);
+              } else {
+                continue;
+              }
             }
+            item.items = newItems;
           }
-          item.items = newItems;
         }
       }
       newSects.push(item);
@@ -75,7 +78,7 @@ if (url.includes("/x/resource/show/skin")) {
     delete obj.data.vip_section;
   }
   // 开启本地会员标识
-  if (obj.data?.vip) {
+  if (obj?.data?.vip) {
     if (obj.data.vip.status === 1) {
       return false;
     } else {
@@ -83,41 +86,41 @@ if (url.includes("/x/resource/show/skin")) {
       obj.data.vip.type = 2;
       obj.data.vip.status = 1;
       obj.data.vip.vip_pay_type = 1;
-      obj.data.vip.due_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+      obj.data.vip.due_date = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
       obj.data.vip.role = 3;
     }
   }
 } else if (url.includes("/x/v2/account/mine/ipad")) {
-  if (obj.data?.ipad_upper_sections) {
+  if (obj?.data?.ipad_upper_sections) {
     // 投稿 创作首页 稿件管理 有奖活动
     delete obj.data.ipad_upper_sections;
   }
-  if (obj.data?.ipad_recommend_sections) {
+  if (obj?.data?.ipad_recommend_sections?.length > 0) {
     // 789我的关注 790我的消息 791我的钱包 792直播中心 793大会员 794我的课程 2542我的游戏
     const itemList = [789, 790];
     obj.data.ipad_recommend_sections = obj.data.ipad_recommend_sections.filter((i) => itemList.includes(i.id));
   }
-  if (obj.data?.ipad_more_sections) {
+  if (obj?.data?.ipad_more_sections?.length > 0) {
     // 797我的客服 798设置 1070青少年守护
     const itemList = [797, 798];
     obj.data.ipad_more_sections = obj.data.ipad_more_sections.filter((i) => itemList.includes(i.id));
   }
 } else if (url.includes("/x/v2/account/myinfo")) {
   // 会员清晰度
-  if (obj.data?.vip) {
+  if (obj?.data?.vip) {
     if (obj.data.vip.status === 1) {
       $done({});
     } else {
       obj.data.vip.type = 2;
       obj.data.vip.status = 1;
       obj.data.vip.vip_pay_type = 1;
-      obj.data.vip.due_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+      obj.data.vip.due_date = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
       obj.data.vip.role = 3;
     }
   }
 } else if (url.includes("/x/v2/feed/index?")) {
   // 推荐广告
-  if (obj.data?.items) {
+  if (obj?.data?.items?.length > 0) {
     obj.data.items = obj.data.items.filter((i) => {
       const { card_type: cardType, card_goto: cardGoto } = i;
       if (cardType && cardGoto) {
@@ -158,7 +161,7 @@ if (url.includes("/x/resource/show/skin")) {
     });
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
-  if (obj.data?.items) {
+  if (obj?.data?.items?.length > 0) {
     // vertical_live 直播内容
     // vertical_pgc 大会员专享
     obj.data.items = obj.data.items.filter(
@@ -172,37 +175,37 @@ if (url.includes("/x/resource/show/skin")) {
   }
 } else if (url.includes("/x/v2/search/square")) {
   // 热搜广告
-  if (obj.data) {
+  if (obj?.data) {
     obj.data = { type: "history", title: "搜索历史", search_hotword_revision: 2 };
   }
 } else if (url.includes("/x/v2/splash")) {
   // 开屏广告
-  const item = ["account", "event_list", "preload", "show"];
-  if (obj.data) {
+  if (obj?.data) {
+    const item = ["account", "event_list", "preload", "show"];
     item.forEach((i) => {
       delete obj.data[i];
     });
-    if (obj.data?.max_time) {
+    if (obj?.data?.max_time) {
       obj.data.max_time = 0;
     }
-    if (obj.data?.min_interval) {
+    if (obj?.data?.min_interval) {
       obj.data.min_interval = 31536000;
     }
-    if (obj.data?.pull_interval) {
+    if (obj?.data?.pull_interval) {
       obj.data.pull_interval = 31536000;
     }
-    if (obj.data?.list) {
+    if (obj?.data?.list?.length > 0) {
       for (let i of obj.data.list) {
         i.duration = 0;
         i.enable_pre_download = false;
-        i.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
-        i.begin_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+        i.begin_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+        i.end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
       }
     }
   }
 } else if (url.includes("/pgc/page/bangumi") || url.includes("/pgc/page/cinema/tab")) {
   // 观影页广告
-  if (obj.result?.modules) {
+  if (obj.result?.modules?.length > 0) {
     obj.result.modules.forEach((i) => {
       if (i.style.startsWith("banner")) {
         i.items = i.items.filter((ii) => ii.link.includes("play"));
@@ -217,15 +220,13 @@ if (url.includes("/x/resource/show/skin")) {
   }
 } else if (url.includes("/xlive/app-room/v1/index/getInfoByRoom")) {
   // 直播广告
-  if (obj.data?.activity_banner_info) {
-    obj.data.activity_banner_info = null;
+  if (obj?.data?.activity_banner_info) {
+    delete obj.data.activity_banner_info;
   }
-  if (obj.data?.shopping_info) {
-    obj.data.shopping_info = {
-      is_show: 0
-    };
+  if (obj?.data?.shopping_info) {
+    obj.data.shopping_info = { is_show: 0 };
   }
-  if (obj.data?.new_tab_info?.outer_list?.length > 0) {
+  if (obj?.data?.new_tab_info?.outer_list?.length > 0) {
     obj.data.new_tab_info.outer_list = obj.data.new_tab_info.outer_list.filter((i) => i.biz_id !== 33);
   }
 }
