@@ -1,4 +1,4 @@
-// 2023-11-15 17:20
+// 2023-11-15 18:30
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -201,6 +201,7 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
 } else if (url.includes("/shield/search/poi/detail")) {
   // 搜索结果 模块详情
   const item = [
+    "CouponBanner", // 高德红包
     // "anchor",
     "adv_compliance_info", // 服务提供方
     "adv_gift",
@@ -361,6 +362,9 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   // 详情页 顶部优惠横幅
   if (obj?.data?.tipsOperationLocation) {
     delete obj.data.tipsOperationLocation;
+  }
+  if (obj?.data?.resourcePlacement) {
+    delete obj.data.resourcePlacement;
   }
 } else if (url.includes("/shield/search_poi/homepage")) {
   // 首页 搜索框历史记录 推广标签
@@ -526,8 +530,8 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   if (obj?.data?.ad?.length > 0) {
     for (let item of obj.data.ad) {
       item.set.setting.display_time = 0;
-      item.creative[0].start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
-      item.creative[0].end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+      item.creative[0].start_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+      item.creative[0].end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
     }
   }
 }
