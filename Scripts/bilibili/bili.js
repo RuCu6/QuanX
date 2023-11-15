@@ -1,4 +1,4 @@
-// 2023-11-15 15:40
+// 2023-11-15 16:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -39,17 +39,16 @@ if (url.includes("/x/resource/show/skin")) {
 } else if (url.includes("/x/v2/account/mine?")) {
   // 我的页面
   if (obj?.data?.sections_v2?.length > 0) {
-    let newSect = [];
+    let newSects = [];
     for (let item of obj.data.sections_v2) {
-      if (["创作中心", "推荐服务"]?.includes(item?.title) && item?.items?.length > 0) {
+      if (["创作中心", "推荐服务"]?.includes(item?.title)) {
         // 不必要项目
-        const dels = ["be_up_title", "button", "items", "title", "tip_icon", "tip_title"];
+        const dels = ["be_up_title", "button", "items", "title", "tip_icon", "tip_title", "up_title"];
         for (let i of dels) {
           delete item[i];
         }
       }
       if (item?.title === "更多服务") {
-        delete item.title;
         if (item?.items?.length > 0) {
           let newItems = [];
           for (let i of item.items) {
@@ -66,9 +65,9 @@ if (url.includes("/x/resource/show/skin")) {
           item.items = newItems;
         }
       }
-      newSect.push(item);
+      newSects.push(item);
     }
-    obj.data.sections_v2 = newSect;
+    obj.data.sections_v2 = newSects;
   }
   if (obj?.data?.vip_section_v2) {
     delete obj.data.vip_section_v2;
