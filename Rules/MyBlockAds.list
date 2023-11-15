@@ -1,4 +1,4 @@
-# 2023-11-14 13:45
+# 2023-11-15 09:10
 
 # ======= A ======= #
 # 阿里巴巴
@@ -23,8 +23,8 @@ HOST, iadworkbench.apple.com, REJECT
 HOST, launch.apple.com, REJECT
 HOST, qwapi.apple.com, REJECT
 HOST-SUFFIX, advp.apple.com, REJECT
+HOST-SUFFIX, iad-apple.com, REJECT
 HOST-SUFFIX, iadsdk.apple.com, REJECT
-HOST-KEYWORD, .iad-apple.com, REJECT
 # 安全浏览限制解除
 HOST, lookup.api.bsb.baidu.com, REJECT
 HOST-SUFFIX, u3.ucweb.com, REJECT
@@ -63,10 +63,9 @@ HOST, md-i-s.apptimize.com, REJECT
 # ======= F ======= #
 # Foreca & Google
 HOST, pagead2.googlesyndication.com, REJECT
-HOST, pubads.g.doubleclick.net, REJECT
 HOST, www.googleadservices.com, REJECT
 HOST-SUFFIX, adservice.google.com, REJECT
-HOST-KEYWORD, googleads.g.doubleclick, REJECT
+HOST-KEYWORD, ads.g.doubleclick, REJECT
 
 # ======= G ======= #
 # 高德地图
@@ -181,11 +180,7 @@ HOST, iadmusicmat.music.126.net, REJECT
 HOST, iadmusicmatvideo.music.126.net, REJECT
 HOST-SUFFIX, 163jiasu.com, REJECT
 # 微博 开屏广告
-HOST, adstrategy.biz.weibo.com, REJECT
-HOST, kadmimage.biz.weibo.com, REJECT
-HOST, sdkaction.biz.weibo.com, REJECT
-HOST, sdkclick.biz.weibo.com, REJECT
-HOST, sdkmonitor.biz.weibo.com, REJECT
+HOST-SUFFIX, biz.weibo.com, REJECT
 
 # ======= X ======= #
 # 小米
