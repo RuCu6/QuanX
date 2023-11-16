@@ -1,4 +1,4 @@
-// 2023-11-15 19:00
+// 2023-11-16 12:30
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -80,7 +80,7 @@ if (url.includes("/x/resource/show/skin")) {
   // 开启本地会员标识
   if (obj?.data?.vip) {
     if (obj.data.vip.status === 1) {
-      return false;
+      $done({});
     } else {
       obj.data.vip_type = 2;
       obj.data.vip.type = 2;
