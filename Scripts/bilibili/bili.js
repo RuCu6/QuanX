@@ -80,7 +80,7 @@ if (url.includes("/x/resource/show/skin")) {
   // 开启本地会员标识
   if (obj?.data?.vip) {
     if (obj.data.vip.status === 1) {
-      return false;
+      $done({});
     } else {
       obj.data.vip_type = 2;
       obj.data.vip.type = 2;
