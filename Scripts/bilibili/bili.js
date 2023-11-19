@@ -1,4 +1,4 @@
-// 2023-11-16 12:30
+// 2023-11-19 09:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -38,44 +38,50 @@ if (url.includes("/x/resource/show/skin")) {
   obj = { code: -404, message: "啥都木有", ttl: 1, data: null };
 } else if (url.includes("/x/v2/account/mine?")) {
   // 我的页面
+  const del = ["rework_v1", "vip_section", "vip_section_v2"];
+  for (let i of del) {
+    // 不必要项目
+    delete obj.data[i];
+  }
   if (obj?.data?.sections_v2?.length > 0) {
     let newSects = [];
     for (let item of obj.data.sections_v2) {
       if (item?.button) {
         delete item.button;
       }
-      if (item?.title) {
-        if (item?.title === "创作中心" || item?.title === "推荐服务") {
-          // 不必要项目
-          continue;
-        } else if (item?.title === "更多服务") {
-          delete item.title;
-          if (item?.items?.length > 0) {
-            let newItems = [];
-            for (let i of item.items) {
-              if (/user_center\/feedback/?.test(i?.uri)) {
-                // 联系客服
-                newItems.push(i);
-              } else if (/user_center\/setting/?.test(i?.uri)) {
-                // 设置
-                newItems.push(i);
-              } else {
-                continue;
+      if (item?.style) {
+        if (item?.style === 1 || item?.style === 2) {
+          if (item?.title) {
+            if (item?.title === "创作中心" || item?.title === "推荐服务") {
+              // 创作中心 推荐服务
+              continue;
+            } else if (item?.title === "更多服务") {
+              delete item.title;
+              if (item?.items?.length > 0) {
+                let newItems = [];
+                for (let i of item.items) {
+                  if (/user_center\/feedback/?.test(i?.uri)) {
+                    // 联系客服
+                    newItems.push(i);
+                  } else if (/user_center\/setting/?.test(i?.uri)) {
+                    // 设置
+                    newItems.push(i);
+                  } else {
+                    continue;
+                  }
+                }
+                item.items = newItems;
               }
             }
-            item.items = newItems;
           }
+        } else {
+          // 其他style
+          continue;
         }
       }
       newSects.push(item);
     }
     obj.data.sections_v2 = newSects;
-  }
-  if (obj?.data?.vip_section_v2) {
-    delete obj.data.vip_section_v2;
-  }
-  if (obj?.data?.vip_section) {
-    delete obj.data.vip_section;
   }
   // 开启本地会员标识
   if (obj?.data?.vip) {
