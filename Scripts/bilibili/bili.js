@@ -1,4 +1,4 @@
-// 2023-11-19 09:35
+// 2023-11-19 11:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -83,11 +83,9 @@ if (url.includes("/x/resource/show/skin")) {
     }
     obj.data.sections_v2 = newSects;
   }
-  // 开启本地会员标识
+  // 非会员开启本地会员标识
   if (obj?.data?.vip) {
-    if (obj.data.vip.status === 1) {
-      $done({});
-    } else {
+    if (obj?.data?.vip?.status === 0) {
       obj.data.vip_type = 2;
       obj.data.vip.type = 2;
       obj.data.vip.status = 1;
@@ -112,11 +110,9 @@ if (url.includes("/x/resource/show/skin")) {
     obj.data.ipad_more_sections = obj.data.ipad_more_sections.filter((i) => itemList.includes(i.id));
   }
 } else if (url.includes("/x/v2/account/myinfo")) {
-  // 会员清晰度
+  // 非会员开启会员专属清晰度
   if (obj?.data?.vip) {
-    if (obj.data.vip.status === 1) {
-      $done({});
-    } else {
+    if (obj?.data?.vip?.status === 0) {
       obj.data.vip.type = 2;
       obj.data.vip.status = 1;
       obj.data.vip.vip_pay_type = 1;
