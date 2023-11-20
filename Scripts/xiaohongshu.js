@@ -1,4 +1,4 @@
-// 2023-09-13 20:25
+// 2023-11-20 21:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -22,7 +22,9 @@ if (url.includes("/v1/search/banner_list")) {
     }
   }
 } else if (url.includes("/v2/note/widgets")) {
-  const item = ["generic"];
+  // 详情页小部件
+  const item = ["generic", "note_next_step"];
+  // note_next_step活动
   if (obj?.data) {
     for (let i of item) {
       delete obj.data[i];
@@ -77,12 +79,12 @@ if (url.includes("/v1/search/banner_list")) {
   // 开屏广告
   if (obj?.data?.ads_groups?.length > 0) {
     for (let i of obj.data.ads_groups) {
-      i.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
-      i.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+      i.start_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+      i.end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
       if (i?.ads?.length > 0) {
         for (let ii of i.ads) {
-          ii.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
-          ii.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+          ii.start_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+          ii.end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
         }
       }
     }
@@ -91,9 +93,7 @@ if (url.includes("/v1/search/banner_list")) {
   // 关注列表
   if (obj?.data?.items?.length > 0) {
     // recommend_user 可能感兴趣的人
-    obj.data.items = obj.data.items.filter(
-      (i) => !["recommend_user"].includes(i.recommend_reason)
-    );
+    obj.data.items = obj.data.items.filter((i) => !["recommend_user"].includes(i.recommend_reason));
   }
 } else if (url.includes("/v4/search/trending")) {
   // 搜索栏
