@@ -4,6 +4,7 @@ var url = $request.url;
 var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
 const appinfo = "";
+
 if (url.includes("/caixinapp/appinfo")) {
   // 文章详情页
   let obj = JSON.parse($response.body);
