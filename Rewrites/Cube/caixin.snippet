@@ -1,7 +1,10 @@
 #!name = 财新
 #!desc = 共享会员
 #!author = RuCu6
-#!update = 2023-11-19 19:20
+#!update = 2023-11-21 14:45
+
+# 财新数据通
+^https:\/\/entities\.caixin\.com\/api\/public\/(push\/appIndex|recommendNews) url reject-dict
 
 # 会员解锁
 ;^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/(groupImageValidate|validate|validateAudioAuth) url script-request-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
@@ -18,9 +21,9 @@
 
 # 文章中间推广
 ^https:\/\/gg\.caixin\.com\/s\?z=caixin&slot url reject-dict
-^https:\/\/mappsv5\.caixin\.com\/(channelv5\/list|index_page_v5) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
+^https:\/\/mappsv5\.caixin\.com\/(channelv5\/list|\/?index_page_v5) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 首页弹出框
 ^https:\/\/msgapi\.caixin\.com\/msg_api\/annmsg\/annlist url reject-dict
 
-hostname = g*.caixin.com, m*.caixin.com
+hostname = *.caixin.com
