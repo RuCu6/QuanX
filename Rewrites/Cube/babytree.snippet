@@ -1,0 +1,22 @@
+#!name = 宝宝树孕育
+#!desc = 移除广告
+#!author = RuCu6
+#!update = 2023-11-22 17:45
+
+# 整体配置
+^http:\/\/api\.babytree\.com\/bafconfigcenter_intf\/config\/get\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/babytree.js
+
+# 底部tab,首页顶部tab,我的页面
+^http:\/\/go\.babytree\.com\/go_pregnancy\/api\/(app_index\/get_app_tab|cms_column\/get_column_list|user\/get_user_info)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/babytree.js
+
+# 首页活动弹窗,签到图标
+^http:\/\/go\.babytree\.com\/go_pregnancy\/api\/(index_activity\/get_app_index_activity|sign\/sign_h_5)\? url reject-dict
+
+# 我的页面商品信息流
+^http:\/\/m\.meitun\.com\/newapi\/router\/topic\/hometptf\/feedRecommend url reject-dict
+
+# 新客专享红包
+^http:\/\/pic08\.babytreeimg\.com\/knowledge\/2022\/0923\/\w+ url reject
+
+# 开屏广告
+^http:\/\/plough\.babytree\.com\/plough\.do url reject-dict
