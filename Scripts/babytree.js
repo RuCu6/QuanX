@@ -26,13 +26,14 @@ if (url.includes("/app_index/get_app_tab")) {
     }
   }
 } else if (url.includes("/cms_column/get_column_list")) {
-  // 首页顶部tab
+  // tab配置
   if (obj?.data?.list?.length > 0) {
     let newLists = [];
     for (let item of obj.data.list) {
       if (item?.data_source_list?.length > 0) {
         let newDatas = [];
         for (let i of item.data_source_list) {
+          // 首页顶部tab
           if (i?.tab_name?.includes("精品秒杀")) {
             continue;
           } else {
@@ -42,6 +43,7 @@ if (url.includes("/app_index/get_app_tab")) {
         item.data_source_list = newDatas;
       }
       if (["225", "226", "238", "239"]?.includes(item?.id)) {
+        // 我的页面模块
         // 225我的福利 226banner轮播图 238美囤商城 239会员进群
         continue;
       }
