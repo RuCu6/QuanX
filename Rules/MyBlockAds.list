@@ -1,4 +1,4 @@
-# 2023-11-15 09:10
+# 2023-11-22 14:40
 
 # ======= A ======= #
 # 阿里巴巴
@@ -50,8 +50,6 @@ HOST, passport.bilibili.com, REJECT
 HOST, ad.cyapi.cn, REJECT
 # 昌原云充
 HOST, m.adyounger.com, REJECT
-# ChatGPT
-HOST, o33249.ingest.sentry.io, REJECT
 # Clue 智库
 HOST, api.helloclue.com, REJECT
 HOST, brahe.apptimize.com, REJECT
@@ -75,11 +73,14 @@ HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行 开屏广告
 HOST, pageviewp.icbc.com.cn, REJECT
 # 广告联盟
+HOST, ad.zijieapi.com, REJECT
 HOST, i.snssdk.com, REJECT
 HOST, is.snssdk.com, REJECT
-HOST, mi.gdt.qq.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
+HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
+HOST-KEYWORD, -tos.pstatp.com, REJECT
+HOST-KEYWORD, asiad.byteactivity, REJECT
 HOST-KEYWORD, pangolin-sdk-toutiao, REJECT
 HOST-KEYWORD, pangolin.snssdk.com, REJECT
 HOST-KEYWORD, pglstatp-toutiao, REJECT
@@ -91,8 +92,7 @@ HOST-SUFFIX, ehaier.com, REJECT
 
 # ======= J ======= #
 # 建设银行
-HOST, adv.ccb.com, REJECT
-HOST, imageadv.ccb.com, REJECT
+HOST-KEYWORD, adv.ccb.com, REJECT
 # 京东
 HOST, dns.jd.com, REJECT
 IP-CIDR, 101.124.19.122/32, REJECT
@@ -151,27 +151,22 @@ HOST-SUFFIX, shuzilm.cn, REJECT
 # ======= T ======= #
 # 腾讯
 HOST, adsmind.gdtimg.com, REJECT
-HOST, btrace.qq.com, REJECT
-HOST, btrace.video.qq.com, REJECT
 HOST, info4.video.qq.com, REJECT
 HOST, info6.video.qq.com, REJECT
 HOST, ios.video.mpush.qq.com, REJECT
-HOST, mtrace.qq.com, REJECT
 HOST, otheve.beacon.qq.com, REJECT
-HOST, p.l.qq.com, REJECT
 HOST, pgdt.gtimg.cn, REJECT
-HOST, rpt.gdt.qq.com, REJECT
 HOST, tpns.qq.com, REJECT
-HOST, tytx.m.cn.miaozhen.com, REJECT
+HOST, vv.video.qq.com, REJECT
 HOST, vv6.video.qq.com, REJECT
-HOST-SUFFIX, trace.qq.com, REJECT
+HOST-SUFFIX, gdt.qq.com, REJECT
+HOST-SUFFIX, l.qq.com, REJECT
+HOST-KEYWORD, trace.qq.com, REJECT
+HOST-KEYWORD, trace.video.qq.com, REJECT
 IP-CIDR, 47.110.187.87/32, REJECT
-# 腾讯QQ
-HOST, ipv4.gdt.qq.com, REJECT
 
 # ======= W ======= #
 # 网易云音乐
-HOST, gdt.qq.com, REJECT
 HOST, httpdns.music.163.com, REJECT
 HOST, httpdns.n.netease.com, REJECT
 HOST, iadmat.nosdn.127.net, REJECT
@@ -230,7 +225,3 @@ HOST, zxid-m.mobileservice.cn, REJECT
 IP-CIDR, 103.41.167.237/32, REJECT
 IP-CIDR, 118.89.204.198/32, REJECT
 IP6-CIDR, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT
-# 字节跳动
-HOST, ad.zijieapi.com, REJECT
-HOST-KEYWORD, asiad.byteactivity, REJECT
-HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
