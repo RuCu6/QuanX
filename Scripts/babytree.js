@@ -1,4 +1,4 @@
-// 2023-11-22 17:45
+// 2023-11-22 18:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -41,9 +41,20 @@ if (url.includes("/app_index/get_app_tab")) {
         }
         item.data_source_list = newDatas;
       }
+      if (["225", "226", "238", "239"]?.includes(item?.id)) {
+        // 225我的福利 226banner轮播图 238美囤商城 239会员进群
+        continue;
+      }
       newLists.push(item);
     }
     obj.data.list = newLists;
+  }
+} else if (url.includes("/feeds/get_index_feeds_list")) {
+  // 首页信息流
+  if (obj?.data?.list?.length > 0) {
+    obj.data.list = obj.data.list.filter(
+      (i) => ["发表了", "提问了"]?.includes(i?.action_desc) && !i?.hasOwnProperty("seeding_goods_info")
+    );
   }
 } else if (url.includes("/user/get_user_info")) {
   // 我的页面
