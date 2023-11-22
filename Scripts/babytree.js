@@ -1,4 +1,4 @@
-// 2023-11-22 18:45
+// 2023-11-22 19:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -57,6 +57,12 @@ if (url.includes("/app_index/get_app_tab")) {
     obj.data.list = obj.data.list.filter(
       (i) => ["发表了", "提问了"]?.includes(i?.action_desc) && !i?.hasOwnProperty("seeding_goods_info")
     );
+  }
+} else if (url.includes("/mobile_search_new/search_index")) {
+  // 搜索列表
+  if (obj?.data?.find_search) {
+    // 搜索发现
+    delete obj.data.find_search;
   }
 } else if (url.includes("/user/get_user_info")) {
   // 我的页面
