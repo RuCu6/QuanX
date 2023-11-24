@@ -1,0 +1,10 @@
+#!name = BreakSSL
+#!desc = 适合解除SSL证书锁定的app。需要注入第三方库: SSLKillSwitch2.dylib
+#!author = RuCu6
+#!update = 2023-11-24 13:05
+
+# ======= Y ======= #
+# 云闪付
+^https:\/\/base\.95516\.com\/app\/inApp\/sys\/appShowGroup url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/breakssl.js
+
+hostname = base.95516.com
