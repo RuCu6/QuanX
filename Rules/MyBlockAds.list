@@ -1,4 +1,4 @@
-# 2023-11-22 14:40
+# 2023-11-26 07:25
 
 # ======= A ======= #
 # 阿里巴巴
@@ -157,7 +157,7 @@ HOST, ios.video.mpush.qq.com, REJECT
 HOST, otheve.beacon.qq.com, REJECT
 HOST, pgdt.gtimg.cn, REJECT
 HOST, tpns.qq.com, REJECT
-HOST, vv.video.qq.com, REJECT
+;HOST, vv.video.qq.com, REJECT
 HOST, vv6.video.qq.com, REJECT
 HOST-SUFFIX, gdt.qq.com, REJECT
 HOST-SUFFIX, l.qq.com, REJECT
