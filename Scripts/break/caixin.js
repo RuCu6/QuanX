@@ -1,4 +1,4 @@
-// 2023-11-25 15:10
+// 2023-11-25 15:20
 
 var url = $request.url;
 var header = $request.headers;
@@ -48,11 +48,7 @@ if (url.includes("/caixinapp/appinfo")) {
   delete obj.data.ios_ad_513;
   delete obj.data.android_ad_513;
   if (obj?.data?.list?.length > 0) {
-    for (let i = 0; i < obj.data.list.length; i++) {
-      obj.data.list[i].ui_type = "2";
-    }
-    obj.data.list = obj.data.list.filter((i) => !["金融我闻", "数据通"]?.includes(i?.channel_name));
-    obj.data.list.sort((item1, item2) => (item1.time < item2.time ? 1 : -1));
+    obj.data.list = obj.data.list.filter((i) => !["金融我闻", "财新数据通"]?.includes(i?.channel_name));
   }
   $done({ body: JSON.stringify(obj) });
 } else if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
