@@ -1,4 +1,4 @@
-// 2023-11-21 15:05
+// 2023-11-25 15:10
 
 var url = $request.url;
 var header = $request.headers;
@@ -51,7 +51,7 @@ if (url.includes("/caixinapp/appinfo")) {
     for (let i = 0; i < obj.data.list.length; i++) {
       obj.data.list[i].ui_type = "2";
     }
-    obj.data.list = obj.data.list.filter((i) => !i?.channel_name?.includes("数据通"));
+    obj.data.list = obj.data.list.filter((i) => !["金融我闻", "数据通"]?.includes(i?.channel_name));
     obj.data.list.sort((item1, item2) => (item1.time < item2.time ? 1 : -1));
   }
   $done({ body: JSON.stringify(obj) });
