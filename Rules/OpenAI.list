@@ -1,9 +1,15 @@
 # https://gitlab.com/lodepuly/vpn_tool/-/blob/main/Tool/Loon/Rule/OpenAI.list
-# 2023-11-22 16:15
+# 2023-11-25 12:40
 
 HOST, api.statsig.com, OpenAI
+HOST, cdn.openai.com, OpenAI
+HOST, chat.openai.com, OpenAI
+HOST, chat.openai.com.cdn.cloudflare.net, OpenAI
 HOST, o33249.ingest.sentry.io, OpenAI
 HOST, openai-api.arkoselabs.com, OpenAI
+HOST, openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net, OpenAI
+HOST, openaicomproductionae4b.blob.core.windows.net, OpenAI
+HOST, production-openaicom-storage.azureedge.net, OpenAI
 HOST, static.cloudflareinsights.com, OpenAI
 HOST-SUFFIX, algolia.net, OpenAI
 HOST-SUFFIX, auth0.com, OpenAI
@@ -21,9 +27,7 @@ HOST-SUFFIX, oaiusercontent.com, OpenAI
 HOST-SUFFIX, observeit.net, OpenAI
 HOST-SUFFIX, openai.com, OpenAI
 HOST-SUFFIX, openaiapi-site.azureedge.net, OpenAI
-HOST-SUFFIX, openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net, OpenAI
 HOST-SUFFIX, openaicom.imgix.net, OpenAI
-HOST-SUFFIX, openaicomproductionae4b.blob.core.windows.net, OpenAI
 HOST-SUFFIX, poe.com, OpenAI
 HOST-SUFFIX, segment.io, OpenAI
 HOST-SUFFIX, sentry.io, OpenAI
