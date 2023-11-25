@@ -1,7 +1,7 @@
 #!name = 财新
 #!desc = 共享会员
 #!author = RuCu6
-#!update = 2023-11-25 16:00
+#!update = 2023-11-25 16:50
 
 # 财新数据通
 ^https:\/\/entities\.caixin\.com\/api\/public\/(push\/appIndex|recommendNews) url reject-dict
@@ -14,14 +14,14 @@
 
 # 广告样式
 ^https:\/\/gateway\.caixin\.com\/api\/app-api\/cxAdInfo\/selectIndexAdInfo url reject-dict
-^https:\/\/mappsv5\.caixin\.com\/channelv5\/(article_ad_ios_info|list) url reject-dict
+^https:\/\/mappsv5\.caixin\.com\/channelv5\/article_ad_ios_info url reject-dict
 
 # 开屏广告,文章顶部banner
 ^https:\/\/gg\.caixin\.com\/s\?z=caixin&op=1 url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 文章中间推广
 ^https:\/\/gg\.caixin\.com\/s\?z=caixin&slot url reject-dict
-^https:\/\/mapps?v5\.caixin\.com\/\/?index_page_v5\/\w+ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
+^https:\/\/mapps?v5\.caixin\.com\/(channelv5\/list|\/?index_page_v5\/)\w+ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 首页弹出框
 ^https:\/\/msgapi\.caixin\.com\/msg_api\/annmsg\/annlist url reject-dict

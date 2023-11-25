@@ -1,4 +1,4 @@
-// 2023-11-25 16:00
+// 2023-11-25 16:50
 
 var url = $request.url;
 var header = $request.headers;
@@ -12,6 +12,11 @@ if (url.includes("/caixinapp/appinfo")) {
     // 文章底部推广图
     obj.data.articlePromotionList = [];
   }
+  $done({ body: JSON.stringify(obj) });
+} else if (url.includes("/channelv5/list")) {
+  let obj = JSON.parse($response.body);
+  delete obj.data.ios_ad_513;
+  delete obj.data.android_ad_513;
   $done({ body: JSON.stringify(obj) });
 } else if (url.includes("/gg.caixin.com/s")) {
   // 开屏广告
