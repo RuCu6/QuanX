@@ -1,4 +1,4 @@
-// 2023-11-14 18:20
+// 2023-11-26 16:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -687,6 +687,42 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
       obj.cards = newCards;
     }
+    // 13.11.1版本obj下的cards变为了items 2023-11-26
+    if (obj?.items?.length > 0) {
+      let newItems = [];
+      for (let item of obj.items) {
+        if (!isAd(item?.data)) {
+          if (item?.category === "feed") {
+            // 信息流推广
+            removeFeedAd(item?.data);
+            // 投票窗口
+            removeVoteInfo(item?.data);
+            newItems.push(item);
+          } else if (item?.category === "group") {
+            if (item?.items?.length > 0) {
+              let newII = [];
+              for (let ii of item.items) {
+                if (!isAd(ii?.data)) {
+                  if (ii?.data) {
+                    removeAvatar(ii.data);
+                    // 广告图
+                    if (ii?.data?.card_type === 22) {
+                      continue;
+                    }
+                  }
+                  newII.push(ii);
+                }
+              }
+              item.items = newII;
+            }
+            newItems.push(item);
+          } else {
+            newItems.push(item);
+          }
+        }
+      }
+      obj.items = newItems;
+    }
   } else if (url.includes("/2/statuses/container_timeline_hot") || url.includes("/2/statuses/unread_hot_timeline")) {
     // 首页推荐tab信息流
     for (let s of ["ad", "advertises", "trends", "headers"]) {
@@ -944,17 +980,17 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 开屏广告
     if (obj?.ads?.length > 0) {
       for (let item of obj.ads) {
-        item.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+        item.start_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+        item.end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
         item.daily_display_cnt = 50; // total_display_cnt: 50
         item.display_duration = 0;
-        item.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
       }
       if (obj?.ads?.creatives?.length > 0) {
         for (let item of obj.ads.creatives) {
-          item.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+          item.start_time = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+          item.end_time = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
           item.daily_display_cnt = 50; // total_display_cnt: 50
           item.display_duration = 0;
-          item.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
         }
       }
     }
@@ -962,10 +998,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 开屏广告
     if (obj?.cached_ad?.ads?.length > 0) {
       for (let item of obj.cached_ad.ads) {
-        item.start_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
         item.show_count = 50;
         item.duration = 0; // 60 * 60 * 24 * 365 = 31536000
-        item.end_date = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+        item.start_date = 3818332800; // Unix 时间戳 2090-12-31 00:00:00
+        item.end_date = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
       }
     }
   }
