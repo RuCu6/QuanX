@@ -1,10 +1,11 @@
 #!name = 财新
 #!desc = 共享会员
 #!author = RuCu6
-#!update = 2023-11-25 16:50
+#!update = 2023-11-26 09:25
 
 # 财新数据通
 ^https:\/\/entities\.caixin\.com\/api\/public\/(push\/appIndex|recommendNews) url reject-dict
+^https:\/\/entities\.caixin\.com\/api\/dataplus\/columns url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 会员解锁
 ;^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/(groupImageValidate|validate|validateAudioAuth) url script-request-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
@@ -15,6 +16,9 @@
 # 广告样式
 ^https:\/\/gateway\.caixin\.com\/api\/app-api\/cxAdInfo\/selectIndexAdInfo url reject-dict
 ^https:\/\/mappsv5\.caixin\.com\/channelv5\/article_ad_ios_info url reject-dict
+
+# 财新fm
+^https:\/\/gateway\.caixin\.com\/api\/app-content\/fm\/index\/list\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 开屏广告,文章顶部banner
 ^https:\/\/gg\.caixin\.com\/s\?z=caixin&op=1 url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js

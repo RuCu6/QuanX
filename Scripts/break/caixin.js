@@ -1,11 +1,23 @@
-// 2023-11-25 16:50
+// 2023-11-26 09:25
 
 var url = $request.url;
 var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
 const appinfo = "";
 
-if (url.includes("/caixinapp/appinfo")) {
+if (url.includes("/api/dataplus/columns")) {
+  // 首页-数据通
+  let obj = JSON.parse($response.body);
+  const items = ["buttonColor", "buttonText", "buyUrl", "descText"];
+  if (obj?.data?.length > 0) {
+    for (let item of obj.data) {
+      for (let i of items) {
+        delete item[i];
+      }
+    }
+  }
+  $done({ body: JSON.stringify(obj) });
+} else if (url.includes("/caixinapp/appinfo")) {
   // 文章详情页
   let obj = JSON.parse($response.body);
   if (obj?.data?.articlePromotionList?.length > 0) {
@@ -14,10 +26,21 @@ if (url.includes("/caixinapp/appinfo")) {
   }
   $done({ body: JSON.stringify(obj) });
 } else if (url.includes("/channelv5/list")) {
+  // 首页-顶部分类列表
   let obj = JSON.parse($response.body);
   delete obj.data.ios_ad_513;
   delete obj.data.android_ad_513;
   $done({ body: JSON.stringify(obj) });
+} else if (url.includes("/fm/index/list")) {
+  // 首页-财新fm
+  const items = ["androidAdList", "headlines", "iosAdList"];
+  if (obj?.data) {
+    for (let i of items) {
+      if (obj?.data?.[i]?.length > 0) {
+        obj.data[i] = [];
+      }
+    }
+  }
 } else if (url.includes("/gg.caixin.com/s")) {
   // 开屏广告
   let body = $response.body;
@@ -43,7 +66,7 @@ if (url.includes("/caixinapp/appinfo")) {
     $done({ body });
   }
 } else if (url.includes("/index_page_v5")) {
-  // 文章详情页
+  // 首页-信息流
   let obj = JSON.parse($response.body);
   delete obj.data.ios_ad_513;
   delete obj.data.android_ad_513;
@@ -75,9 +98,9 @@ if (url.includes("/caixinapp/appinfo")) {
 } else if (url.includes("/validate?")) {
   // 会员数据
   url = url
-    .replace(/uid=\d+/g, "uid=000")
-    .replace(/code=\w+/g, "code=000")
-    .replace(/device=\w+/g, "device=000")
+    .replace(/uid=\d+/g, "uid=")
+    .replace(/code=\w+/g, "code=")
+    .replace(/device=\w+/g, "device=")
     .replace(/deviceType=\d+/g, "deviceType=1")
     .replace(/&_t=\d+/g, "");
   if (isQuanX) {
