@@ -1,4 +1,4 @@
-// 2023-11-29 21:55
+// 2023-11-29 22:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -11,13 +11,11 @@ if (url.includes("/x/resource/show/skin")) {
   }
 } else if (url.includes("/x/resource/show/tab/v2")) {
   // 首页顶部tab
-  if (obj?.data?.tab) {
-    obj.data.tab = obj.data.tab.filter(
-      (i) => i.name === "推荐" || i.name === "热门" || i.name === "动画" || i.name === "影视"
-    );
+  if (obj?.data?.tab?.length > 0) {
+    obj.data.tab = obj.data.tab.filter((i) => ["推荐", "热门", "动画", "影视"]?.includes(i?.name));
     fixPos(obj?.data?.tab);
   }
-  if (obj?.data?.top) {
+  if (obj?.data?.top?.length > 0) {
     obj.data.top = [
       {
         id: 176,
@@ -29,8 +27,8 @@ if (url.includes("/x/resource/show/skin")) {
       }
     ];
   }
-  if (obj?.data?.bottom) {
-    obj.data.bottom = obj.data.bottom.filter((item) => item.name === "首页" || item.name === "动态" || item.name === "我的");
+  if (obj?.data?.bottom?.length > 0) {
+    obj.data.bottom = obj.data.bottom.filter((i) => ["首页", "动态", "我的"]?.includes(i?.name));
     fixPos(obj?.data?.bottom);
   }
   // 修复pos
@@ -104,7 +102,7 @@ if (url.includes("/x/resource/show/skin")) {
     }
   }
 } else if (url.includes("/x/v2/account/mine/ipad")) {
-  // ipad版本
+  // ipad我的页面
   if (obj?.data?.ipad_upper_sections) {
     // 投稿 创作首页 稿件管理 有奖活动
     delete obj.data.ipad_upper_sections;
@@ -133,29 +131,27 @@ if (url.includes("/x/resource/show/skin")) {
   // 推荐信息流
   if (obj?.data?.items?.length > 0) {
     obj.data.items = obj.data.items.filter((i) => {
-      const { card_type: cardType, card_goto: cardGoto } = i;
-      if (cardType && cardGoto) {
-        if (cardType?.includes("banner") && cardGoto?.includes("banner")) {
+      if (i?.card_goto) {
+        if (i?.card_goto?.includes("banner")) {
           // 顶部横版内容
           return false;
-        } else if (cardType?.includes("cm_") && cardGoto?.includes("ad_")) {
+        } else if (i?.card_goto?.includes("ad_")) {
+          // 各种推广
           return false;
-        } else if (cardType === "small_cover_v9" && cardGoto === "live") {
-          // 直播内容
-          return false;
-        } else if (cardType === "small_cover_v10" && cardGoto === "game") {
-          // 游戏广告
-          return false;
-        } else if (cardType === "ogv_small_cover" && cardGoto === "bangumi") {
-          // 纪录片
-          return false;
-        } else if (cardType === "small_cover_v2" && cardGoto === "pgc") {
-          // 纪录片
+        } else if (
+          [
+            "bangumi", // 纪录片
+            "game", // 游戏
+            "live", // 直播
+            "pgc" // 纪录片
+          ]?.includes(i?.card_goto)
+        ) {
           return false;
         }
-      }
-      if (i?.hasOwnProperty("ad_info")) {
-        return false;
+      } else {
+        if (i?.hasOwnProperty("ad_info")) {
+          return false;
+        }
       }
       return true;
     });
@@ -168,9 +164,9 @@ if (url.includes("/x/resource/show/skin")) {
     obj.data.items = obj.data.items.filter(
       (i) =>
         !(
-          i.hasOwnProperty("ad_info") ||
-          i.hasOwnProperty("story_cart_icon") ||
-          ["ad", "vertical_live", "vertical_pgc"].includes(i.card_goto)
+          i?.hasOwnProperty("ad_info") ||
+          i?.hasOwnProperty("story_cart_icon") ||
+          ["ad", "vertical_live", "vertical_pgc"]?.includes(i?.card_goto)
         )
     );
   }
@@ -208,14 +204,22 @@ if (url.includes("/x/resource/show/skin")) {
   // 观影页
   if (obj.result?.modules?.length > 0) {
     obj.result.modules.forEach((i) => {
-      if (i.style.startsWith("banner")) {
-        i.items = i.items.filter((ii) => ii.link.includes("play"));
-      } else if (i.style.startsWith("function")) {
-        i.items = i.items.filter((ii) => ii.blink.startsWith("bilibili"));
-      } else if ([241, 1283, 1284, 1441].includes(i.module_id)) {
-        i.items = [];
-      } else if (i.style.startsWith("tip")) {
-        i.items = [];
+      if (i?.style?.startsWith("banner")) {
+        if (i?.items?.length > 0) {
+          i.items = i.items.filter((ii) => ii?.link?.includes("play"));
+        }
+      } else if (i?.style?.startsWith("function")) {
+        if (i?.items?.length > 0) {
+          i.items = i.items.filter((ii) => ii?.blink?.startsWith("bilibili"));
+        }
+      } else if ([241, 1283, 1284, 1441]?.includes(i?.module_id)) {
+        if (i?.items?.length > 0) {
+          i.items = [];
+        }
+      } else if (i?.style?.startsWith("tip")) {
+        if (i?.items?.length > 0) {
+          i.items = [];
+        }
       }
     });
   }
@@ -228,7 +232,7 @@ if (url.includes("/x/resource/show/skin")) {
     obj.data.shopping_info = { is_show: 0 };
   }
   if (obj?.data?.new_tab_info?.outer_list?.length > 0) {
-    obj.data.new_tab_info.outer_list = obj.data.new_tab_info.outer_list.filter((i) => i.biz_id !== 33);
+    obj.data.new_tab_info.outer_list = obj.data.new_tab_info.outer_list.filter((i) => i?.biz_id !== 33);
   }
 }
 
