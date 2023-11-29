@@ -1,21 +1,21 @@
-// 2023-11-19 11:45
+// 2023-11-29 21:55
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
-// 强制设置的皮肤
 if (url.includes("/x/resource/show/skin")) {
+  // 皮肤推送
   if (obj?.data?.common_equip) {
     delete obj.data.common_equip;
   }
 } else if (url.includes("/x/resource/show/tab/v2")) {
-  // 标签页
+  // 首页顶部tab
   if (obj?.data?.tab) {
     obj.data.tab = obj.data.tab.filter(
-      (item) => item.name === "推荐" || item.name === "热门" || item.name === "动画" || item.name === "影视"
+      (i) => i.name === "推荐" || i.name === "热门" || i.name === "动画" || i.name === "影视"
     );
-    fixPos(obj.data.tab);
+    fixPos(obj?.data?.tab);
   }
   if (obj?.data?.top) {
     obj.data.top = [
@@ -31,10 +31,18 @@ if (url.includes("/x/resource/show/skin")) {
   }
   if (obj?.data?.bottom) {
     obj.data.bottom = obj.data.bottom.filter((item) => item.name === "首页" || item.name === "动态" || item.name === "我的");
-    fixPos(obj.data.bottom);
+    fixPos(obj?.data?.bottom);
+  }
+  // 修复pos
+  function fixPos(arr) {
+    if (arr?.pos) {
+      for (let i = 0; i < arr.length; i++) {
+        arr[i].pos = i + 1;
+      }
+    }
   }
 } else if (url.includes("/x/resource/top/activity")) {
-  // 右上角活动入口
+  // 首页右上角活动
   obj = { code: -404, message: "啥都木有", ttl: 1, data: null };
 } else if (url.includes("/x/v2/account/mine?")) {
   // 我的页面
@@ -96,6 +104,7 @@ if (url.includes("/x/resource/show/skin")) {
     }
   }
 } else if (url.includes("/x/v2/account/mine/ipad")) {
+  // ipad版本
   if (obj?.data?.ipad_upper_sections) {
     // 投稿 创作首页 稿件管理 有奖活动
     delete obj.data.ipad_upper_sections;
@@ -121,35 +130,21 @@ if (url.includes("/x/resource/show/skin")) {
     }
   }
 } else if (url.includes("/x/v2/feed/index?")) {
-  // 推荐广告
+  // 推荐信息流
   if (obj?.data?.items?.length > 0) {
     obj.data.items = obj.data.items.filter((i) => {
       const { card_type: cardType, card_goto: cardGoto } = i;
       if (cardType && cardGoto) {
-        if (cardType.includes("banner") && cardGoto.includes("banner")) {
-          // 去除判断条件 首页横版内容全部去掉
-          // if (i.banner_item) {
-          // for (const v of i.banner_item) {
-          //   if (v.type) {
-          //     if (v.type === "ad") return false;
-          //   }
-          // }
-          // return false;
-          // }
+        if (cardType?.includes("banner") && cardGoto?.includes("banner")) {
+          // 顶部横版内容
           return false;
-        } else if (
-          ["cm_v1", "cm_v2"].includes(cardType) &&
-          ["ad_av", "ad_inline_3d", "ad_inline_eggs", "ad_player", "ad_web_gif", "ad_web_s"].includes(cardGoto)
-        ) {
+        } else if (cardType?.includes("cm_") && cardGoto?.includes("ad_")) {
           return false;
         } else if (cardType === "small_cover_v9" && cardGoto === "live") {
           // 直播内容
           return false;
         } else if (cardType === "small_cover_v10" && cardGoto === "game") {
           // 游戏广告
-          return false;
-        } else if (cardType === "cm_double_v9" && cardGoto === "ad_inline_av") {
-          // 创作推广 大视频广告
           return false;
         } else if (cardType === "ogv_small_cover" && cardGoto === "bangumi") {
           // 纪录片
@@ -159,10 +154,14 @@ if (url.includes("/x/resource/show/skin")) {
           return false;
         }
       }
+      if (i?.hasOwnProperty("ad_info")) {
+        return false;
+      }
       return true;
     });
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
+  // 竖屏模式信息流
   if (obj?.data?.items?.length > 0) {
     // vertical_live 直播内容
     // vertical_pgc 大会员专享
@@ -176,7 +175,7 @@ if (url.includes("/x/resource/show/skin")) {
     );
   }
 } else if (url.includes("/x/v2/search/square")) {
-  // 热搜广告
+  // 搜索框
   if (obj?.data) {
     obj.data = { type: "history", title: "搜索历史", search_hotword_revision: 2 };
   }
@@ -206,7 +205,7 @@ if (url.includes("/x/resource/show/skin")) {
     }
   }
 } else if (url.includes("/pgc/page/bangumi") || url.includes("/pgc/page/cinema/tab")) {
-  // 观影页广告
+  // 观影页
   if (obj.result?.modules?.length > 0) {
     obj.result.modules.forEach((i) => {
       if (i.style.startsWith("banner")) {
@@ -221,7 +220,7 @@ if (url.includes("/x/resource/show/skin")) {
     });
   }
 } else if (url.includes("/xlive/app-room/v1/index/getInfoByRoom")) {
-  // 直播广告
+  // 直播
   if (obj?.data?.activity_banner_info) {
     delete obj.data.activity_banner_info;
   }
@@ -234,10 +233,3 @@ if (url.includes("/x/resource/show/skin")) {
 }
 
 $done({ body: JSON.stringify(obj) });
-
-// 修复pos
-function fixPos(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].pos = i + 1;
-  }
-}
