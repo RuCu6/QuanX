@@ -1,4 +1,4 @@
-// 2023-11-29 22:25
+// 2023-11-30 00:55
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -10,33 +10,23 @@ if (url.includes("/x/resource/show/skin")) {
     delete obj.data.common_equip;
   }
 } else if (url.includes("/x/resource/show/tab/v2")) {
-  // 首页顶部tab
-  if (obj?.data?.tab?.length > 0) {
-    obj.data.tab = obj.data.tab.filter((i) => ["推荐", "热门", "动画", "影视"]?.includes(i?.name));
-    fixPos(obj?.data?.tab);
-  }
-  if (obj?.data?.top?.length > 0) {
-    obj.data.top = [
-      {
-        id: 176,
-        icon: "http://i0.hdslb.com/bfs/archive/d43047538e72c9ed8fd8e4e34415fbe3a4f632cb.png",
-        tab_id: "消息Top",
-        name: "消息",
-        uri: "bilibili://link/im_home",
-        pos: 1
-      }
-    ];
-  }
+  // 底部选项卡
   if (obj?.data?.bottom?.length > 0) {
-    obj.data.bottom = obj.data.bottom.filter((i) => ["首页", "动态", "我的"]?.includes(i?.name));
-    fixPos(obj?.data?.bottom);
+    const order = ["首页", "动态", "我的"];
+    obj.data.bottom = obj.data.bottom.filter((i) => order?.includes(i?.name));
+    obj.data.bottom = obj.data.bottom.sort((a, b) => order.indexOf(a?.name) - order.indexOf(b?.name));
   }
-  // 修复pos
-  function fixPos(arr) {
-    if (arr?.pos) {
-      for (let i = 0; i < arr.length; i++) {
-        arr[i].pos = i + 1;
-      }
+  // 首页导航栏
+  if (obj?.data?.tab?.length > 0) {
+    const order = ["推荐", "热门", "影视", "动画"];
+    obj.data.tab = obj.data.tab.filter((i) => order?.includes(i?.name));
+    obj.data.tab = obj.data.tab.sort((a, b) => order.indexOf(a?.name) - order.indexOf(b?.name));
+  }
+  // 右上角按钮
+  if (obj?.data?.top?.length > 0) {
+    obj.data.top = obj.data.top.filter((i) => i?.name === "消息");
+    if (obj?.data?.top?.[0]?.pos) {
+      obj.data.top[0].pos = 1;
     }
   }
 } else if (url.includes("/x/resource/top/activity")) {
