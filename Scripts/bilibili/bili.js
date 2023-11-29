@@ -1,4 +1,4 @@
-// 2023-11-30 00:55
+// 2023-11-30 01:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -12,15 +12,17 @@ if (url.includes("/x/resource/show/skin")) {
 } else if (url.includes("/x/resource/show/tab/v2")) {
   // 底部选项卡
   if (obj?.data?.bottom?.length > 0) {
-    const order = ["首页", "动态", "我的"];
-    obj.data.bottom = obj.data.bottom.filter((i) => order?.includes(i?.name));
-    obj.data.bottom = obj.data.bottom.sort((a, b) => order.indexOf(a?.name) - order.indexOf(b?.name));
+    const sortLists = ["首页", "动态", "我的"];
+    obj.data.bottom = obj.data.bottom
+      .filter((i) => sortLists?.includes(i?.name))
+      .sort((a, b) => sortLists.indexOf(a?.name) - sortLists.indexOf(b?.name));
   }
   // 首页导航栏
   if (obj?.data?.tab?.length > 0) {
-    const order = ["推荐", "热门", "影视", "动画"];
-    obj.data.tab = obj.data.tab.filter((i) => order?.includes(i?.name));
-    obj.data.tab = obj.data.tab.sort((a, b) => order.indexOf(a?.name) - order.indexOf(b?.name));
+    const sortLists = ["推荐", "热门", "影视", "动画"];
+    obj.data.tab = obj.data.tab
+      .filter((i) => sortLists?.includes(i?.name))
+      .sort((a, b) => sortLists.indexOf(a?.name) - sortLists.indexOf(b?.name));
   }
   // 右上角按钮
   if (obj?.data?.top?.length > 0) {
