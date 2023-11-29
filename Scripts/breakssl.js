@@ -1,4 +1,4 @@
-// 2023-11-29 15:40
+// 2023-11-29 16:30
 
 const url = $request.url;
 const header = $request.headers;
@@ -8,8 +8,8 @@ let obj = JSON.parse($response.body);
 
 if (ua === "iPhone CHSP") {
   // 云闪付
-  if (url.includes("/app/inApp/sys/appShowGroup")) {
-    // 云闪付首页
+  if (url.includes("/app/inApp/sys/appShowGroup/")) {
+    // 各项功能列表
     if (obj?.params?.groups?.length > 0) {
       let newGroups = [];
       for (let group of obj.params.groups) {
@@ -49,16 +49,14 @@ if (ua === "iPhone CHSP") {
                       "2117", // 我的页面-积分
                       "23445", // 快捷功能栏-我的奖励
                       "23446", // 我的页面-合作共赢
-                      "23451", // 我的页面-精选列表
-                      "23451", // 我的页面-精选服务
+                      "23451", // 我的页面-精选列表&精选列表
                       "280878", // 卡管理-云惠保
                       "281988", // 首页顶栏-商城
                       "282180", // 金融页-跨境理财通
                       "284486", // 我的页面-商家服务
                       "285323", // 金融页-大额分期
                       "287201", // 金融页-小微贷
-                      "289722", // 快捷功能栏-小程序榜单
-                      "289722", // 我的页面-小程序榜单
+                      "289722", // 快捷功能栏&我的页面-小程序榜单
                       "43121", // 金融页-体验金
                       "62225", // 首页顶栏-充值中心
                       "62249", // 首页顶栏-借款
@@ -100,6 +98,11 @@ if (ua === "iPhone CHSP") {
         newGroups.push(group);
       }
       obj.params.groups = newGroups;
+    }
+  } else if (url.includes("/life/inApp/wealth/home/")) {
+    // 财富页
+    if (obj?.params) {
+      obj.params = {};
     }
   }
 }
