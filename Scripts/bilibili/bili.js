@@ -1,4 +1,4 @@
-// 2023-11-30 01:25
+// 2023-11-30 15:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -134,6 +134,7 @@ if (url.includes("/x/resource/show/skin")) {
           [
             "bangumi", // 纪录片
             "game", // 游戏
+            "ketang", // 课堂
             "live", // 直播
             "pgc" // 纪录片
           ]?.includes(i?.card_goto)
