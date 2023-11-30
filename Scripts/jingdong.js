@@ -1,4 +1,4 @@
-// 2023-11-30 09:50
+// 2023-11-30 10:55
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -15,7 +15,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
     obj.floors = obj.floors.filter((i) => !["banner", "jdDeliveryBanner"]?.includes(i?.mId));
   }
 } else if (url.includes("functionId=getTabHomeInfo")) {
-  // 发现页悬浮gif
+  // 发现页悬浮动图
   if (obj?.result?.iconInfo) {
     delete obj.result.iconInfo;
   }
@@ -94,22 +94,28 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
         } else if (floor?.mId === "iconToolFloor") {
           // 底部工具栏
           if (floor?.data?.nodes?.length > 0) {
+            const sortLists = [
+              "dongdongnongchangxin", // 京东农场
+              "lingjindouxin", // 签到领豆
+              "applezhushou", // apple助手
+              "chongwangwang", // 宠汪汪
+              "jiagebaohu", // 价格保护
+              "xianzhiguanjia", // 闲置换钱
+              "kehufuwu", // 客户服务
+              "jijianfuwu", // 寄件服务
+              "wangwangleyuan", // 汪汪庄园
+              "guafenjingdou", // 瓜分京豆
+              "gengduoyouxi", // 更多游戏
+              "gengduo" // 更多服务
+            ];
             let node = floor.data.nodes;
             if (node?.[0]?.length > 0) {
-              const sortLists = ["lingjindouxin", "dongdongnongchangxin", "guafenjingdou", "jingdonghuiyuan", "kehufuwu", "jijianfuwu"];
               node[0] = node[0]
                 .filter((i) => sortLists?.includes(i?.functionId))
                 .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
             }
             if (node?.[1]?.length > 0) {
-              const sortLists = ["wodeyuyue","wenyisheng"];
               node[1] = node[1]
-                .filter((i) => sortLists?.includes(i?.functionId))
-                .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
-            }
-            if (node?.[2]?.length > 0) {
-              const sortLists = ["gengduoyouxi","gengduo"];
-              node[2] = node[2]
                 .filter((i) => sortLists?.includes(i?.functionId))
                 .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
             }
