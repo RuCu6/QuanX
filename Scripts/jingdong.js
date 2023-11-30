@@ -1,4 +1,4 @@
-// 2023-11-30 10:55
+// 2023-11-30 11:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -104,9 +104,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
               "kehufuwu", // 客户服务
               "jijianfuwu", // 寄件服务
               "wangwangleyuan", // 汪汪庄园
-              "guafenjingdou", // 瓜分京豆
-              "gengduoyouxi", // 更多游戏
-              "gengduo" // 更多服务
+              "guafenjingdou" // 瓜分京豆
             ];
             let node = floor.data.nodes;
             if (node?.[0]?.length > 0) {
