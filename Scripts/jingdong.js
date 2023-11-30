@@ -1,4 +1,4 @@
-// 2023-11-29 18:45
+// 2023-11-30 09:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -31,21 +31,21 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
         if (floor?.mId === "virtualServiceCenter") {
           // 服务中心
           if (floor?.data?.virtualServiceCenters?.length > 0) {
-            let newCards = [];
-            for (let card of floor.data.virtualServiceCenters) {
-              if (card?.serviceList?.length > 0) {
-                let newLists = [];
-                for (let item of card.serviceList) {
-                  if (item?.serviceTitle === "精选特惠") {
+            let newItems = [];
+            for (let item of floor.data.virtualServiceCenters) {
+              if (item?.serviceList?.length > 0) {
+                let newCards = [];
+                for (let card of item.serviceList) {
+                  if (card?.serviceTitle === "精选特惠") {
                     continue;
                   }
-                  newLists.push(item);
+                  newCards.push(card);
                 }
-                card.serviceList = newLists;
+                item.serviceList = newCards;
               }
-              newCards.push(card);
+              newItems.push(item);
             }
-            floor.data.virtualServiceCenters = newCards;
+            floor.data.virtualServiceCenters = newItems;
           }
         }
         newFloors.push(floor);
@@ -94,6 +94,25 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
         } else if (floor?.mId === "iconToolFloor") {
           // 底部工具栏
           if (floor?.data?.nodes?.length > 0) {
+            let node = floor.data.nodes;
+            if (node?.[0]?.length > 0) {
+              const sortLists = ["lingjindouxin", "dongdongnongchangxin", "guafenjingdou", "jingdonghuiyuan", "kehufuwu", "jijianfuwu"];
+              node[0] = node[0]
+                .filter((i) => sortLists?.includes(i?.functionId))
+                .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
+            }
+            if (node?.[1]?.length > 0) {
+              const sortLists = ["wodeyuyue","wenyisheng"];
+              node[1] = node[1]
+                .filter((i) => sortLists?.includes(i?.functionId))
+                .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
+            }
+            if (node?.[2]?.length > 0) {
+              const sortLists = ["gengduoyouxi","gengduo"];
+              node[2] = node[2]
+                .filter((i) => sortLists?.includes(i?.functionId))
+                .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
+            }
             const newNodes = [
               [
                 {
@@ -114,7 +133,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     jsonParam:
                       '{"functionid":"lingjindouxin","surveyId":"-100","biinfo":"-100","page":1,"position":2,"type":1,"surverType":"-100","content":"签到领豆","shortCode":"-100"}'
                   },
-                  functionId: "lingjindouxin",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage: "https://img30.360buyimg.com/jdg/jfs/t1/5252/10/20605/3267/6513abcbF84230560/e5517948d1b46e68.png"
@@ -159,7 +178,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "guafenjingdou",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage: "https://img30.360buyimg.com/jdg/jfs/t1/209755/9/20068/5532/62580283E4b8da5b4/e9b72e0055eb7b42.png"
@@ -178,7 +197,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "jingdonghuiyuan",
+                  functionId: "",
                   playTimes: "0",
                   showRedDot: 0,
                   safeImage:
@@ -202,7 +221,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "kehufuwu",
+                  functionId: "",
                   showRedDot: 6,
                   updateRedDotTime: 0,
                   safeImage:
@@ -226,13 +245,11 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "jijianfuwu",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage:
                     "https://img30.360buyimg.com/jdmonitor/jfs/t1/194618/23/4904/2371/60ad051fEfbb5b467/4c16e99db3c68a23.png"
-                }
-              ],
               [
                 {
                   jumpInfo: { needLogin: 1, jumpUrl: "https://comprd.m.jd.com/my/presell/index.html?t=1&c=1", jumpType: 1 },
@@ -248,7 +265,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: "3"
                   },
-                  functionId: "wodeyuyue",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage:
@@ -268,7 +285,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "wenyisheng",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage: "https://img30.360buyimg.com/jdg/jfs/t1/99473/14/30644/2660/6305ccbeE83145dbf/f94e80b919890847.png"
@@ -289,7 +306,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                     pageId: "MyJD_Main",
                     pageLevel: ""
                   },
-                  functionId: "gengduoyouxi",
+                  functionId: "",
                   showRedDot: 0,
                   updateRedDotTime: 0,
                   safeImage:
@@ -318,10 +335,8 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                   updateRedDotTime: 0,
                   safeImage:
                     "https://img30.360buyimg.com/jdmonitor/jfs/t1/175845/37/11426/1635/60ad0617Ed7cb4cd4/ec39dc38949dc202.png"
-                }
-              ]
-            ];
-            floor.data.nodes = newNodes;
+      
+            // floor.data.nodes = newNodes;
           }
         } else if (floor?.mId === "orderIdFloor") {
           if (floor?.data?.commentRemindInfo?.infos?.length > 0) {
