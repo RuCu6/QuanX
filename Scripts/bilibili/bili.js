@@ -1,4 +1,4 @@
-// 2023-11-30 15:50
+// 2023-11-30 16:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -120,34 +120,22 @@ if (url.includes("/x/resource/show/skin")) {
     }
   }
 } else if (url.includes("/x/v2/feed/index?")) {
-  // 推荐信息流
+  // 首页推荐信息流
   if (obj?.data?.items?.length > 0) {
-    obj.data.items = obj.data.items.filter((i) => {
-      if (i?.card_goto) {
-        if (i?.card_goto?.includes("banner")) {
-          // 顶部横版内容
-          return false;
-        } else if (i?.card_goto?.includes("ad_")) {
-          // 各种推广
-          return false;
-        } else if (
-          [
-            "bangumi", // 纪录片
-            "game", // 游戏
-            "ketang", // 课堂
-            "live", // 直播
-            "pgc" // 纪录片
-          ]?.includes(i?.card_goto)
-        ) {
-          return false;
-        }
-      } else {
-        if (i?.hasOwnProperty("ad_info")) {
-          return false;
-        }
-      }
-      return true;
-    });
+    obj.data.items = obj.data.items.filter((i) =>
+      !(
+        i?.hasOwnProperty("ad_info") ||
+        [
+          "ad_", // 推广内容
+          "bangumi", // 纪录片
+          "banner", // 顶部横版内容
+          "game", // 游戏
+          "ketang", // 课堂
+          "live", // 直播
+          "pgc" // 纪录片
+        ]?.includes(i?.card_goto)
+      )
+    );
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
   // 竖屏模式信息流
