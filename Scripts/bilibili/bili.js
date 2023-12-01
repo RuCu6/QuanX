@@ -1,4 +1,4 @@
-// 2023-11-30 16:25
+// 2023-11-30 18:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -88,7 +88,16 @@ if (url.includes("/x/resource/show/skin")) {
       obj.data.vip.type = 2;
       obj.data.vip.status = 1;
       obj.data.vip.due_date = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
-      obj.data.vip.label = { "path": "", "text": "年度大会员", "label_theme": "annual_vip", "text_color": "#FFFFFF", "bg_style": 1, "bg_color": "#FB7299", "border_color": "", "image": "https://i0.hdslb.com/bfs/vip/8d4f8bfc713826a5412a0a27eaaac4d6b9ede1d9.png" };
+      obj.data.vip.label = {
+        path: "",
+        text: "年度大会员",
+        label_theme: "annual_vip",
+        text_color: "#FFFFFF",
+        bg_style: 1,
+        bg_color: "#FB7299",
+        border_color: "",
+        image: "https://i0.hdslb.com/bfs/vip/8d4f8bfc713826a5412a0a27eaaac4d6b9ede1d9.png"
+      };
       obj.data.vip.nickname_color = "#FB7299";
       obj.data.vip.role = 3;
     }
@@ -122,19 +131,9 @@ if (url.includes("/x/resource/show/skin")) {
 } else if (url.includes("/x/v2/feed/index?")) {
   // 首页推荐信息流
   if (obj?.data?.items?.length > 0) {
-    obj.data.items = obj.data.items.filter((i) =>
-      !(
-        i?.hasOwnProperty("ad_info") ||
-        [
-          "ad_", // 推广内容
-          "bangumi", // 纪录片
-          "banner", // 顶部横版内容
-          "game", // 游戏
-          "ketang", // 课堂
-          "live", // 直播
-          "pgc" // 纪录片
-        ]?.includes(i?.card_goto)
-      )
+    obj.data.items = obj.data.items.filter(
+      (i) =>
+        !(i?.hasOwnProperty("ad_info") || ["ad_", "bangumi", "banner", "game", "ketang", "live", "pgc"]?.includes(i?.card_goto))
     );
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
