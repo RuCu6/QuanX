@@ -1,7 +1,7 @@
 #!name = 微博
 #!desc = 全面净化
 #!author = RuCu6 zmqcherish
-#!update = 2023-11-04 12:20
+#!update = 2023-12-01 12:45
 
 # 首页 签到,发布按钮,侧边栏,右上角红包,顶部tab,侧边栏提醒,超话tab悬浮,顶部直播
 ^https:\/\/api\.weibo\.cn\/2\/(checkin\/show|client\/publisher_list|push\/active)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
@@ -58,4 +58,4 @@
 ^https:\/\/shop\.sc\.weibo\.com\/h5\/jump\/error\?(.*&)?url= url script-echo-response https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/noRedirect.js
 ^https:\/\/(sinaurl|t)\.cn\/ url script-response-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/noRedirect.js
 
-hostname = *.weibo.cn, *.weibo.com, sinaurl.cn, t.cn weibo.cn
+hostname = *.weibo.cn, *.weibo.com, sinaurl.cn, t.cn, weibo.cn
