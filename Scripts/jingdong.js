@@ -1,4 +1,4 @@
-// 2023-12-01 07:45
+// 2023-12-01 15:30
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -159,9 +159,9 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
   // 首页配置
   if (obj?.floorList?.length > 0) {
     // 首页 图层列表
-    // float推广浮层 recommend为你推荐 ruleFloat资质与规则 searchIcon右上角消费券 topRotate左上角logo
+    // bottomXview底部悬浮通栏 float推广浮层 recommend为你推荐 ruleFloat资质与规则 searchIcon右上角消费券 topRotate左上角logo
     obj.floorList = obj.floorList.filter(
-      (i) => !["float", "photoCeiling", "ruleFloat", "searchIcon", "topRotate"]?.includes(i?.type)
+      (i) => !["bottomXview", "float", "photoCeiling", "ruleFloat", "searchIcon", "topRotate"]?.includes(i?.type)
     );
   }
   // 首页 顶部背景图
