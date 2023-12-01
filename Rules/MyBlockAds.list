@@ -1,4 +1,4 @@
-# 2023-11-26 07:25
+# 2023-12-01 22:25
 
 # ======= A ======= #
 # 阿里巴巴
@@ -37,13 +37,9 @@ HOST-SUFFIX, pos.baidu.com, REJECT
 # 百度地图
 HOST, afd.baidu.com, REJECT
 HOST, afdconf.baidu.com, REJECT
-HOST, httpdns.baidubce.com, REJECT
 HOST, lc.map.baidu.com, REJECT
 # 百度贴吧
 IP-CIDR, 180.76.76.200/32, REJECT
-# 哔哩哔哩
-HOST, mall.bilibili.com, REJECT
-HOST, passport.bilibili.com, REJECT
 
 # ======= C ======= #
 # 彩云天气
@@ -89,6 +85,9 @@ HOST-KEYWORD, video-cn.snssdk.com, REJECT
 # ======= H ======= #
 # 海尔智家
 HOST-SUFFIX, ehaier.com, REJECT
+# httpdns
+HOST-KEYWORD, httpdns., REJECT
+HOST-KEYWORD, httpdns-, REJECT
 
 # ======= J ======= #
 # 建设银行
@@ -147,6 +146,8 @@ HOST, sin3-ib.adnxs.com, REJECT
 HOST, api.zuihuimai.com, REJECT
 # 数字联盟
 HOST-SUFFIX, shuzilm.cn, REJECT
+# Speedtest
+HOST-SUFFIX, ad.gt, REJECT
 
 # ======= T ======= #
 # 腾讯
@@ -167,8 +168,6 @@ IP-CIDR, 47.110.187.87/32, REJECT
 
 # ======= W ======= #
 # 网易云音乐
-HOST, httpdns.music.163.com, REJECT
-HOST, httpdns.n.netease.com, REJECT
 HOST, iadmat.nosdn.127.net, REJECT
 HOST, iadmatapk.nosdn.127.net, REJECT
 HOST, iadmusicmat.music.126.net, REJECT
@@ -194,7 +193,6 @@ HOST, amdc.m.youku.com, REJECT
 HOST, api.sm.cn, REJECT
 HOST, apiv4-iyes.youku.com, REJECT
 HOST, baichuan-sdk.alicdn.com, REJECT
-HOST, httpdns.alicdn.com, REJECT
 HOST, huichuan-mc.sm.cn, REJECT
 HOST, huichuan.sm.cn, REJECT
 HOST, iyes.youku.com, REJECT
