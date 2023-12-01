@@ -1,4 +1,4 @@
-// 2023-11-30 11:05
+// 2023-12-01 07:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -46,6 +46,15 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
               newItems.push(item);
             }
             floor.data.virtualServiceCenters = newItems;
+          }
+        }
+        if (floor?.mId === "customerServiceFloor") {
+          // 客户服务
+          if (floor?.data?.moreText) {
+            // 点此获得更多服务
+            delete floor.data.moreIcon;
+            delete floor.data.moreIcon_dark;
+            floor.data.moreText = " ";
           }
         }
         newFloors.push(floor);
