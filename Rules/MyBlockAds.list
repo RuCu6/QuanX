@@ -1,4 +1,4 @@
-# 2023-12-01 22:25
+# 2023-12-05 13:05
 
 # ======= A ======= #
 # 阿里巴巴
@@ -193,6 +193,7 @@ HOST, amdc.m.youku.com, REJECT
 HOST, api.sm.cn, REJECT
 HOST, apiv4-iyes.youku.com, REJECT
 HOST, baichuan-sdk.alicdn.com, REJECT
+HOST, cad.youku.com, REJECT
 HOST, huichuan-mc.sm.cn, REJECT
 HOST, huichuan.sm.cn, REJECT
 HOST, iyes.youku.com, REJECT
