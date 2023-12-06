@@ -1,4 +1,4 @@
-// 2023-12-05 20:30
+// 2023-12-05 22:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -306,29 +306,7 @@ if (isIQY) {
     }
   }
 } else if (isMG) {
-  if (url.includes("/GetUserInfo?")) {
-    // 芒果 我的页面 会员伪装
-    if (obj?.isVip) {
-      obj.isVip = 1;
-    }
-    if (obj?.vipExpiretime) {
-      obj.vipExpiretime = 3818419199; // Unix 时间戳 2090-12-31 23:59:59
-    }
-    if (obj?.data?.vipinfo) {
-      const fake = {
-        vip_end_time: 3818419199,
-        growth: {
-          score: 0,
-          level: 9
-        },
-        platform: "mpp",
-        isvip: 1,
-        type: "2",
-        vipdetail: null
-      };
-      obj.data.vipinfo = fake;
-    }
-  } else if (url.includes("/dynamic/v1/channel/index/")) {
+  if (url.includes("/dynamic/v1/channel/index/")) {
     // 芒果 首页信息流
     if (obj?.adInfo) {
       delete obj.adInfo;
