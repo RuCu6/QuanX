@@ -331,8 +331,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 if (ii?.data?.enable_comment_guide) {
                   ii.data.enable_comment_guide = false;
                 }
-                newII.push(ii);
               }
+              newII.push(ii);
             }
             item.items = newII;
           }
