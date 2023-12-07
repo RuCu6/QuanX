@@ -1,4 +1,4 @@
-// 2023-12-06 16:25
+// 2023-12-07 15:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -349,9 +349,11 @@ if (isIQY) {
         if (item?.vclassType === 15) {
           // 短视频
           continue;
-        } else if ([100042, 100055]?.includes(item?.vclassId)) {
-          // 100042暗里着迷 100055澳门奇妙游
-          continue;
+        } else if (item?.vclassType === 0) {
+          if ([100042, 100055, 100444]?.includes(item?.vclassId)) {
+            // 100042暗里着迷 100055澳门奇妙游 100444澳门营业中
+            continue;
+          }
         } else {
           newItems.push(item);
         }
