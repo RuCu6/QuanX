@@ -1,4 +1,4 @@
-// 2023-12-07 17:05
+// 2023-12-07 17:15
 
 const url = $request.url;
 const header = $request.headers;
@@ -148,11 +148,13 @@ if (ua === "iPhone CHSP") {
     }
   } else if (url.includes("/fortune/inApp/common/")) {
     // 财富页面
-    if (obj?.params?.infoTabList?.length > 0) {
-      obj.params.infoTabList = [];
-    }
     if (obj?.params?.fundProductTabInfoList?.length > 0) {
+      // 零钱盈收 稳健精选 进阶攀升
       obj.params.fundProductTabInfoList = [];
+    }
+    if (obj?.params?.infoTabList?.length > 0) {
+      // 热点资讯 行情解读 投教课程
+      obj.params.infoTabList = [];
     }
     if (obj?.params?.moreInfo) {
       obj.params.moreInfo = {};
