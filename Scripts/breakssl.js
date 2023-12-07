@@ -1,4 +1,4 @@
-// 2023-12-07 17:15
+// 2023-12-07 17:55
 
 const url = $request.url;
 const header = $request.headers;
@@ -21,7 +21,8 @@ if (ua === "iPhone CHSP") {
               [
                 "10001", // 首页-专属优惠
                 "10002", // 首页-发现小程序
-                // "10201", // 优惠页-优惠按钮
+                // "1002", // 卡管理页面-交易记录
+                "10201", // 优惠页-优惠按钮
                 // "10202", // 优惠页-轮播图
                 "10303", // 卡管理页面-功能区
                 // "10304", // 卡管理页面-跑马灯
@@ -31,7 +32,7 @@ if (ua === "iPhone CHSP") {
                 "10504", // 我的页面-我的收藏入口 优惠券/商家/小程序
                 "10505", // 我的页面-我的服务列表 信用报告 积分中心 数字藏品
                 // "10506", // 我的页面-生态服务列表 聚合支付/商家服务 我是收银员 我是推广大使
-                "10507", // 我的页面-底部我的客服入口
+                // "10507", // 我的页面-底部我的客服入口
                 // "301", // 首页-frog轮播图V2
                 // "601", // 首页-新版轮播图
                 // "625", // 首页-新版背景图
@@ -96,6 +97,7 @@ if (ua === "iPhone CHSP") {
                       "281988", // 首页顶栏-商城
                       "282180", // 金融页-跨境理财通
                       // "283566", // 快捷功能栏-我的客服
+                      "284206", // 我的页面-数字藏品
                       "284486", // 我的页面-商家服务
                       "285323", // 金融页-大额分期
                       "287201", // 金融页-小微贷
@@ -161,6 +163,16 @@ if (ua === "iPhone CHSP") {
     }
     if (obj?.params?.moreJumpUrlInfo) {
       obj.params.moreJumpUrlInfo = {};
+    }
+  } else if (url.includes("/koala-pre/koala/recommend/hotList")) {
+    // 优惠页面 热门优惠
+    if (obj?.params?.hotCouponList?.length > 0) {
+      obj.params.hotCouponList = [];
+    }
+  } else if (url.includes("/koala-pre/koala/right/queryAllRights")) {
+    // 卡管理页面 热门卡权益
+    if (obj?.params) {
+      obj.params = {};
     }
   }
   // if (url.includes("/life/inApp/wealth/home/")) {

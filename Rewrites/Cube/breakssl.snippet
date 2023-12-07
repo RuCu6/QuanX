@@ -1,12 +1,13 @@
 #!name = BreakSSL
 #!desc = 适合解除SSL证书锁定的app。需要注入第三方库: SSLKillSwitch2.dylib
 #!author = RuCu6
-#!update = 2023-12-07 17:05
+#!update = 2023-12-07 17:55
 
 # ======= Y ======= #
 # 云闪付
 ^https:\/\/account\.95516\.com\/fortune\/inApp\/common\/ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/breakssl.js
 ^https:\/\/base\.95516\.com\/app\/inApp\/sys\/appShowGroup\/ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/breakssl.js
+^https:\/\/content\.95516\.com\/koala-pre\/koala\/(recommend\/hotList|right\/queryAllRights) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/breakssl.js
 ;^https:\/\/life\.95516\.com\/life\/inApp\/wealth\/home\/(qryChoiceList|qryTopList) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/breakssl.js
 
-hostname = account.95516.com, base.95516.com
+hostname = *.95516.com
