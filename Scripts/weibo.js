@@ -1,4 +1,4 @@
-// 2023-12-07 19:25
+// 2023-12-07 20:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -316,6 +316,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (item?.header?.data?.icon) {
             // 置顶微博背景图
             delete item.header.data.icon;
+          }
+          if (item?.itemId?.includes("INTEREST_PEOPLE")) {
+            // 可能感兴趣的人
+            continue;
           }
           if (item?.items?.length > 0) {
             let newII = [];
