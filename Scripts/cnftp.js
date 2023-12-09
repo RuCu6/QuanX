@@ -1,4 +1,4 @@
-// 2023-12-09 13:30
+// 2023-12-09 14:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -346,14 +346,9 @@ if (isIQY) {
     if (obj?.data?.length > 0) {
       let newItems = [];
       for (let item of obj.data) {
-        if (item?.vclassType === 15) {
-          // 短视频
+        if (item?.vclassId > 100033) {
+          // 100033热门 100043短剧 100308短视频
           continue;
-        } else if (item?.vclassType === 0) {
-          if ([100042, 100055, 100444]?.includes(item?.vclassId)) {
-            // 100042暗里着迷 100055澳门奇妙游 100444澳门营业中
-            continue;
-          }
         } else {
           newItems.push(item);
         }
