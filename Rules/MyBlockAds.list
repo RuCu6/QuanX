@@ -1,4 +1,4 @@
-# 2023-12-05 13:05
+# 2023-12-09 08:20
 
 # ======= A ======= #
 # 阿里巴巴
@@ -86,6 +86,7 @@ HOST-KEYWORD, video-cn.snssdk.com, REJECT
 # 海尔智家
 HOST-SUFFIX, ehaier.com, REJECT
 # httpdns
+HOST, hdns.ksyun.com, REJECT
 HOST-KEYWORD, httpdns., REJECT
 HOST-KEYWORD, httpdns-, REJECT
 
@@ -130,6 +131,7 @@ HOST, al-log.d.meituan.net, REJECT
 HOST, babel-statistics-android.d.meituan.net, REJECT
 HOST, maplocatesdksnapshot.d.meituan.net, REJECT
 HOST, metrics-picture.d.meituan.net, REJECT
+HOST, open.kuaishouzt.com, REJECT
 HOST, route-stats.d.meituan.net, REJECT
 # 美颜相机
 HOST, aaid.uyunad.com, REJECT
