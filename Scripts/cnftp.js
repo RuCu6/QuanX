@@ -1,4 +1,4 @@
-// 2023-12-09 14:10
+// 2023-12-09 23:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -346,8 +346,8 @@ if (isIQY) {
     if (obj?.data?.length > 0) {
       let newItems = [];
       for (let item of obj.data) {
-        if (item?.vclassId > 100033) {
-          // 100033热门 100043短剧 100308短视频
+        if (item?.vclassId > 100033 && item?.vclassId !== 100160) {
+          // 100033热门 100043短剧 100160会员频道精选 100308短视频
           continue;
         } else {
           newItems.push(item);
