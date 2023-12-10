@@ -1,4 +1,4 @@
-// 2023-12-10 16:30
+// 2023-12-11 07:25
 
 var url = $request.url;
 var header = $request.headers;
@@ -22,9 +22,9 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
 } else if (url.includes("/validate?")) {
   // 会员数据
   url = url
-    .replace(/uid=\d+/g, "uid=")
-    .replace(/code=\w+/g, "code=")
-    .replace(/device=\w+/g, "device=")
+    .replace(/uid=\d+/g, "uid=12983287")
+    .replace(/code=\w+/g, "code=C4CE1DC9446504809B719B97D4DAA5FF")
+    .replace(/device=\w+/g, "device=4877567e479337d1c4b5d7e327883b3677c2b16e")
     .replace(/deviceType=\d+/g, "deviceType=1")
     .replace(/&_t=\d+/g, "");
   if (isQuanX) {
