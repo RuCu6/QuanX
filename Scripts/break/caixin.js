@@ -1,4 +1,4 @@
-// 2023-12-10 10:50
+// 2023-12-10 14:15
 
 var url = $request.url;
 var header = $request.headers;
@@ -7,22 +7,22 @@ const appinfo = "";
 
 if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
   // 会员数据
-  header.appinfo = appinfo;
-  delete header.authentication;
+  header["appinfo"] = appinfo;
+  delete header["authentication"];
   if (isQuanX) {
-    delete header.Accept;
-    delete header.Connection;
-    delete header.Cookie;
-    delete header.requestTime;
+    delete header["Accept"];
     delete header["Accept-Encoding"];
     delete header["Accept-Language"];
+    delete header["Connection"];
+    delete header["Cookie"];
     delete header["User-Agent"];
+    delete header["requestTime"];
   } else {
-    delete header.accept;
-    delete header.cookie;
-    delete header.requesttime;
+    delete header["accept"];
     delete header["accept-encoding"];
     delete header["accept-language"];
+    delete header["cookie"];
+    delete header["requesttime"];
     delete header["user-agent"];
   }
   $done({ headers: header });
@@ -35,19 +35,19 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
     .replace(/deviceType=\d+/g, "deviceType=1")
     .replace(/&_t=\d+/g, "");
   if (isQuanX) {
-    delete header.Accept;
-    delete header.Connection;
-    delete header.Cookie;
-    delete header.Referer;
+    delete header["Accept"];
     delete header["Accept-Encoding"];
     delete header["Accept-Language"];
+    delete header["Connection"];
+    delete header["Cookie"];
+    delete header["Referer"];
     delete header["User-Agent"];
   } else {
-    delete header.accept;
-    delete header.cookie;
-    delete header.referer;
+    delete header["accept"];
     delete header["accept-encoding"];
     delete header["accept-language"];
+    delete header["cookie"];
+    delete header["referer"];
     delete header["user-agent"];
   }
   $done({ url: url, headers: header });
