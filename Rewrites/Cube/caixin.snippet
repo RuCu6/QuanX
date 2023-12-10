@@ -1,7 +1,7 @@
 #!name = 财新
 #!desc = 共享会员
 #!author = RuCu6
-#!update = 2023-11-26 09:25
+#!update = 2023-12-10 09:40
 
 # 财新数据通
 ^https:\/\/entities\.caixin\.com\/api\/public\/(push\/appIndex|recommendNews) url reject-dict
@@ -10,8 +10,8 @@
 # 会员解锁
 ;^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/(groupImageValidate|validate|validateAudioAuth) url script-request-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
-# 文章底部广告
-^https:\/\/gateway\.caixin\.com\/api\/app-api\/caixinapp\/appinfo url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
+# 文章底部广告,搜索框填充词
+^https:\/\/gateway\.caixin\.com\/api\/app-api\/(caixinapp\/appinfo|search\/getkeyword) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 广告样式
 ^https:\/\/gateway\.caixin\.com\/api\/app-api\/cxAdInfo\/selectIndexAdInfo url reject-dict
