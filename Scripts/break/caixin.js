@@ -1,4 +1,4 @@
-// 2023-12-10 14:20
+// 2023-12-10 16:15
 
 var url = $request.url;
 var header = $request.headers;
@@ -88,7 +88,6 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
       }
     } else if (url.includes("/index_page_v5")) {
       // 首页-信息流
-      let obj = JSON.parse($response.body);
       delete obj.data.ios_ad_513;
       delete obj.data.android_ad_513;
       if (obj?.data?.list?.length > 0) {
