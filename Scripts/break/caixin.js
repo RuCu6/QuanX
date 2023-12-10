@@ -1,4 +1,4 @@
-// 2023-12-10 16:15
+// 2023-12-10 16:30
 
 var url = $request.url;
 var header = $request.headers;
@@ -65,6 +65,11 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
             delete item[i];
           }
         }
+      }
+    } else if (url.includes("/articlev5/")) {
+      // 文章底部-相关阅读
+      if (obj?.data?.relatarticle?.length > 0) {
+        obj.data.relatarticle = [];
       }
     } else if (url.includes("/caixinapp/appinfo")) {
       // 文章详情页

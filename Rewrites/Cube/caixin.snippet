@@ -1,10 +1,10 @@
 #!name = 财新
-#!desc = 共享会员
+#!desc = 移除所有推广，界面净化。
 #!author = RuCu6
-#!update = 2023-12-10 09:40
+#!update = 2023-12-10 16:30
 
 # 财新数据通
-^https:\/\/entities\.caixin\.com\/api\/public\/(push\/appIndex|recommendNews) url reject-dict
+^https:\/\/entities\.caixin\.com\/api\/(dataplus\/promotionHints|public\/push\/appIndex|public\/recommendNews) url reject-dict
 ^https:\/\/entities\.caixin\.com\/api\/dataplus\/columns url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 会员解锁
@@ -15,16 +15,17 @@
 
 # 广告样式
 ^https:\/\/gateway\.caixin\.com\/api\/app-api\/cxAdInfo\/selectIndexAdInfo url reject-dict
-^https:\/\/mappsv5\.caixin\.com\/channelv5\/article_ad_ios_info url reject-dict
+^https:\/\/mappsv5\.caixin\.com\/channelv5\/article_ad_ios_info\.json url reject-dict
 
 # 财新fm
 ^https:\/\/gateway\.caixin\.com\/api\/app-content\/fm\/index\/list\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 开屏广告,文章顶部banner
-^https:\/\/gg\.caixin\.com\/s\?z=caixin&op=1 url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
+^https:\/\/gg\.caixin\.com\/s\?z=caixin&op=\d url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
-# 文章中间推广
-^https:\/\/gg\.caixin\.com\/s\?z=caixin&slot url reject-dict
+# 文章中间推广,文章底部相关阅读
+^https:\/\/gg\.caixin\.com\/s\?z=caixin&slot=\d+ url reject-dict
+^https:\/\/mappsv5\.caixin\.com\/articlev5\/\d+\/\d+\.json url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 ^https:\/\/mapps?v5\.caixin\.com\/(channelv5\/list|\/?index_page_v5\/)\w+ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 首页弹出框
