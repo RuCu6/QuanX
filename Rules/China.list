@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/China.list
-# 2022-11-11
+# 2023-12-10 14:45
 
 # China Area Network
 HOST-SUFFIX, flyert.com, DIRECT
@@ -36,9 +36,6 @@ IP-CIDR, 203.205.254.0/23, DIRECT
 # > IP Query
 HOST, ip.istatmenus.app, DIRECT
 HOST, sms.imagetasks.com, DIRECT
-# > Speed Test
-HOST-SUFFIX, netspeedtestmaster.com, DIRECT
-HOST, speedtest.macpaw.com, DIRECT
 # > Private Tracker
 HOST-SUFFIX, acg.rip, DIRECT
 HOST-SUFFIX, animebytes.tv, DIRECT
@@ -72,6 +69,8 @@ HOST-SUFFIX, redacted.ch, DIRECT
 HOST-SUFFIX, springsunday.net, DIRECT
 HOST-SUFFIX, tjupt.org, DIRECT
 HOST-SUFFIX, totheglory.im, DIRECT
+# > CN Web
+HOST, www.4khdr.cn, DIRECT
 
 # GeoIP
 GEOIP, CN, DIRECT

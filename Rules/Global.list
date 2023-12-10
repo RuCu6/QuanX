@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/Global.list
-# 2023-11-15 09:35
+# 2023-12-10 14:45
 
 # (D.C.S.G?)
 HOST-SUFFIX, 9cache.com, PROXY
@@ -242,6 +242,7 @@ HOST-SUFFIX, widevine.com, PROXY
 HOST-SUFFIX, zynamics.com, PROXY
 HOST-KEYWORD, .blogspot., PROXY
 HOST-KEYWORD, goog, PROXY
+HOST-KEYWORD, google.com., PROXY
 # > Apple
 HOST, testflight.apple.com, PROXY
 # > Automattic
@@ -476,8 +477,9 @@ HOST-SUFFIX, linkedin.com, PROXY
 HOST-SUFFIX, licdn.com, PROXY
 HOST-SUFFIX, msn.com, PROXY
 HOST-SUFFIX, skype.com, PROXY
-# > Gitlab
-HOST-SUFFIX, gitlab.com, PROXY
+# > Framagit
+HOST-SUFFIX, framagit.com, PROXY
+HOST-SUFFIX, framagit.org, PROXY
 # > Quantumult X
 HOST-SUFFIX, quantumult.app, PROXY
 # > Surge
@@ -496,12 +498,14 @@ HOST, sub.jsy88.net, PROXY
 # > 魔法学院
 HOST, link.002.se, PROXY
 # > 独角兽
+HOST, d9s.me, PROXY
 HOST, mail1.9wan.win, PROXY
 HOST, unicorncloud.club, PROXY
 # > Teacat
 HOST, teacat.cloud, PROXY
 HOST, rss.teacat001.xyz, PROXY
 # > EFCloud
+HOST, www.efcloud.bio, PROXY
 HOST, www.efcloud.net, PROXY
 # > iKuuu
 HOST, ikuuu.co, PROXY

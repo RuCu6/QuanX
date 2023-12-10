@@ -1,0 +1,8 @@
+# 2023-11-28 21:15
+
+HOST, beijing.unicomtest.com, Speedtest
+HOST, 5gtest.shangdu.com, Speedtest
+HOST-SUFFIX, ooklaserver.net, Speedtest
+HOST-SUFFIX, speedtest.cn, Speedtest
+HOST-SUFFIX, speedtest.net, Speedtest
+HOST-KEYWORD, speedtest., Speedtest
