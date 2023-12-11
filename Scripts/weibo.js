@@ -1,4 +1,4 @@
-// 2023-12-07 20:40
+// 2023-12-10 21:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -260,7 +260,40 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 顶部tab
     if (obj?.pageDatas?.length > 0) {
       // homeFeed关注 homeHot推荐
-      obj.pageDatas = obj.pageDatas.filter((i) => i?.pageDataType !== "homeExtend");
+      let newTabs = [];
+      for (let item of obj.pageDatas) {
+        if (item?.pageDataType === "homeExtend") {
+          // 多余的推广tab 比如华为Mate60
+          continue;
+        } else {
+          if (item?.categories?.length > 0) {
+            let newCates = [];
+            for (let i of item.categories) {
+              if (i?.title === "默认分组") {
+                if (i?.pageDatas?.length > 0) {
+                  let newII = [];
+                  for (let ii of i.pageDatas) {
+                    if (["最新微博", "特别关注", "好友圈", "视频"]?.includes(ii?.title)) {
+                      // 白名单列表
+                      newII.push(ii);
+                    } else {
+                      continue;
+                    }
+                    if (ii?.title === "最新微博") {
+                      ii.title = "微博";
+                    }
+                  }
+                  i.pageDatas = newII;
+                }
+              }
+              newCates.push(i);
+            }
+            item.categories = newCates;
+          }
+          newTabs.push(item);
+        }
+      }
+      obj.pageDatas = newTabs;
     }
   } else if (url.includes("/2/messageflow/notice")) {
     // 消息动态页
