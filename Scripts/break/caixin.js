@@ -1,13 +1,18 @@
-// 2023-12-11 07:25
+// 2023-12-13 16:00
 
 var url = $request.url;
 var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
-const appinfo = "";
+
+// 到期时间 2024年10月
+const myAppinfo = "";
+const myUid = "uid=12983287";
+const myCode = "code=C4CE1DC9446504809B719B97D4DAA5FF";
+const myDevice = "device=4877567e479337d1c4b5d7e327883b3677c2b16e";
 
 if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
   // 会员数据
-  header["appinfo"] = appinfo;
+  header["appinfo"] = myAppinfo;
   delete header["authentication"];
   if (isQuanX) {
     delete header["Cookie"];
@@ -22,9 +27,9 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
 } else if (url.includes("/validate?")) {
   // 会员数据
   url = url
-    .replace(/uid=\d+/g, "uid=12983287")
-    .replace(/code=\w+/g, "code=C4CE1DC9446504809B719B97D4DAA5FF")
-    .replace(/device=\w+/g, "device=4877567e479337d1c4b5d7e327883b3677c2b16e")
+    .replace(/uid=\d+/g, myUid)
+    .replace(/code=\w+/g, myCode)
+    .replace(/device=\w+/g, myDevice)
     .replace(/deviceType=\d+/g, "deviceType=1")
     .replace(/&_t=\d+/g, "");
   if (isQuanX) {
