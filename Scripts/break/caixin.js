@@ -4,7 +4,7 @@ var url = $request.url;
 var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
 
-// 到期时间 2024年10月
+// 到期时间 即将到期
 const myAppinfo = "";
 const myUid = "uid=12983287";
 const myCode = "code=C4CE1DC9446504809B719B97D4DAA5FF";
