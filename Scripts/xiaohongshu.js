@@ -1,6 +1,7 @@
-// 2023-11-20 21:35
+// 2023-12-14 09:45
 
 const url = $request.url;
+const isQuanX = typeof $task != "undefined";
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
@@ -51,6 +52,42 @@ if (url.includes("/v1/search/banner_list")) {
             item.share_info.function_entries.unshift(additem);
           }
         }
+        if (item?.images_list?.length > 0) {
+          // live photo 无水印地址
+          for (let i of item.images_list) {
+            if (i?.live_photo?.media?.stream?.av1?.length > 0) {
+              for (let ii of i.live_photo.media.stream.av1) {
+                if (ii?.master_url) {
+                  if (isQuanX) {
+                    $notify("小红书 Live Photo", "av1 无水印地址: ", ii.master_url);
+                  } else {
+                    $notification.post("小红书 Live Photo", "av1 无水印地址: ", ii.master_url);
+                  }
+                }
+              }
+            } else if (i?.live_photo?.media?.stream?.h264?.length > 0) {
+              for (let ii of i.live_photo.media.stream.h264) {
+                if (ii?.master_url) {
+                  if (isQuanX) {
+                    $notify("小红书 Live Photo", "h264 无水印地址: ", ii.master_url);
+                  } else {
+                    $notification.post("小红书 Live Photo", "h264 无水印地址: ", ii.master_url);
+                  }
+                }
+              }
+            } else if (i?.live_photo?.media?.stream?.h265?.length > 0) {
+              for (let ii of i.live_photo.media.stream.h265) {
+                if (ii?.master_url) {
+                  if (isQuanX) {
+                    $notify("小红书 Live Photo", "h265 无水印地址: ", ii.master_url);
+                  } else {
+                    $notification.post("小红书 Live Photo", "h265 无水印地址: ", ii.master_url);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -93,7 +130,7 @@ if (url.includes("/v1/search/banner_list")) {
   // 关注列表
   if (obj?.data?.items?.length > 0) {
     // recommend_user 可能感兴趣的人
-    obj.data.items = obj.data.items.filter((i) => !["recommend_user"].includes(i.recommend_reason));
+    obj.data.items = obj.data.items.filter((i) => !["recommend_user"]?.includes(i.recommend_reason));
   }
 } else if (url.includes("/v4/search/trending")) {
   // 搜索栏
@@ -116,10 +153,10 @@ if (url.includes("/v1/search/banner_list")) {
       if (item?.model_type === "live_v2") {
         // 信息流-直播
         continue;
-      } else if (item?.hasOwnProperty("ads_info")) {
+      } else if (item.hasOwnProperty("ads_info")) {
         // 信息流-赞助
         continue;
-      } else if (item?.hasOwnProperty("card_icon")) {
+      } else if (item.hasOwnProperty("card_icon")) {
         // 信息流-带货
         continue;
       } else if (item?.note_attributes?.includes("goods")) {
