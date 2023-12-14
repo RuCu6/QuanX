@@ -1,4 +1,4 @@
-// 2023-12-14 17:25
+// 2023-12-14 19:05
 
 const url = $request.url;
 const isQuanX = typeof $task !== "undefined";
@@ -87,10 +87,11 @@ if (url.includes("/v1/note/live_photo/save")) {
       }
     }
     // 写入持久化存储
-    $prefs.removeValueForKey("redBookLivePhoto");
     if (isQuanX) {
+      $prefs.removeValueForKey("redBookLivePhoto");
       $prefs.setValueForKey(JSON.stringify(obj.data[0].note_list[0].images_list), "redBookLivePhoto");
     } else {
+      $persistentStore.write("", "redBookLivePhoto");
       $persistentStore.write(JSON.stringify(obj.data[0].note_list[0].images_list), "redBookLivePhoto");
     }
   }
