@@ -1,7 +1,6 @@
-// 2023-12-14 14:20
+// 2023-12-14 15:15
 
 const url = $request.url;
-const isQuanX = typeof $task != "undefined";
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
@@ -52,28 +51,7 @@ if (url.includes("/v1/search/banner_list")) {
             item.share_info.function_entries.unshift(additem);
           }
         }
-        if (item?.images_list?.length > 0) {
-          // live photo 无水印地址
-          let livePhoto = [];
-          for (let i = 0; i < item.images_list.length; i++) {
-            const url = item.images_list[i].live_photo.media.stream.h265[0].master_url;
-            const video_id = item.images_list[i].live_photo.media.video_id;
-            const file_id = item.images_list[i].live_photo_file_id;
-            if (url && video_id && file_id) {
-              livePhoto.push({ url, video_id, file_id });
-            }
-          }
-          $prefs.setValueForKey(JSON.stringify(livePhoto), "xiaohongshu_livePhoto");
-        }
       }
-    }
-  }
-} else if (url.includes("/v1/note/live_photo/save")) {
-  // live photo 保存请求
-  let livePhoto = JSON.parse($prefs.valueForKey("xiaohongshu_livePhoto"));
-  if (obj?.data?.datas?.length > 0) {
-    if (livePhoto?.length > 0) {
-      obj.data.datas = livePhoto;
     }
   }
 } else if (url.includes("/v3/note/videofeed")) {
