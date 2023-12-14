@@ -1,4 +1,4 @@
-// 2023-12-14 12:00
+// 2023-12-14 14:20
 
 const url = $request.url;
 const isQuanX = typeof $task != "undefined";
@@ -55,13 +55,12 @@ if (url.includes("/v1/search/banner_list")) {
         if (item?.images_list?.length > 0) {
           // live photo 无水印地址
           let livePhoto = [];
-          for (let i of item.images_list) {
-            if (i?.live_photo?.media?.stream?.h265?.length > 0) {
-              for (let ii of i.live_photo.media.stream.h265) {
-                if (ii?.master_url) {
-                  livePhoto.unshift(ii.master_url);
-                }
-              }
+          for (let i = 0; i < item.images_list.length; i++) {
+            const url = item.images_list[i].live_photo.media.stream.h265[0].master_url;
+            const video_id = item.images_list[i].live_photo.media.video_id;
+            const file_id = item.images_list[i].live_photo_file_id;
+            if (url && video_id && file_id) {
+              livePhoto.push({ url, video_id, file_id });
             }
           }
           $prefs.setValueForKey(JSON.stringify(livePhoto), "xiaohongshu_livePhoto");
@@ -74,11 +73,7 @@ if (url.includes("/v1/search/banner_list")) {
   let livePhoto = JSON.parse($prefs.valueForKey("xiaohongshu_livePhoto"));
   if (obj?.data?.datas?.length > 0) {
     if (livePhoto?.length > 0) {
-      for (let i = 0; i < obj.data.datas.length; i++) {
-        for (let j = 0; j < livePhoto.length; j++) {
-          obj.data.datas[i].url = livePhoto[j];
-        }
-      }
+      obj.data.datas = livePhoto;
     }
   }
 } else if (url.includes("/v3/note/videofeed")) {
