@@ -1,4 +1,4 @@
-// 2023-12-14 09:45
+// 2023-12-14 12:00
 
 const url = $request.url;
 const isQuanX = typeof $task != "undefined";
@@ -54,39 +54,29 @@ if (url.includes("/v1/search/banner_list")) {
         }
         if (item?.images_list?.length > 0) {
           // live photo 无水印地址
+          let livePhoto = [];
           for (let i of item.images_list) {
-            if (i?.live_photo?.media?.stream?.av1?.length > 0) {
-              for (let ii of i.live_photo.media.stream.av1) {
-                if (ii?.master_url) {
-                  if (isQuanX) {
-                    $notify("小红书 Live Photo", "av1 无水印地址: ", ii.master_url);
-                  } else {
-                    $notification.post("小红书 Live Photo", "av1 无水印地址: ", ii.master_url);
-                  }
-                }
-              }
-            } else if (i?.live_photo?.media?.stream?.h264?.length > 0) {
-              for (let ii of i.live_photo.media.stream.h264) {
-                if (ii?.master_url) {
-                  if (isQuanX) {
-                    $notify("小红书 Live Photo", "h264 无水印地址: ", ii.master_url);
-                  } else {
-                    $notification.post("小红书 Live Photo", "h264 无水印地址: ", ii.master_url);
-                  }
-                }
-              }
-            } else if (i?.live_photo?.media?.stream?.h265?.length > 0) {
+            if (i?.live_photo?.media?.stream?.h265?.length > 0) {
               for (let ii of i.live_photo.media.stream.h265) {
                 if (ii?.master_url) {
-                  if (isQuanX) {
-                    $notify("小红书 Live Photo", "h265 无水印地址: ", ii.master_url);
-                  } else {
-                    $notification.post("小红书 Live Photo", "h265 无水印地址: ", ii.master_url);
-                  }
+                  livePhoto.unshift(ii.master_url);
                 }
               }
             }
           }
+          $prefs.setValueForKey(JSON.stringify(livePhoto), "xiaohongshu_livePhoto");
+        }
+      }
+    }
+  }
+} else if (url.includes("/v1/note/live_photo/save")) {
+  // live photo 保存请求
+  let livePhoto = JSON.parse($prefs.valueForKey("xiaohongshu_livePhoto"));
+  if (obj?.data?.datas?.length > 0) {
+    if (livePhoto?.length > 0) {
+      for (let i = 0; i < obj.data.datas.length; i++) {
+        for (let j = 0; j < livePhoto.length; j++) {
+          obj.data.datas[i].url = livePhoto[j];
         }
       }
     }
