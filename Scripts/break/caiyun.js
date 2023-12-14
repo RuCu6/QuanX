@@ -9,7 +9,16 @@ if (typeof $response === "undefined") {
   $done({ headers: header })
 } else {
   let obj = JSON.parse($response.body);
-  if (url.includes("/v1/vip_info")) {
+  if (url.includes("/v1/activity")) {
+    // 彩云推广
+    if (obj?.status) {
+      obj.status = "ok";
+    }
+    if (obj?.activities?.length > 0) {
+      obj.activities = [{ items: [{ text: "" }] }];
+    }
+  } else if (url.includes("/v1/vip_info")) {
+    // 我的页面
     if (obj.vip) {
       obj.vip.expires_time = "4030000000";
     }
@@ -17,6 +26,7 @@ if (typeof $response === "undefined") {
       obj.svip.expires_time = "4030000000";
     }
   } else if (url.includes("/v2/user")) {
+    // 我的页面
     if (obj.result) {
       obj.result.svip_given = 730;
       obj.result.is_phone_verified = true;
