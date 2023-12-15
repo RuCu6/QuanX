@@ -1,0 +1,9 @@
+#!name = Spotify
+#!desc = Spotify Premium 部分解锁。音质不能设置为超高！建议登录后再打开脚本,重启app等待脚本生效。功能: 1.去除播放广告 2.歌手/专辑列表正常展示 3.去除随机播放
+#!author = app2smile
+#!update = 2023-10-04
+
+^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/spotify/proto.js
+^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ url script-request-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/spotify/json.js
+
+hostname = spclient.wg.spotify.com
