@@ -1,4 +1,4 @@
-// 2023-12-15 08:15
+// 2023-12-15 15:05
 
 const url = $request.url;
 let header = $request.headers;
@@ -11,11 +11,31 @@ if (typeof $response === "undefined") {
   let obj = JSON.parse($response.body);
   if (url.includes("/v1/activity")) {
     // 彩云推广
-    if (obj?.status) {
-      obj.status = "ok";
+    if (obj?.interval) {
+      obj.interval = 2592000;
     }
     if (obj?.activities?.length > 0) {
-      obj.activities = [{ items: [{ text: "" }] }];
+      let newActs = [];
+      for (let item of obj.activities) {
+        if (item?.type === "tabbar" && item?.feature) {
+          item.feature = false;
+        } else if (item?.type === "activity_icon" && item?.items?.length > 0) {
+          item.items = [
+            {
+              text: "",
+              image_light: "",
+              link: "",
+              activity_name: "",
+              id: "1",
+              image_dark: ""
+            }
+          ];
+        } else {
+          continue;
+        }
+        newActs.push(item);
+      }
+      obj.activities = newActs;
     }
   } else if (url.includes("/v1/vip_info")) {
     // 我的页面
