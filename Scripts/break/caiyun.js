@@ -1,4 +1,4 @@
-// 2023-12-14 22:25
+// 2023-12-15 08:15
 
 const url = $request.url;
 let header = $request.headers;
@@ -6,7 +6,7 @@ let header = $request.headers;
 if (typeof $response === "undefined") {
   header["device-token"] =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoxLCJ1c2VyX2lkIjoiNWY1YmZjNTdkMmM2ODkwMDE0ZTI2YmI4Iiwic3ZpcF9leHBpcmVkX2F0IjoxNzA1MzMxMTY2LjQxNjc3MSwidmlwX2V4cGlyZWRfYXQiOjB9.h_Cem89QarTXxVX9Z_Wt-Mak6ZHAjAJqgv3hEY6wpps";
-  $done({ headers: header })
+  $done({ headers: header });
 } else {
   let obj = JSON.parse($response.body);
   if (url.includes("/v1/activity")) {
