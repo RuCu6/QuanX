@@ -1,10 +1,10 @@
 #!name = 网易云音乐
 #!desc = 音乐的力量不是用来看广告的
 #!author = RuCu6 Keywos
-#!update = 2023-12-18 17:00
+#!update = 2023-12-18 17:05
 
 # 开屏广告,首页顶部横幅广告
-^https?:\/\/(ipv4|interface3?)\.music\.163.com\/e?api\/(ocpc\/)?ad\/.* url reject-dict
+^https?:\/\/interface3?\.music\.163.com\/e?api\/(ocpc\/)?ad\/.* url reject-dict
 
 # 搜索页,填充词,排行榜
 ^https?:\/\/interface3?\.music\.163.com\/eapi\/search\/(chart\/(detail|list)|default\/keyword\/list|rcmd\/keyword\/get\/v2|specialkeyword\/get) url reject-dict
@@ -41,4 +41,4 @@
 # 流量卡弹窗
 ^https:\/\/interface3\.music\.163\.com\/eapi\/sp\/flow\/popup\/query url reject-dict
 
-hostname = interface*.music.163.com, ipv4.music.163.com
+hostname = interface*.music.163.com
