@@ -1,4 +1,4 @@
-// 2023-11-12 14:45
+// 2023-12-19 09:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -6,9 +6,7 @@ let obj = JSON.parse($response.body);
 
 if (url.includes("nbfriend.message.conversation.list")) {
   if (obj.data.data) {
-    obj.data.data = obj.data.data.filter((i) =>
-      i?.conversationId?.includes("logistic_message")
-    );
+    obj.data.data = obj.data.data.filter((i) => i?.conversationId?.includes("logistic_message"));
   }
 } else if (url.includes("nbpresentation.pickup.empty.page.get")) {
   // 取件页面
@@ -21,7 +19,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
             "guoguo_pickup_empty_page_relation_add", // 添加亲友
             "guoguo_pickup_helper_feedback", // 反馈组件
             "guoguo_pickup_helper_tip_view" // 取件小助手
-          ].includes(i.template.name)
+          ]?.includes(i.template.name)
       );
     }
   }
@@ -31,7 +29,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
     let res = obj.data.result;
     if (res.dataList) {
       res.dataList = res.dataList.filter((i) => {
-        if (i.type.includes("kingkong")) {
+        if (i?.type?.includes("kingkong")) {
           if (i.bizData.items) {
             for (let ii of i.bizData.items) {
               ii.rightIcon = null;
@@ -39,7 +37,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
             }
             return true;
           }
-        } else if (i.type.includes("icons_scroll")) {
+        } else if (i?.type?.includes("icons_scroll")) {
           // 顶部图标
           if (i.bizData.items) {
             const item = [
@@ -55,19 +53,17 @@ if (url.includes("nbfriend.message.conversation.list")) {
               "ttlhb", // 天天领红包
               "xybg" // 幸运包裹
             ];
-            i.bizData.items = i.bizData.items.filter(
-              (ii) => !item.includes(ii.key)
-            );
+            i.bizData.items = i.bizData.items.filter((ii) => !item?.includes(ii.key));
             for (let ii of i.bizData.items) {
               ii.rightIcon = null;
               ii.bubbleText = null;
             }
             return true;
           }
-        } else if (i.type.includes("banner_area")) {
+        } else if (i?.type?.includes("banner_area")) {
           // 新人福利 幸运抽奖
           return false;
-        } else if (i.type.includes("promotion")) {
+        } else if (i?.type?.includes("promotion")) {
           // 促销活动
           return false;
         } else {
@@ -86,12 +82,9 @@ if (url.includes("nbfriend.message.conversation.list")) {
       (i) =>
         !(
           i?.materialContentMapper?.adItemDetail ||
-          (i?.materialContentMapper?.bgImg &&
-            i?.materialContentMapper?.advRecGmtModifiedTime) ||
-          ["common_header_banner", "entertainment", "kuaishou_banner"].includes(
-            i?.materialContentMapper?.group_id
-          ) ||
-          ["29338", "29339", "32103", "33927"].includes(i.id)
+          (i?.materialContentMapper?.bgImg && i?.materialContentMapper?.advRecGmtModifiedTime) ||
+          ["common_header_banner", "entertainment", "kuaishou_banner"]?.includes(i?.materialContentMapper?.group_id) ||
+          ["29338", "29339", "32103", "33927"]?.includes(i.id)
         )
     );
   }
@@ -109,6 +102,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
       "727",
       "793", // 支付宝 小程序 搜索框
       "954", // 支付宝 小程序 置顶图标
+      "1275", // 果酱即将到期
       "1308", // 支付宝 小程序 横图
       "1316", // 头部 banner
       "1332", // 我的页面 横图
@@ -118,7 +112,7 @@ if (url.includes("nbfriend.message.conversation.list")) {
       "1428", // 幸运号
       "1524", // 抽现金
       "1525", // 幸运包裹
-      "1638", // 为你精选了一些商品
+      "1638" // 为你精选了一些商品
     ];
     for (let i of item) {
       if (obj.data?.[i]) {
