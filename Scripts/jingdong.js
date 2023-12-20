@@ -1,4 +1,4 @@
-// 2023-12-20 16:15
+// 2023-12-20 18:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -67,14 +67,18 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
   if (obj?.floors?.length > 0) {
     let newFloors = [];
     for (let floor of obj.floors) {
-      // orderIdFloor我的订单 keyToolsFloor浏览记录 newWalletIdFloor我的钱包 iconToolFloor底部工具栏
       const items = [
         "bigSaleFloor", // 双十一
         "buyOften", // 常买常逛
+        // "iconToolFloor", // 底部工具栏
+        // "keyToolsFloor", // 浏览记录
         "newAttentionCard", // 关注的频道
         "newBigSaleFloor", // 双十一
         "newStyleAttentionCard", // 新版关注的频道
+        // "newWalletIdFloor", // 我的钱包
+        "newsFloor", // 京东快讯
         "noticeFloor", // 顶部横幅
+        // "orderIdFloor", // 我的订单
         "recommendfloor" // 我的推荐
       ];
       if (items?.includes(floor?.mId)) {
@@ -161,19 +165,18 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
 } else if (url.includes("functionId=welcomeHome")) {
   // 首页配置
   if (obj?.floorList?.length > 0) {
+    const delItems = [
+      "bottomXview", // 底部悬浮通栏推广
+      "float", // 悬浮推广小圆图
+      "photoCeiling", // 顶部通栏动图推广
+      // "recommend", // 为你推荐
+      "ruleFloat", // 资质与规则
+      "searchIcon", // 右上角消费券
+      "topRotate", // 左上角logo
+      "tabBarAtmosphere" // 底部悬浮通栏推广
+    ];
     // 首页 图层列表
-    obj.floorList = obj.floorList.filter((i) =>
-      ![
-        "bottomXview", // 底部悬浮通栏推广
-        "float", // 悬浮推广小圆图
-        "photoCeiling", // 顶部通栏动图推广
-        // "recommend", // 为你推荐
-        "ruleFloat", // 资质与规则
-        "searchIcon", // 右上角消费券
-        "topRotate", // 左上角logo
-        "tabBarAtmosphere" // 底部悬浮通栏推广
-      ]?.includes(i?.type)
-    );
+    obj.floorList = obj.floorList.filter((i) => !delItems?.includes(i?.type));
   }
   // 首页 顶部背景图
   if (obj?.topBgImgBig) {
