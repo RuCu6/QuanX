@@ -1,7 +1,7 @@
 #!name = 网易云音乐
 #!desc = 音乐的力量不是用来看广告的
 #!author = RuCu6 Keywos
-#!update = 2023-12-18 17:05
+#!update = 2023-12-20 09:40
 
 # 开屏广告,首页顶部横幅广告
 ^https?:\/\/interface3?\.music\.163.com\/e?api\/(ocpc\/)?ad\/.* url reject-dict
@@ -10,7 +10,7 @@
 ^https?:\/\/interface3?\.music\.163.com\/eapi\/search\/(chart\/(detail|list)|default\/keyword\/list|rcmd\/keyword\/get\/v2|specialkeyword\/get) url reject-dict
 
 # 播放页,多余图标,各种小提示,高品质音乐试用弹窗
-^https:\/\/interface3\.music\.163\.com\/eapi\/(link\/position\/show\/strategy|music\/songshare\/text\/recommend\/get) url reject-dict
+^https:\/\/interface3\.music\.163\.com\/eapi\/(link\/position\/show\/(resource|strategy)|music\/songshare\/text\/recommend\/get) url reject-dict
 ^https:\/\/interface3\.music\.163\.com\/eapi\/(mlivestream\/entrance\/playpage\/v7|community\/friends\/fans-group\/artist\/group)\/get url reject-dict
 ^https:\/\/interface3\.music\.163\.com\/eapi\/mlog\/vinyl\/story\/list url reject-dict
 ^https:\/\/interface3\.music\.163\.com\/eapi\/(user\/sub\/artist\/exist|vipcenter\/tspopup\/get) url reject-dict
