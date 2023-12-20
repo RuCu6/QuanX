@@ -1,4 +1,4 @@
-// 2023-12-20 18:45
+// 2023-12-20 19:00
 
 const url = $request.url;
 const isQuanX = typeof $task !== "undefined";
@@ -73,7 +73,6 @@ if (url.includes("/v1/note/imagefeed") || url.includes("/v2/note/feed")) {
     // 原始数据有问题 强制返回成功响应
     obj = { code: 0, success: true, msg: "成功", data: { datas: newDatas } };
   }
-  $done({ body: JSON.stringify(obj) });
 } else if (url.includes("/v1/search/banner_list")) {
   if (obj?.data) {
     obj.data = {};
