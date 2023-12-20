@@ -1,4 +1,4 @@
-// 2023-12-15 08:15
+// 2023-12-20 16:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -162,9 +162,17 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
   // 首页配置
   if (obj?.floorList?.length > 0) {
     // 首页 图层列表
-    // bottomXview底部悬浮通栏 float推广浮层 recommend为你推荐 ruleFloat资质与规则 searchIcon右上角消费券 topRotate左上角logo
-    obj.floorList = obj.floorList.filter(
-      (i) => !["bottomXview", "float", "photoCeiling", "ruleFloat", "searchIcon", "topRotate"]?.includes(i?.type)
+    obj.floorList = obj.floorList.filter((i) =>
+      ![
+        "bottomXview", // 底部悬浮通栏推广
+        "float", // 悬浮推广小圆图
+        "photoCeiling", // 顶部通栏动图推广
+        // "recommend", // 为你推荐
+        "ruleFloat", // 资质与规则
+        "searchIcon", // 右上角消费券
+        "topRotate", // 左上角logo
+        "tabBarAtmosphere" // 底部悬浮通栏推广
+      ]?.includes(i?.type)
     );
   }
   // 首页 顶部背景图
