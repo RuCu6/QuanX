@@ -1,4 +1,4 @@
-// 2023-11-30 18:05
+// 2023-12-11 19:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -58,10 +58,10 @@ if (url.includes("/x/resource/show/skin")) {
               if (item?.items?.length > 0) {
                 let newItems = [];
                 for (let i of item.items) {
-                  if (/user_center\/feedback/?.test(i?.uri)) {
+                  if (/user_center\/feedback/g.test(i?.uri)) {
                     // 联系客服
                     newItems.push(i);
-                  } else if (/user_center\/setting/?.test(i?.uri)) {
+                  } else if (/user_center\/setting/g.test(i?.uri)) {
                     // 设置
                     newItems.push(i);
                   } else {
@@ -111,12 +111,12 @@ if (url.includes("/x/resource/show/skin")) {
   if (obj?.data?.ipad_recommend_sections?.length > 0) {
     // 789我的关注 790我的消息 791我的钱包 792直播中心 793大会员 794我的课程 2542我的游戏
     const itemList = [789, 790];
-    obj.data.ipad_recommend_sections = obj.data.ipad_recommend_sections.filter((i) => itemList.includes(i.id));
+    obj.data.ipad_recommend_sections = obj.data.ipad_recommend_sections.filter((i) => itemList?.includes(i.id));
   }
   if (obj?.data?.ipad_more_sections?.length > 0) {
     // 797我的客服 798设置 1070青少年守护
     const itemList = [797, 798];
-    obj.data.ipad_more_sections = obj.data.ipad_more_sections.filter((i) => itemList.includes(i.id));
+    obj.data.ipad_more_sections = obj.data.ipad_more_sections.filter((i) => itemList?.includes(i.id));
   }
 } else if (url.includes("/x/v2/account/myinfo")) {
   // 非会员开启会员专属清晰度
@@ -133,7 +133,7 @@ if (url.includes("/x/resource/show/skin")) {
   if (obj?.data?.items?.length > 0) {
     obj.data.items = obj.data.items.filter(
       (i) =>
-        !(i?.hasOwnProperty("ad_info") || ["ad_", "bangumi", "banner", "game", "ketang", "live", "pgc"]?.includes(i?.card_goto))
+        !(i.hasOwnProperty("ad_info") || ["ad_", "bangumi", "banner", "game", "ketang", "live", "pgc"]?.includes(i?.card_goto))
     );
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
@@ -144,8 +144,8 @@ if (url.includes("/x/resource/show/skin")) {
     obj.data.items = obj.data.items.filter(
       (i) =>
         !(
-          i?.hasOwnProperty("ad_info") ||
-          i?.hasOwnProperty("story_cart_icon") ||
+          i.hasOwnProperty("ad_info") ||
+          i.hasOwnProperty("story_cart_icon") ||
           ["ad", "vertical_live", "vertical_pgc"]?.includes(i?.card_goto)
         )
     );
