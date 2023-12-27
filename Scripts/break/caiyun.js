@@ -14,7 +14,7 @@ if (typeof $response === "undefined") {
     if (["&type_id=A03&"]?.includes(url)) {
       // 彩云AI
       if (obj?.interval) {
-        obj.interval = 2592000;
+        obj.interval = 2592000; // 30天===2592000秒
       }
       if (obj?.activities?.length > 0) {
         let newActs = [];
@@ -36,22 +36,13 @@ if (typeof $response === "undefined") {
         id: "1",
         activities: [
           {
-            items: [
-              {
-                text: "",
-                image_light: "",
-                link: "",
-                activity_name: "",
-                id: "1",
-                image_dark: ""
-              }
-            ],
+            items: [{ text: "", image_light: "", link: "", activity_name: "", id: "1", image_dark: "" }],
             type: "activity_icon",
             name: "",
             carousel: "5000"
           }
         ]
-      }
+      };
     }
   } else if (url.includes("/v1/vip_info")) {
     // 我的页面
