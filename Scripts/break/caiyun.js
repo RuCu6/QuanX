@@ -1,4 +1,4 @@
-// 2023-12-15 15:05
+// 2023-12-27 16:25
 
 const url = $request.url;
 let header = $request.headers;
@@ -11,31 +11,47 @@ if (typeof $response === "undefined") {
   let obj = JSON.parse($response.body);
   if (url.includes("/v1/activity")) {
     // 彩云推广
-    if (obj?.interval) {
-      obj.interval = 2592000;
-    }
-    if (obj?.activities?.length > 0) {
-      let newActs = [];
-      for (let item of obj.activities) {
-        if (item?.type === "tabbar" && item?.feature) {
-          item.feature = false;
-        } else if (item?.type === "activity_icon" && item?.items?.length > 0) {
-          item.items = [
-            {
-              text: "",
-              image_light: "",
-              link: "",
-              activity_name: "",
-              id: "1",
-              image_dark: ""
-            }
-          ];
-        } else {
-          continue;
-        }
-        newActs.push(item);
+    if (["&type_id=A03&"]?.includes(url)) {
+      // 彩云AI
+      if (obj?.interval) {
+        obj.interval = 2592000;
       }
-      obj.activities = newActs;
+      if (obj?.activities?.length > 0) {
+        let newActs = [];
+        for (let item of obj.activities) {
+          if (item?.type === "tabbar" && item?.feature) {
+            item.feature = false;
+          } else {
+            continue;
+          }
+          newActs.push(item);
+        }
+        obj.activities = newActs;
+      }
+    } else {
+      // 其他请求
+      obj = {
+        status: "ok",
+        interval: 2592000,
+        id: "1",
+        activities: [
+          {
+            items: [
+              {
+                text: "",
+                image_light: "",
+                link: "",
+                activity_name: "",
+                id: "1",
+                image_dark: ""
+              }
+            ],
+            type: "activity_icon",
+            name: "",
+            carousel: "5000"
+          }
+        ]
+      }
     }
   } else if (url.includes("/v1/vip_info")) {
     // 我的页面
