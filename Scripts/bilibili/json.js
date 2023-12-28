@@ -1,4 +1,4 @@
-// 2023-12-11 19:20
+// 2023-12-28 21:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -133,7 +133,19 @@ if (url.includes("/x/resource/show/skin")) {
   if (obj?.data?.items?.length > 0) {
     obj.data.items = obj.data.items.filter(
       (i) =>
-        !(i.hasOwnProperty("ad_info") || ["ad_", "bangumi", "banner", "game", "ketang", "live", "pgc"]?.includes(i?.card_goto))
+        !(
+          i.hasOwnProperty("ad_info") ||
+          [
+            "ad_", // 广告
+            "bangumi", // 纪录片
+            "banner", // 顶部横版推广
+            "game", // 游戏
+            "ketang", // 课堂
+            "live", // 直播
+            "pgc", // 纪录片
+            "special_s" // 年度报告
+          ]?.includes(i?.card_goto)
+        )
     );
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
