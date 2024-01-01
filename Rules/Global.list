@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/Global.list
-# 2023-12-10 14:45
+# 2023-12-31 19:05
 
 # (D.C.S.G?)
 HOST-SUFFIX, 9cache.com, PROXY
@@ -505,8 +505,15 @@ HOST, unicorncloud.club, PROXY
 HOST, teacat.cloud, PROXY
 HOST, rss.teacat001.xyz, PROXY
 # > EFCloud
+HOST, api.eflink.xyz, PROXY
+HOST, www.easyfastcloud.com, PROXY
 HOST, www.efcloud.bio, PROXY
 HOST, www.efcloud.net, PROXY
 # > iKuuu
 HOST, ikuuu.co, PROXY
 HOST, api.ndsxfkjfvhzdsfio.quest, PROXY
+
+# ---(Emby)--- #
+# MisakaF
+HOST, push-kr.misakaf.org, PROXY
+IP-CIDR, 102.223.180.108/32 ,PROXY
