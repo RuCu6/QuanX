@@ -1,4 +1,4 @@
-// 2024-01-02 17:15
+// 2024-01-03 10:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -396,11 +396,11 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
       obj.items = newItems;
     }
-  } else if (url.includes("/2/profile/dealatt") || url.includes("/2/friendships/destroy")) {
+  } else if (url.includes("/2/profile/dealatt") || url.includes("/2/friendships/")) {
     // 个人主页点击关注后展示菜单
-    if (obj?.cards) {
+    if (obj?.cards?.length > 0) {
       // 相关推荐卡片
-      delete obj.cards;
+      obj.cards = [];
     }
     if (obj?.toolbar_menus_new?.items?.length > 0) {
       // 底部菜单
