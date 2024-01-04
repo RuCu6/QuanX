@@ -1,4 +1,4 @@
-// 2024-01-03 15:35
+// 2024-01-04 09:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -131,7 +131,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item.data.user) {
               // 头像挂件,关注按钮
               removeAvatar(item.data);
-              if (item.data?.user?.name === "超话社区" || item.data?.user?.name === "微博视频") {
+              if (["超话社区", "微博热搜", "微博视频"]?.includes(item.data?.user?.name)) {
                 continue;
               }
             }
@@ -347,7 +347,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         } else if (item?.category === "group") {
           // 遍历group,保留置顶微博
           if (item?.header?.data?.icon) {
-            // 置顶微博皇冠背景图
+            // 置顶微博背景图
             delete item.header.data.icon;
           }
           if (item?.itemId?.includes("INTEREST_PEOPLE")) {
@@ -374,7 +374,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   continue;
                 }
                 if (ii?.data?.rightImage) {
-                  // 新版置顶微博皇冠背景图
+                  // 新版置顶微博皇冠
                   delete ii.data.rightImage;
                 }
                 if (ii?.data?.backgroundImage) {
