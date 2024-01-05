@@ -1,4 +1,4 @@
-// 2024-01-04 09:20
+// 2024-01-05 20:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -79,8 +79,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if ([120, 145, 192]?.includes(cardType)) {
               continue;
             }
-            // 搜索框 我的热搜 查看更多热搜
-            if ([4, 6, 101]?.includes(cardType)) {
+            // 我的热搜 查看更多热搜
+            if ([6, 101]?.includes(cardType)) {
               continue;
             }
             if (group?.mblog) {
@@ -105,10 +105,6 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.cards = newCards;
-    }
-    // 我的热搜
-    if (obj?.cardlistInfo?.page_type === "08") {
-      delete obj.cardlistInfo;
     }
   } else if (url.includes("/2/checkin/show")) {
     // 首页签到
@@ -656,6 +652,13 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       }
     }
   } else if (url.includes("/2/searchall")) {
+    if (obj?.header?.data) {
+      // 商品推广头部淘宝跳转
+      const items = ["bg_img", "background_scheme", "background_url"];
+      for (let i of items) {
+        delete obj.header.data[i];
+      }
+    }
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
@@ -761,8 +764,12 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 if (!isAd(ii?.data)) {
                   if (ii?.data) {
                     removeAvatar(ii.data);
-                    // 广告图
-                    if (ii?.data?.card_type === 22) {
+                    // 22广告图 89商品推广视频
+                    if ([22, 89]?.includes(ii?.data?.card_type)) {
+                      continue;
+                    }
+                    // 商品推广desc
+                    if (ii?.data?.card_type === 42 && ii?.data?.is_ads === true) {
                       continue;
                     }
                   }
