@@ -1,4 +1,4 @@
-// 2023-12-28 21:25
+// 2024-01-06 12:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -131,22 +131,8 @@ if (url.includes("/x/resource/show/skin")) {
 } else if (url.includes("/x/v2/feed/index?")) {
   // 首页推荐信息流
   if (obj?.data?.items?.length > 0) {
-    obj.data.items = obj.data.items.filter(
-      (i) =>
-        !(
-          i.hasOwnProperty("ad_info") ||
-          [
-            "ad_", // 广告
-            "bangumi", // 纪录片
-            "banner", // 顶部横版推广
-            "game", // 游戏
-            "ketang", // 课堂
-            "live", // 直播
-            "pgc", // 纪录片
-            "special_s" // 年度报告
-          ]?.includes(i?.card_goto)
-        )
-    );
+    // 白名单
+    obj.data.items = obj.data.items.filter((i) => i?.card_goto === "av");
   }
 } else if (url.includes("/x/v2/feed/index/story")) {
   // 竖屏模式信息流
