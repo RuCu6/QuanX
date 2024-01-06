@@ -1,4 +1,4 @@
-// 2024-01-05 20:50
+// 2024-01-06 14:55
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -219,7 +219,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       for (let item of obj.items) {
         // 关注按钮
         removeAvatar(item?.data);
-        if (item?.itemId?.includes("_infeed_may_interest_in_")) {
+        if (/infeed_may_interest_in/.test(item?.itemId)) {
           // 你可能感兴趣的超话
           continue;
         }
