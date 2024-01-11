@@ -1,4 +1,4 @@
-// 2023-12-11 17:00
+// 2024-01-11 15:20
 
 const url = $request.url;
 const isResp = typeof $response !== "undefined";
@@ -46,9 +46,11 @@ switch (isResp) {
       if (url.includes("/api/v1/ads")) {
         // 首页banner
         if (obj?.data?.ads?.index_top?.length > 0) {
-          obj.data.ads.index_top = obj.data.ads.index_top.filter((i) => /astarte:\/\//g.test(i?.url));
+          // 黑名单 移除http外链
+          obj.data.ads.index_top = obj.data.ads.index_top.filter((i) => !/https?:\/\//g.test(i?.url));
         }
         if (obj?.data?.ads?.web_magnets_top?.length > 0) {
+          // 黑名单 移除http外链
           obj.data.ads.web_magnets_top = obj.data.ads.web_magnets_top.filter((i) => !/https?:\/\//g.test(i?.url));
         }
       } else if (url.includes("/api/v1/startup")) {
@@ -181,6 +183,18 @@ switch (isResp) {
       body = JSON.stringify(obj);
     } catch (error) {
       console.log(`淘宝-开屏活动, 出现异常: ` + error);
+    }
+    break;
+  // 网易新闻
+  case /^https:\/\/nex\.163\.com\/q/g.test(url):
+    try {
+      let obj = JSON.parse(body);
+      if (obj?.ads?.length > 0) {
+        obj.ads = [];
+      }
+      body = JSON.stringify(obj);
+    } catch (error) {
+      console.log(`网易新闻, 出现异常: ` + error);
     }
     break;
   // 小爱音箱-开屏广告
