@@ -1,28 +1,36 @@
-// 2023-11-28 16:30
+// 2024-01-11 16:35
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
-if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
+if (url.includes("boss/car/order/content_info")) {
+  // 打车页面
+  if (obj?.data?.lubanData?.skin?.dataList?.length > 0) {
+    // oss营销皮肤
+    obj.data.lubanData.skin.dataList = obj.data.lubanData.skin.dataList.filter(
+      (i) => i?.uiSchemaId !== "239"
+    );
+  }
+} else if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   // 路线规划页
   if (obj?.data?.children?.length > 0) {
     // 有schema参数的为推广
-    obj.data.children = obj.data.children.filter((i) => !i?.hasOwnProperty("schema"));
+    obj.data.children = obj.data.children.filter((i) => !i.hasOwnProperty("schema"));
   }
 } else if (url.includes("/faas/amap-navigation/main-page")) {
   // 首页底部卡片
   if (obj?.data?.cardList?.length > 0) {
     obj.data.cardList = obj.data.cardList.filter(
       (i) =>
-        i.dataKey === "ContinueNavigationCard" || // 继续导航
-        i.dataKey === "FrequentLocation" || // 常去地点
-        i.dataKey === "LoginCard" // 登陆卡片
+        i?.dataKey === "ContinueNavigationCard" || // 继续导航
+        i?.dataKey === "FrequentLocation" || // 常去地点
+        i?.dataKey === "LoginCard" // 登陆卡片
     );
   }
   if (obj?.data?.mapBizList?.length > 0) {
     obj.data.mapBizList = obj.data.mapBizList.filter(
-      (i) => i.dataKey === "FindCarVirtualCard" // 显示关联车辆位置
+      (i) => i?.dataKey === "FindCarVirtualCard" // 显示关联车辆位置
     );
   }
 } else if (url.includes("/perception/drive/routePlan")) {
@@ -60,7 +68,7 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
 } else if (url.includes("/shield/dsp/profile/index/nodefaasv3")) {
   // 我的页面
   if (obj?.data?.cardList?.length > 0) {
-    obj.data.cardList = obj.data.cardList.filter((i) => i.dataKey === "MyOrderCard");
+    obj.data.cardList = obj.data.cardList.filter((i) => i?.dataKey === "MyOrderCard");
   }
   if (obj?.data?.tipData) {
     delete obj.data.tipData;
@@ -178,18 +186,6 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
       }
     }
   }
-  /**
-   * if (obj?.data?.amap_basemap_config) {
-   * let basemap = obj.data.amap_basemap_config;
-   * if (basemap?.status === 1 && basemap?.value !== "") {
-   * let objVal = JSON.parse(basemap.value);
-   * if (objVal?.v13Switch) {
-   * objVal.v13Switch = 0;
-   * }
-   * basemap.value = JSON.stringify(objVal);
-   * }
-   * }
-   */
 } else if (url.includes("/shield/search/common/coupon/info")) {
   if (obj?.data) {
     obj.data = {};
@@ -470,41 +466,41 @@ if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   }
 } else if (url.includes("/shield/search_poi/sug")) {
   if (obj?.tip_list) {
-    let newList = [];
+    let newLists = [];
     if (obj?.tip_list?.length > 0) {
       for (let item of obj.tip_list) {
         if (
-          ["12"].includes(item?.tip?.datatype_spec) ||
-          ["ad", "poi_ad", "toplist"].includes(item?.tip?.result_type) ||
-          ["ad", "exct_query_sug_merge_theme", "query_sug_merge_theme", "sp"].includes(item?.tip?.task_tag)
+          ["12"]?.includes(item?.tip?.datatype_spec) ||
+          ["ad", "poi_ad", "toplist"]?.includes(item?.tip?.result_type) ||
+          ["ad", "exct_query_sug_merge_theme", "query_sug_merge_theme", "sp"]?.includes(item?.tip?.task_tag)
         ) {
           continue;
         } else {
-          newList.push(item);
+          newLists.push(item);
         }
       }
-      obj.tip_list = newList;
+      obj.tip_list = newLists;
     }
   } else if (obj?.city_list) {
-    let newList = [];
+    let newLists = [];
     if (obj?.city_list?.length > 0) {
       for (let item of obj.city_list) {
-        let newTip = [];
+        let newTips = [];
         if (item?.tip_list?.length > 0) {
           for (let ii of item.tip_list) {
-            if (["12"].includes(ii?.tip?.datatype_spec)) {
+            if (["12"]?.includes(ii?.tip?.datatype_spec)) {
               continue;
-            } else if (["ad", "poi_ad"].includes(ii?.tip?.result_type)) {
+            } else if (["ad", "poi_ad"]?.includes(ii?.tip?.result_type)) {
               continue;
             } else {
-              newTip.push(ii);
+              newTips.push(ii);
             }
           }
-          item.tip_list = newTip;
+          item.tip_list = newTips;
         }
-        newList.push(item);
+        newLists.push(item);
       }
-      obj.city_list = newList;
+      obj.city_list = newLists;
     }
   }
 } else if (url.includes("/shield/search_poi/tips_operation_location")) {
