@@ -1,4 +1,4 @@
-// 2024-01-11 17:00
+// 2024-01-11 17:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -8,21 +8,11 @@ if (url.includes("/boss/car/order/content_info")) {
   // 打车页面
   if (obj?.data?.lubanData?.skin?.dataList?.length > 0) {
     // oss营销皮肤
-    obj.data.lubanData.skin.dataList = obj.data.lubanData.skin.dataList.filter(
-      (i) => i?.uiSchemaId !== "239"
-    );
+    obj.data.lubanData.skin.dataList = [];
   }
 } else if (url.includes("/boss/order_web/friendly_information")) {
   // 打车页面
-  const items = [
-    "banners",
-    "carouselTips",
-    "integratedBanners",
-    "integratedTips",
-    "skins",
-    "skinAndTips",
-    "tips"
-  ];
+  const items = ["banners", "carouselTips", "integratedBanners", "integratedTips", "skins", "skinAndTips", "tips"];
   if (obj?.data?.["105"]) {
     for (let i of items) {
       delete obj.data["105"][i];
