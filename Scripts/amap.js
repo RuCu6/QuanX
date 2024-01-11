@@ -1,16 +1,32 @@
-// 2024-01-11 16:35
+// 2024-01-11 17:00
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
-if (url.includes("boss/car/order/content_info")) {
+if (url.includes("/boss/car/order/content_info")) {
   // 打车页面
   if (obj?.data?.lubanData?.skin?.dataList?.length > 0) {
     // oss营销皮肤
     obj.data.lubanData.skin.dataList = obj.data.lubanData.skin.dataList.filter(
       (i) => i?.uiSchemaId !== "239"
     );
+  }
+} else if (url.includes("/boss/order_web/friendly_information")) {
+  // 打车页面
+  const items = [
+    "banners",
+    "carouselTips",
+    "integratedBanners",
+    "integratedTips",
+    "skins",
+    "skinAndTips",
+    "tips"
+  ];
+  if (obj?.data?.["105"]) {
+    for (let i of items) {
+      delete obj.data["105"][i];
+    }
   }
 } else if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   // 路线规划页
