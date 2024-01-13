@@ -1,7 +1,7 @@
 #!name = 网易云音乐
 #!desc = 音乐的力量不是用来看广告的
 #!author = RuCu6 Keywos
-#!update = 2024-01-13 21:45
+#!update = 2024-01-13 22:30
 
 # 播放页,多余图标,各种小提示,高品质音乐试用弹窗
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/(community\/task\/complete|mlog\/vinyl\/story\/list) url reject-dict
@@ -19,7 +19,7 @@
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/music-vip-membership\/client\/vip\/info url script-response-body https://raw.githubusercontent.com/Keywos/rule/main/JS/wyresParam_nolog.js
 
 # 热推,有话想说,分享一下,歌曲下的祝福等小提示 | 评论区,乐迷,星评等级,图标 | 发现页 |展示关注列表里未关注你的人 | 2024 newui首页
-^https:\/\/interface3?\.music\.163\.com\/eapi\/(v\d\/resource\/comment\/floor\/get|link\/page\/(discovery|rcmd)\/resource\/show|user\/follow\/users\/mixed\/get) url script-response-body https://raw.githubusercontent.com/Keywos/rule/main/JS/wyresParam_nolog.js
+^https:\/\/interface3?\.music\.163\.com\/eapi\/(v\d\/resource\/comment\/floor\/get|link\/page\/(discovery|rcmd)\/(resource\/show|block\/resource\/multi\/refresh)|user\/follow\/users\/mixed\/get) url script-response-body https://raw.githubusercontent.com/Keywos/rule/main/JS/wyresParam_nolog.js
 
 # 评论页,插入广告,评论瞬间,回复广告,星评馆
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/batch url script-response-body https://raw.githubusercontent.com/Keywos/rule/main/JS/wyresParam_nolog.js
