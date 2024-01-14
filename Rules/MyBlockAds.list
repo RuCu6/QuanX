@@ -1,4 +1,4 @@
-# 2023-12-18 17:05
+# 2024-01-14 13:10
 
 # ======= A ======= #
 # 阿里巴巴
@@ -54,6 +54,10 @@ HOST, images.ctfassets.net, REJECT
 HOST, mapi.apptimize.com, REJECT
 HOST, md-i-s.apptimize.com, REJECT
 
+# ======= D ======= #
+# DNS 无响应
+HOST, adttrackingprd.hwwt8.com, REJECT
+
 # ======= F ======= #
 # Foreca & Google
 HOST, pagead2.googlesyndication.com, REJECT
@@ -106,8 +110,6 @@ HOST, ad.tencentmusic.com, REJECT
 HOST, g.koowo.com, REJECT
 HOST, mobilead.kuwo.cn, REJECT
 HOST, rich.kuwo.cn, REJECT
-HOST, tmead.y.qq.com, REJECT
-HOST, tmeadcomm.y.qq.com, REJECT
 
 # ======= L ======= #
 # 蓝奏云
@@ -161,6 +163,9 @@ HOST, info6.video.qq.com, REJECT
 HOST, ios.video.mpush.qq.com, REJECT
 HOST, otheve.beacon.qq.com, REJECT
 HOST, pgdt.gtimg.cn, REJECT
+HOST, tmead.y.qq.com, REJECT
+HOST, tmeadbak.y.qq.com, REJECT
+HOST, tmeadcomm.y.qq.com, REJECT
 HOST, tpns.qq.com, REJECT
 HOST-SUFFIX, gdt.qq.com, REJECT
 HOST-SUFFIX, l.qq.com, REJECT
