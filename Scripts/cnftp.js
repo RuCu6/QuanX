@@ -1,4 +1,4 @@
-// 2023-12-09 23:25
+// 2024-01-14 18:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -141,7 +141,7 @@ if (isIQY) {
       // 评论资源位 无alias_name字段的为广告
       obj.cards = obj.cards.filter(
         (i) =>
-          i?.hasOwnProperty("alias_name") &&
+          i.hasOwnProperty("alias_name") &&
           !["comment_resource_card", "comment_resource_convention_card"]?.includes(i?.alias_name)
       );
     }
@@ -230,11 +230,12 @@ if (isIQY) {
         if (
           [
             "ad_mobile_flow", // 信息流广告
-            "hot_query_search_top_ad", //顶部广告
             "hot_query_bottom", // 底部图标
+            "hot_query_search_top_ad", //顶部广告
             "search_com_related_query", // 相关搜索
             "search_intent_detail_onesearch", // 为你推荐信息流
             "search_mid_text_ad", // 底部广告
+            "search_onebox_v2", // 搜索界面 赢年卡
             "search_small_card_ad", // 搜索短视频小图广告
             "search_topbanner_text", // 为你推荐标题
             "search_vip_banner" // vip营销
@@ -246,8 +247,14 @@ if (isIQY) {
           if (card?.blocks?.length > 0) {
             let newBlocks = [];
             for (let i of card.blocks) {
-              if (i?.hasOwnProperty("block_name")) {
+              if (i.hasOwnProperty("block_name")) {
                 newBlocks.push(i);
+              } else if (i.hasOwnProperty("block_type")) {
+                if (![861, 959]?.includes(i?.block_type)) {
+                  // 861搜索页精确搜索时 第一个自动播放的内容
+                  // 959广告
+                  newBlocks.push(i);
+                }
               }
             }
             card.blocks = newBlocks;
@@ -267,14 +274,14 @@ if (isIQY) {
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
-        if (card?.hasOwnProperty("block_class")) {
+        if (card.hasOwnProperty("block_class")) {
           // 有block_class字段的为广告
           continue;
         } else {
           if (card?.blocks?.length > 0) {
             let newItems = [];
             for (let item of card.blocks) {
-              if (item?.hasOwnProperty("block_class")) {
+              if (item.hasOwnProperty("block_class")) {
                 // 有block_class字段的为广告
                 continue;
               } else {
@@ -674,7 +681,7 @@ if (isIQY) {
                             if (iii?.typeName === "PHONE_FEED_CARD_S_AD") {
                               // 剧集 四格小图广告
                               continue;
-                            } else if (iii?.data?.hasOwnProperty("ad")) {
+                            } else if (iii?.data.hasOwnProperty("ad")) {
                               // 有ad字段的为广告
                               continue;
                             } else {
@@ -861,7 +868,7 @@ if (isIQY) {
     // 优酷 搜索页面组件
     if (obj?.data?.nodes?.length > 0) {
       // 仅保留搜索tab
-      obj.data.nodes = obj.data.nodes.filter((i) => i?.hasOwnProperty("data"));
+      obj.data.nodes = obj.data.nodes.filter((i) => i.hasOwnProperty("data"));
     }
   }
 }
