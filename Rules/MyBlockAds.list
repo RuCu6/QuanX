@@ -1,4 +1,4 @@
-# 2024-01-14 13:10
+# 2024-01-15 20:40
 
 # ======= A ======= #
 # 阿里巴巴
@@ -79,7 +79,6 @@ HOST, is.snssdk.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
-HOST-KEYWORD, -tos.pstatp.com, REJECT
 HOST-KEYWORD, asiad.byteactivity, REJECT
 HOST-KEYWORD, pangolin-sdk-toutiao, REJECT
 HOST-KEYWORD, pangolin.snssdk.com, REJECT
