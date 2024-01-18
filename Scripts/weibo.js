@@ -1,4 +1,4 @@
-// 2024-01-11 15:50
+// 2024-01-18 16:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -934,6 +934,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   // 放行无itemid字段的内容
                   newII.push(ii);
                 }
+                // 头像挂件,关注按钮
+                removeAvatar(ii?.data);
                 item.items = newII;
               }
             } else {
