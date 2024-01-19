@@ -1,4 +1,4 @@
-// 2024-01-18 16:05
+// 2024-01-19 10:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -588,7 +588,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               newItems.push(item);
             }
           } else if (item?.category === "card") {
-            if (!checkSearchWindow(item)) {
+            // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 249横版视频广告
+            if ([19, 118, 208, 217, 249]?.includes(item?.data?.card_type)) {
+              continue;
+            } else {
               newItems.push(item);
             }
           } else if (item?.category === "cell") {
@@ -596,9 +599,18 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             newItems.push(item);
           } else if (item?.category === "group") {
             if (item?.items?.length > 0) {
-              item.items = item.items.filter((i) => i.data?.card_type === 17);
-              newItems.push(item);
+              let newII = [];
+              for (let ii of item.items) {
+                if (ii?.data?.card_type === 182) {
+                  // 热议话题
+                  continue;
+                } else {
+                  newII.push(ii);
+                }
+              }
+              item.items = newII;
             }
+            newItems.push(item);
           }
         }
         obj.items = newItems;
@@ -614,12 +626,16 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           if (payload) {
             if (payload?.loadedInfo) {
               // 去除搜索框填充词
-              if (payload?.loadedInfo?.searchBarContent) {
-                delete payload.loadedInfo.searchBarContent;
+              if (payload?.loadedInfo?.searchBarContent?.length > 0) {
+                payload.loadedInfo.searchBarContent = [];
               }
               // 去除搜索背景图片
               if (payload?.loadedInfo?.headerBack?.channelStyleMap) {
                 delete payload.loadedInfo.headerBack.channelStyleMap;
+              }
+              // 搜索框样式
+              if (payload?.loadedInfo?.searchBarStyleInfo) {
+                delete payload.loadedInfo.searchBarStyleInfo;
               }
             }
             if (payload?.items?.length > 0) {
@@ -632,7 +648,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                     newItems.push(item);
                   }
                 } else if (item?.category === "card") {
-                  if (!checkSearchWindow(item)) {
+                  // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 249横版视频广告
+                  if ([19, 118, 208, 217, 249]?.includes(item?.data?.card_type)) {
+                    continue;
+                  } else {
                     newItems.push(item);
                   }
                 } else if (item?.category === "cell") {
@@ -640,9 +659,18 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   newItems.push(item);
                 } else if (item?.category === "group") {
                   if (item?.items?.length > 0) {
-                    item.items = item.items.filter((i) => i.data?.card_type === 17);
-                    newItems.push(item);
+                    let newII = [];
+                    for (let ii of item.items) {
+                      if (ii?.data?.card_type === 182) {
+                        // 热议话题
+                        continue;
+                      } else {
+                        newII.push(ii);
+                      }
+                    }
+                    item.items = newII;
                   }
+                  newItems.push(item);
                 }
               }
               payload.items = newItems;
@@ -1132,23 +1160,6 @@ function removeAvatar(data) {
     delete data.pic_bg_new;
   }
   return data;
-}
-
-// 移除搜索页组件
-function checkSearchWindow(item) {
-  if (
-    item.data?.card_type === 19 || // 找人 热议 本地
-    item.data?.card_type === 118 || // finder_window 横版大图
-    item.data?.card_type === 208 || // 实况热聊
-    item.data?.card_type === 217 ||
-    item.data?.card_type === 1005 ||
-    item.data?.itemid?.includes("finder_window") ||
-    item.data?.itemid?.includes("more_frame") ||
-    item.data?.mblog?.page_info?.actionlog?.source?.includes("ad")
-  ) {
-    return true;
-  }
-  return false;
 }
 
 // 移除信息流关注按钮,推广,热评
