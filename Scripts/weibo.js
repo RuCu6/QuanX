@@ -1,4 +1,4 @@
-// 2024-01-21 09:20
+// 2024-01-21 10:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -1060,7 +1060,12 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     removeVoteInfo(obj);
   } else if (url.includes("/2/video/tiny_stream_video_list")) {
     if (obj?.statuses?.length > 0) {
-      obj.statuses = obj.statuses.filter((m) => !(m.mblogtypename === "广告"));
+      // 移除视频自动连播
+      obj.statuses = [];
+      // obj.statuses = obj.statuses.filter((m) => !(m.mblogtypename === "广告"));
+    }
+    if (obj?.tab_list?.length > 0) {
+      obj.tab_list = [];
     }
   } else if (url.includes("/2/!/huati/discovery_home_bottom_channels")) {
     // 超话左上角,右上角图标
