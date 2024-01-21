@@ -1,4 +1,4 @@
-// 2024-01-19 10:35
+// 2024-01-21 09:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -588,8 +588,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               newItems.push(item);
             }
           } else if (item?.category === "card") {
-            // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 249横版视频广告
-            if ([19, 118, 208, 217, 249]?.includes(item?.data?.card_type)) {
+            // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 206,249横版视频广告
+            if ([19, 118, 206, 208, 217, 249]?.includes(item?.data?.card_type)) {
               continue;
             } else {
               newItems.push(item);
@@ -648,8 +648,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                     newItems.push(item);
                   }
                 } else if (item?.category === "card") {
-                  // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 249横版视频广告
-                  if ([19, 118, 208, 217, 249]?.includes(item?.data?.card_type)) {
+                  // 19热议等tab 118横版图片广告 208实况热聊 217错过了热词 206,249横版视频广告
+                  if ([19, 118, 206, 208, 217, 249]?.includes(item?.data?.card_type)) {
                     continue;
                   } else {
                     newItems.push(item);
