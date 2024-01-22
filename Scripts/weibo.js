@@ -1,4 +1,4 @@
-// 2024-01-22 11:35
+// 2024-01-22 17:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -242,6 +242,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       obj.user_list = obj.user_list.filter((i) => !["活动通知", "闪聊"]?.includes(i?.user?.name));
     }
   } else if (url.includes("/2/flowlist")) {
+    // 关注列表
     if (obj?.items?.length > 0) {
       for (let item of obj.items) {
         if (item?.items?.length > 0) {
@@ -251,6 +252,27 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
         }
       }
+    }
+  } else if (url.includes("/2/flowpage")) {
+    // 热搜列表
+    if (obj?.items?.length > 0) {
+      let newItems = [];
+      for (let item of obj.items) {
+        if (item?.items?.length > 0) {
+          let newII = [];
+          for (let i of item.items) {
+            if (i?.data.hasOwnProperty("promotion")) {
+              // 热搜列表中的推广项目
+              continue;
+            } else {
+              newII.push(i);
+            }
+          }
+          item.items = newII;
+        }
+        newItems.push(item);
+      }
+      obj.items = newItems;
     }
   } else if (url.includes("/2/groups/allgroups/v2")) {
     // 顶部tab
