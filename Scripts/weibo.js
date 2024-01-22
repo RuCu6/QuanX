@@ -1,4 +1,4 @@
-// 2024-01-21 10:40
+// 2024-01-22 09:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -601,8 +601,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item?.items?.length > 0) {
               let newII = [];
               for (let ii of item.items) {
-                if (ii?.data?.card_type === 182) {
-                  // 热议话题
+                if ([118, 182]?.includes(ii?.data?.card_type)) {
+                  // 118横版广告图片 182热议话题
                   continue;
                 } else {
                   newII.push(ii);
@@ -661,8 +661,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   if (item?.items?.length > 0) {
                     let newII = [];
                     for (let ii of item.items) {
-                      if (ii?.data?.card_type === 182) {
-                        // 热议话题
+                      if ([118, 182]?.includes(ii?.data?.card_type)) {
+                        // 118横版广告图片 182热议话题
                         continue;
                       } else {
                         newII.push(ii);
