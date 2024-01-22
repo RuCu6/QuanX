@@ -1,7 +1,7 @@
 #!name = 网易云音乐
 #!desc = 音乐的力量不是用来看广告的
 #!author = RuCu6 Keywos
-#!update = 2024-01-15 18:50
+#!update = 2024-01-22 08:55
 
 # 热推 有话想说 分享一下 歌曲下的祝福等小提示 ｜ 评论区 乐迷 星评等级 关注 等图标
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/(batch|v2\/resource\/comment\/floor\/) url script-response-body https://raw.githubusercontent.com/Keywos/rule/main/JS/wyresParam_nolog.js
@@ -35,7 +35,7 @@
 ^https?:\/\/interface3?\.music\.163\.com\/eapi\/(community\/friends\/fans-group\/artist\/group\/|mine\/applet\/redpoint|music\/songshare\/text\/recommend\/|resniche\/position\/play\/new\/|resource\/comments?\/musiciansaid\/|user\/sub\/artist) url reject-dict
 
 # 今日运势 商城 Beat专区 音乐收藏家 | type:ACTIVITY | 低至5.2折
-^https?:\/\/interface3?\.music\.163\.com\/eapi\/(content\/activity\/music\/|delivery\/(batch-deliver|deliver)|moment\/tab\/info\/|side-bar\/mini-program\/music-service\/account|yunbei\/account\/entrance\/) url reject-dict
+^https?:\/\/interface3?\.music\.163\.com\/eapi\/(delivery\/(batch-deliver|deliver)|moment\/tab\/info\/|side-bar\/mini-program\/music-service\/account|yunbei\/account\/entrance\/) url reject-dict
 
 # 开屏广告
 ^https?:\/\/interface3?\.music\.163\.com\/e?api\/(ocpc\/)?ad\/ url reject-dict
