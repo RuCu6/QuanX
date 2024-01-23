@@ -1,4 +1,4 @@
-// 2023-12-24 10:10
+// 2024-01-23 09:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -146,9 +146,9 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
           }
         } else if (floor?.mId === "userinfo") {
           // 个人页 顶部背景图
-          if (floor?.data?.bgImgInfo?.bgImg) {
-            delete floor.data.bgImgInfo.bgImg;
-          }
+          // if (floor?.data?.bgImgInfo?.bgImg) {
+          //   delete floor.data.bgImgInfo.bgImg;
+          // }
           // 开通plus会员卡片
           if (floor?.data?.newPlusBlackCard) {
             delete floor.data.newPlusBlackCard;
@@ -185,7 +185,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
   }
   // 首页 顶部背景图
   // if (obj?.topBgImgBig) {
-    // delete obj.topBgImgBig;
+  //   delete obj.topBgImgBig;
   // }
   // 首页 下拉二楼
   if (obj?.webViewFloorList?.length > 0) {
