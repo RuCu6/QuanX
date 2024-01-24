@@ -2,24 +2,24 @@
 # 2024-01-23 15:00
 
 # China Area Network
+HOST, download.jetbrains.com, DIRECT
+HOST, origin-a.akamaihd.ne, DIRECT
 HOST-SUFFIX, flyert.com, DIRECT
 HOST-SUFFIX, gandi.net, DIRECT
 HOST-SUFFIX, snapdrop.net, DIRECT
-HOST, download.jetbrains.com, DIRECT
-HOST, origin-a.akamaihd.ne, DIRECT
 # ---(Microsoft)---
 # > Outlook
 HOST, outlook.office365.com, DIRECT
 HOST, smtp-mail.outlook.com, DIRECT
 HOST, smtp.office365.com, DIRECT
 # > Windows Server Update Services
+HOST, download.microsoft.com, DIRECT
+HOST, wustat.windows.com, DIRECT
+HOST, ntservicepack.microsoft.com, DIRECT
 HOST-SUFFIX, dl.delivery.mp.microsoft.com, DIRECT
 HOST-SUFFIX, update.microsoft.com, DIRECT
 HOST-SUFFIX, windowsupdate.com, DIRECT
 HOST-SUFFIX, windowsupdate.microsoft.com, DIRECT
-HOST, download.microsoft.com, DIRECT
-HOST, wustat.windows.com, DIRECT
-HOST, ntservicepack.microsoft.com, DIRECT
 # ------
 # > PayPal
 HOST-SUFFIX, paypal.com, DIRECT

@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/Global.list
-# 2024-01-24 20:10
+# 2024-01-24 22:05
 
 # (D.C.S.G?)
 HOST-SUFFIX, 9cache.com, PROXY
@@ -256,9 +256,9 @@ HOST-SUFFIX, bloomberg.com, PROXY
 HOST-SUFFIX, bloomberg.de, PROXY
 HOST-SUFFIX, bloombergview.com, PROXY
 # > Clubhouse
+HOST, clubhouse.pubnubapi.com, PROXY
 HOST-SUFFIX, clubhouseapi.com, PROXY
 HOST-SUFFIX, joinclubhouse.com, PROXY
-HOST, clubhouse.pubnubapi.com, PROXY
 # > Crypto
 HOST-SUFFIX, aex.com, PROXY
 HOST-SUFFIX, bibox.com, PROXY
@@ -302,10 +302,10 @@ HOST-SUFFIX, dropbox.com, PROXY
 HOST-SUFFIX, dropboxapi.com, PROXY
 HOST-SUFFIX, dropboxusercontent.com, PROXY
 # > Fastly
-HOST-SUFFIX, freetls.fastly.net, PROXY
 HOST, cloud-cdn-digitalocean-com.global.ssl.fastly.net, PROXY
 HOST, github.global.ssl.fastly.net, PROXY
 HOST, nytimes.map.fastly.net, PROXY
+HOST-SUFFIX, freetls.fastly.net, PROXY
 # > Line
 HOST-SUFFIX, line.me, PROXY
 HOST-SUFFIX, line-apps.com, PROXY
@@ -338,6 +338,10 @@ HOST-SUFFIX, whatsapp.com, PROXY
 HOST-SUFFIX, whatsapp.net, PROXY
 HOST-KEYWORD, .facebook., PROXY
 # > Microsoft
+HOST, assets1.xboxlive.com, PROXY
+HOST, assets2.xboxlive.com, PROXY
+HOST, az416426.vo.msecnd.net, PROXY
+HOST, az668014.vo.msecnd.net, PROXY
 HOST-SUFFIX, aka.ms, PROXY
 HOST-SUFFIX, github.blog, PROXY
 HOST-SUFFIX, github.com, PROXY
@@ -346,10 +350,6 @@ HOST-SUFFIX, githubassets.com, PROXY
 HOST-SUFFIX, githubusercontent.com, PROXY
 HOST-SUFFIX, onedrive.live.com, PROXY
 HOST-SUFFIX, streaming.mediaservices.windows.net, PROXY
-HOST, assets1.xboxlive.com, PROXY
-HOST, assets2.xboxlive.com, PROXY
-HOST, az416426.vo.msecnd.net, PROXY
-HOST, az668014.vo.msecnd.net, PROXY
 # > Pinterest
 HOST-SUFFIX, pinimg.com, PROXY
 HOST-KEYWORD, .pinterest., PROXY
@@ -366,8 +366,8 @@ HOST-SUFFIX, redditstatic.com, PROXY
 HOST-SUFFIX, reuters.com, PROXY
 HOST-SUFFIX, reutersmedia.net, PROXY
 # > Steam
-HOST-SUFFIX, steamcommunity.com, PROXY
 # HOST, store.steampowered.com, PROXY
+HOST-SUFFIX, steamcommunity.com, PROXY
 # > Telegram
 HOST-SUFFIX, legra.ph, PROXY
 HOST-SUFFIX, t.me, PROXY
@@ -428,33 +428,33 @@ HOST-SUFFIX, wikiversity.org, PROXY
 HOST-SUFFIX, wikivoyage.org, PROXY
 HOST-SUFFIX, wiktionary.org, PROXY
 # > Yahoo
-HOST-SUFFIX, yahoo.com, PROXY
 HOST, search.yahoo.co.jp, PROXY
+HOST-SUFFIX, yahoo.com, PROXY
 # > Yandex
-HOST-SUFFIX, yadi.sk, PROXY
 HOST, disk.yandex.com, PROXY
+HOST-SUFFIX, yadi.sk, PROXY
 
 # (Region-Restricted Access Denied)
+HOST, addons.mozilla.org, PROXY
+HOST, wego.here.com, PROXY
 HOST-SUFFIX, aicoin.com, PROXY
 HOST-SUFFIX, aimoon.com, PROXY
 HOST-SUFFIX, engadget.com, PROXY
 HOST-SUFFIX, ifixit.com, PROXY
 HOST-SUFFIX, terabox.com, PROXY
 HOST-SUFFIX, zaobao.com.sg, PROXY
-HOST, addons.mozilla.org, PROXY
-HOST, wego.here.com, PROXY
 # > Alphabet
 HOST-SUFFIX, go.dev, PROXY
 HOST-SUFFIX, golang.org, PROXY
 
 # ---(Apple)---
-HOST-SUFFIX, appsto.re, PROXY
-HOST-SUFFIX, smoot.apple.com, PROXY
 HOST, amp-api.podcasts.apple.com, PROXY
 HOST, beta.music.apple.com, PROXY
 HOST, books.itunes.apple.com, PROXY
 HOST, lookup-api.apple.com, PROXY
 HOST, radio.itunes.apple.com, PROXY
+HOST-SUFFIX, appsto.re, PROXY
+HOST-SUFFIX, smoot.apple.com, PROXY
 # > Web Preview
 HOST, apps.apple.com, PROXY
 HOST, books.apple.com, PROXY
@@ -462,13 +462,13 @@ HOST, itunes.apple.com, PROXY
 HOST, tv.apple.com, PROXY
 # > News
 HOST, gateway.icloud.com, PROXY
-HOST-SUFFIX, apple.news, PROXY
 HOST, news-assets.apple.com, PROXY
 HOST, news-client.apple.com, PROXY
 HOST, news-client-search.apple.com, PROXY
 HOST, news-edge.apple.com, PROXY
 HOST, news-events.apple.com, PROXY
 HOST, apple.comscoreresearch.com, PROXY
+HOST-SUFFIX, apple.news, PROXY
 
 # ------
 # > Microsoft
@@ -494,6 +494,7 @@ HOST-SUFFIX, stash-activation.com, PROXY
 HOST-KEYWORD, xn--, PROXY
 # > PikPak
 HOST-SUFFIX, mypikpak.com, PROXY
+HOST-KEYWORD, mypikpak, PROXY
 
 # ---(机场)---
 HOST, sub.jsy88.net, PROXY
