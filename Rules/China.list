@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/China.list
-# 2023-12-10 14:45
+# 2024-01-23 15:00
 
 # China Area Network
 HOST-SUFFIX, flyert.com, DIRECT
@@ -71,6 +71,14 @@ HOST-SUFFIX, tjupt.org, DIRECT
 HOST-SUFFIX, totheglory.im, DIRECT
 # > CN Web
 HOST, www.4khdr.cn, DIRECT
+# > Emby
+HOST, emby.plusmedia.site, DIRECT
+HOST, jz.mcjoker.xyz, DIRECT
+# > Soul
+HOST-SUFFIX, soulapp.cn, DIRECT
+IP-CIDR, 8.210.3.170/32, DIRECT
+IP-CIDR, 47.56.131.76/32, DIRECT
+IP-CIDR, 47.75.72.47/32, DIRECT
 
 # GeoIP
 GEOIP, CN, DIRECT

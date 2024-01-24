@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/Global.list
-# 2023-12-31 19:05
+# 2024-01-24 20:10
 
 # (D.C.S.G?)
 HOST-SUFFIX, 9cache.com, PROXY
@@ -492,6 +492,8 @@ HOST-SUFFIX, stash.wiki, PROXY
 HOST-SUFFIX, stash-activation.com, PROXY
 # > Punycode
 HOST-KEYWORD, xn--, PROXY
+# > PikPak
+HOST-SUFFIX, mypikpak.com, PROXY
 
 # ---(机场)---
 HOST, sub.jsy88.net, PROXY
