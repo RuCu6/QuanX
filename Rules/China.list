@@ -1,5 +1,5 @@
 # https://github.com/DivineEngine/Profiles/blob/master/Quantumult/Filter/China.list
-# 2024-01-23 15:00
+# 2024-01-26 22:55
 
 # China Area Network
 HOST, download.jetbrains.com, DIRECT
@@ -77,7 +77,6 @@ HOST, jz.mcjoker.xyz, DIRECT
 # > Soul
 HOST-SUFFIX, soulapp.cn, DIRECT
 IP-CIDR, 8.210.3.170/32, DIRECT
-IP-CIDR, 47.56.131.76/32, DIRECT
 IP-CIDR, 47.75.72.47/32, DIRECT
 
 # GeoIP
