@@ -1,10 +1,18 @@
-// 2024-01-12 09:10
+// 2024-02-01 15:15
 
 const url = $request.url;
 const isResp = typeof $response !== "undefined";
 let body = $response.body;
 
 switch (isResp) {
+  // 草榴社区-评论区广告
+  case /^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\?/.test(url):
+    try {
+      body = body.replace(/spinit\(\)/g, "spinit0()");
+    } catch (err) {
+      console.log(`草榴社区-评论区广告, 出现异常: ` + err);
+    }
+    break;
   // 嘀嗒出行-开屏广告
   case /^https:\/\/capis(-?\w*)?\.didapinche\.com\/ad\/cx\/startup\?/.test(url):
     try {
