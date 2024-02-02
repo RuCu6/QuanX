@@ -1,4 +1,4 @@
-// 2024-02-02 18:02
+// 2024-02-02 18:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -252,6 +252,21 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
         }
       }
+    }
+    if (obj?.channelInfo?.channels?.length > 0) {
+      let newTabs = [];
+      for (let tab of obj.channelInfo.channels) {
+        if (/_selfrecomm/.test(tab?.flowId)) {
+          // 关注页推荐tab
+          continue;
+        } else if (/_chaohua/.test(tab?.flowId)) {
+          // 关注页超话tab
+          continue;
+        } else {
+          newTabs.push(tab);
+        }
+      }
+      obj.channelInfo.channels = newTabs;
     }
   } else if (url.includes("/2/flowpage")) {
     // 热搜列表
