@@ -1,4 +1,4 @@
-// 2024-02-02 18:10
+// 2024-02-02 18:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -115,6 +115,22 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 首页右上角按钮
     if (obj?.elements?.length > 0) {
       obj.elements = obj.elements.filter((i) => i.app_name === "写微博" || i.app_name === "图片" || i.app_name === "视频");
+    }
+  } else if (url.includes("/2/client/tabbar")) {
+    // 首页底部tab节日图标
+    if (obj?.var_icons?.length > 0) {
+      for (let icon of obj.var_icons) {
+        if (icon?.start) {
+          icon.start = "3818332800"; // Unix 时间戳 2090-12-31 00:00:00
+        }
+        if (icon?.end) {
+          icon.end = "3818419199"; // Unix 时间戳 2090-12-31 23:59:59
+        }
+        if (icon?.resource) {
+          // 资源包链接
+          delete icon.resource;
+        }
+      }
     }
   } else if (url.includes("/2/comments/build_comments")) {
     // 评论区
