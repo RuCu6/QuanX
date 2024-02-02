@@ -1,4 +1,4 @@
-// 2024-02-02 18:10
+// 2024-02-02 19:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -388,6 +388,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
           if (item?.itemId?.includes("INTEREST_PEOPLE")) {
             // 可能感兴趣的人
+            continue;
+          }
+          if (item?.profile_type_id === "weibo_cardpics") {
+            // 近期热门 精选微博 那年今日等横版内容
             continue;
           }
           if (item?.items?.length > 0) {
