@@ -1,0 +1,46 @@
+# 2024-02-04 10:25
+
+# 垃圾影音
+HOST, cf.xmsl.org, DIRECT
+
+# 普拉斯影业
+HOST, emby-best.xeton.dev, DIRECT
+HOST, emby-cf.plusmedia.site, Emby
+HOST, emby.plusmedia.site, Emby
+HOST, emby.xeton.dev, Emby
+HOST, jellyfin.xeton.dev, Emby
+HOST, movie.xeton.dev, Emby
+HOST, servers.xeton.dev, Emby
+
+# 叔服
+HOST, emby3.mcjoker.xyz, Emby
+HOST, jz.mcjoker.xyz, DIRECT
+
+# 私房菜
+HOST, notnetflix.cos.cat, Emby
+
+# Lend
+HOST, emby.lcloud.wiki, Emby
+
+# Marmot
+HOST, v.20120714.xyz, Emby
+
+# MisakaF
+HOST, cdn.misakaf.org, DIRECT
+HOST, emby.misakaf.org, Emby
+HOST, push-kr.misakaf.org, Emby
+IP-CIDR, 102.223.180.108/32, Emby
+
+# NMEmby
+HOST, film.ohhhh.org, Emby
+
+# Temby
+HOST, temby.285286.xyz, Emby
+HOST, temby4837.285286.xyz, Emby
+
+# TreeDiagram
+HOST, 789.123456.al, Emby
+
+# ntRRR
+HOST, stream.ntrrr.top, Emby
+HOST, stream.synn.cc, Emby
