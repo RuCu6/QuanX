@@ -1,4 +1,4 @@
-// 2024-02-02 19:20
+// 2024-02-07 17:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -127,7 +127,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item?.data?.user) {
               // 头像挂件,关注按钮
               removeAvatar(item?.data);
-              if (["超话社区", "微博热搜", "微博视频"]?.includes(item.data?.user?.name)) {
+              if (["超话社区", "微博开新年", "微博热搜", "微博视频"]?.includes(item.data?.user?.name)) {
                 continue;
               }
             }
