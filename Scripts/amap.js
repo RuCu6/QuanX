@@ -1,4 +1,4 @@
-// 2024-01-11 17:45
+// 2024-02-11 20:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -38,6 +38,25 @@ if (url.includes("/boss/car/order/content_info")) {
     obj.data.mapBizList = obj.data.mapBizList.filter(
       (i) => i?.dataKey === "FindCarVirtualCard" // 显示关联车辆位置
     );
+  }
+} else if (url.includes("/perception/drive/routeInfo")) {
+  // 导航详情页
+  if (obj?.data?.tbt?.event?.length > 0) {
+    obj.data.tbt.event = obj.data.tbt.event.filter((i) => !/ads-\d+/.test(i?.dynamic_id_s));
+  }
+  if (obj?.data?.front_end) {
+    if (obj?.data?.front_end?.guide_tips?.length > 0) {
+      // 音乐底栏
+      obj.data.front_end.guide_tips = obj.data.front_end.guide_tips.filter((i) => i?.biz_type !== "music");
+    }
+    if (obj?.data?.front_end?.assistant) {
+      // 助手皮肤
+      delete obj.data.front_end.assistant;
+    }
+    if (obj?.data?.front_end?.download?.length > 0) {
+      // 导航插播语音广告
+      obj.data.front_end.download = obj.data.front_end.download.filter((i) => !/ads-\d+/.test(i?.dynamic_id_s));
+    }
   }
 } else if (url.includes("/perception/drive/routePlan")) {
   // 路线规划页
