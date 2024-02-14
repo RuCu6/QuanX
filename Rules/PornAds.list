@@ -1,4 +1,4 @@
-# 2024-02-14 16:05
+# 2024-02-14 17:20
 
 # General
 HOST, ads.exoclick.com, REJECT
@@ -13,8 +13,8 @@ HOST, a.magsrv.com, REJECT
 HOST, s.magsrv.com, REJECT
 
 # https://missav.com/
-HOST, creatice.myavlive.com, REJECT
 HOST, creative.bbrdbr.com, REJECT
+HOST, creative.myavlive.com, REJECT
 HOST, go.bbrdbr.com, REJECT
 HOST, go.mnaspm.com, REJECT
 HOST, go.myavlive.com, REJECT
