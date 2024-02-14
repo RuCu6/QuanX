@@ -1,4 +1,4 @@
-# 2023-12-05 14:40
+# 2024-02-14 16:05
 
 # General
 HOST, ads.exoclick.com, REJECT
@@ -11,6 +11,16 @@ HOST-SUFFIX, juicyads.com, REJECT
 # https://www.eporner.com/
 HOST, a.magsrv.com, REJECT
 HOST, s.magsrv.com, REJECT
+
+# https://missav.com/
+HOST, creatice.myavlive.com, REJECT
+HOST, creative.bbrdbr.com, REJECT
+HOST, go.bbrdbr.com, REJECT
+HOST, go.mnaspm.com, REJECT
+HOST, go.myavlive.com, REJECT
+HOST, go.stripchat.com, REJECT
+HOST, go.xhamsterlive.com, REJECT
+HOST, go.xxxjmp.com, REJECT
 
 # https://www.xvideos.com/
 HOST, a.orbsrv.com, REJECT
