@@ -1,4 +1,4 @@
-// 2024-02-14 16:05
+// 2024-02-14 17:20
 
 const url = $request.url;
 const isResp = typeof $response !== "undefined";
@@ -242,7 +242,7 @@ switch (isResp) {
   // MISSAV-播放弹窗
   case /^https:\/\/missav\.com\/(dm\d+\/)?\w{2}\/[\w-]+/.test(url):
     try {
-      body = body.replace(/if\x20?\(nextDirectUrl\)/g, "if (rucu6)");
+      body = body.replace(/if\x20?\(nextDirectUrl\)/g, "if (rucu6)").replace(/htmlAdIndexes\.push/g, "// htmlAdIndexes.push");
     } catch (err) {
       console.log(`MISSAV-播放弹窗, 出现异常: ` + err);
     }
