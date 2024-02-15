@@ -1,28 +1,50 @@
-# 2024-02-14 18:00
+# 2024-02-15 12:15
 
-# General
-HOST, ads.exoclick.com, REJECT
-HOST, partwithner.com, REJECT
-HOST, pv.vipads.cc, REJECT
-HOST, www.vipads.live, REJECT
-HOST-SUFFIX, adxadserv.com, REJECT
-HOST-SUFFIX, jads.co, REJECT
-HOST-SUFFIX, juicyads.com, REJECT
-
-# https://www.eporner.com/
+HOST, 4lke.online, REJECT
+HOST, a.adtng.com, REJECT
 HOST, a.magsrv.com, REJECT
-HOST, s.magsrv.com, REJECT
-
-# https://missav.com/
+HOST, a.orbsrv.com, REJECT
+HOST, ads.exoclick.com, REJECT
 HOST, creative.bbrdbr.com, REJECT
+HOST, creative.mnaspm.com, REJECT
 HOST, creative.myavlive.com, REJECT
+HOST, creative.rmhfrtnd.com, REJECT
+HOST, etahub.com, REJECT
+HOST, evtubescms.phncdn.com, REJECT
+HOST, ezozojawg.com, REJECT
+HOST, go.aoalmfwinbsstec23.com, REJECT
 HOST, go.bbrdbr.com, REJECT
+HOST, go.go-srv.com, REJECT
 HOST, go.mnaspm.com, REJECT
 HOST, go.myavlive.com, REJECT
-HOST, go.stripchat.com, REJECT
+HOST, go.rmhfrtnd.com, REJECT
+HOST, go.spankbanglive.com, REJECT
 HOST, go.xhamsterlive.com, REJECT
+HOST, go.xliirdr.com, REJECT
+HOST, go.xlivesex.com, REJECT
+HOST, go.xlivrdr.com, REJECT
 HOST, go.xxxjmp.com, REJECT
-
-# https://www.xvideos.com/
-HOST, a.orbsrv.com, REJECT
+HOST, go.xxxviijmp.com, REJECT
+HOST, go.xxxvjmp.com, REJECT
+HOST, hhbypdoecp.com, REJECT
+HOST, ht.youporn.com, REJECT
+HOST, partwithner.com, REJECT
+HOST, pv.vipads.cc, REJECT
+HOST, r.trackwilltrk.com, REJECT
+HOST, reactads.engine.adglare.net, REJECT
+HOST, rockpoint.xhamster.com, REJECT
+HOST, s.magsrv.com, REJECT
 HOST, s.orbsrv.com, REJECT
+HOST, video.mnaspm.com, REJECT
+HOST, www.vipads.live, REJECT
+HOST-SUFFIX, adxadserv.com, REJECT
+HOST-SUFFIX, chaturbate.com, REJECT
+HOST-SUFFIX, faphouse.com, REJECT
+HOST-SUFFIX, jads.co, REJECT
+HOST-SUFFIX, juicyads.com, REJECT
+HOST-SUFFIX, stripchat.com, REJECT
+HOST-SUFFIX, stripchat.ooo, REJECT
+HOST-SUFFIX, trafficjunky.com, REJECT
+HOST-SUFFIX, trafficjunky.net, REJECT
+HOST-SUFFIX, tsyndicate.com, REJECT
+HOST-KEYWORD, -cdn2.adtng.com, REJECT
