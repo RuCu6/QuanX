@@ -1,12 +1,13 @@
-# 2024-02-15 12:15
+# 2024-02-15 14:40
 
 HOST, 4lke.online, REJECT
 HOST, a.adtng.com, REJECT
+HOST, a.labadena.com, REJECT
 HOST, a.magsrv.com, REJECT
 HOST, a.orbsrv.com, REJECT
+HOST, a.shukriya90.com, REJECT
 HOST, ads.exoclick.com, REJECT
 HOST, creative.bbrdbr.com, REJECT
-HOST, creative.mnaspm.com, REJECT
 HOST, creative.myavlive.com, REJECT
 HOST, creative.rmhfrtnd.com, REJECT
 HOST, etahub.com, REJECT
@@ -15,7 +16,6 @@ HOST, ezozojawg.com, REJECT
 HOST, go.aoalmfwinbsstec23.com, REJECT
 HOST, go.bbrdbr.com, REJECT
 HOST, go.go-srv.com, REJECT
-HOST, go.mnaspm.com, REJECT
 HOST, go.myavlive.com, REJECT
 HOST, go.rmhfrtnd.com, REJECT
 HOST, go.spankbanglive.com, REJECT
@@ -28,6 +28,7 @@ HOST, go.xxxviijmp.com, REJECT
 HOST, go.xxxvjmp.com, REJECT
 HOST, hhbypdoecp.com, REJECT
 HOST, ht.youporn.com, REJECT
+HOST, mail.kguapp.com, REJECT
 HOST, partwithner.com, REJECT
 HOST, pv.vipads.cc, REJECT
 HOST, r.trackwilltrk.com, REJECT
@@ -35,13 +36,17 @@ HOST, reactads.engine.adglare.net, REJECT
 HOST, rockpoint.xhamster.com, REJECT
 HOST, s.magsrv.com, REJECT
 HOST, s.orbsrv.com, REJECT
-HOST, video.mnaspm.com, REJECT
+HOST, uug27.com, REJECT
+HOST, www.traforama.com, REJECT
 HOST, www.vipads.live, REJECT
+HOST, x.eccorp.cc, REJECT
 HOST-SUFFIX, adxadserv.com, REJECT
 HOST-SUFFIX, chaturbate.com, REJECT
+HOST-SUFFIX, clarity.ms, REJECT
 HOST-SUFFIX, faphouse.com, REJECT
 HOST-SUFFIX, jads.co, REJECT
 HOST-SUFFIX, juicyads.com, REJECT
+HOST-SUFFIX, mnaspm.com, REJECT
 HOST-SUFFIX, stripchat.com, REJECT
 HOST-SUFFIX, stripchat.ooo, REJECT
 HOST-SUFFIX, trafficjunky.com, REJECT
