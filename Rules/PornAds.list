@@ -1,4 +1,4 @@
-# 2024-02-15 14:40
+# 2024-02-15 15:20
 
 HOST, 4lke.online, REJECT
 HOST, a.adtng.com, REJECT
@@ -29,6 +29,7 @@ HOST, go.xxxvjmp.com, REJECT
 HOST, hhbypdoecp.com, REJECT
 HOST, ht.youporn.com, REJECT
 HOST, mail.kguapp.com, REJECT
+HOST, marine.xhamster.com, REJECT
 HOST, partwithner.com, REJECT
 HOST, pv.vipads.cc, REJECT
 HOST, r.trackwilltrk.com, REJECT
@@ -43,6 +44,7 @@ HOST, x.eccorp.cc, REJECT
 HOST-SUFFIX, adxadserv.com, REJECT
 HOST-SUFFIX, chaturbate.com, REJECT
 HOST-SUFFIX, clarity.ms, REJECT
+HOST-SUFFIX, doppiocdn.live, REJECT
 HOST-SUFFIX, faphouse.com, REJECT
 HOST-SUFFIX, jads.co, REJECT
 HOST-SUFFIX, juicyads.com, REJECT
