@@ -1,4 +1,4 @@
-# 2024-02-15 10:45
+# 2024-02-15 11:35
 
 # ======= A ======= #
 # 阿里巴巴
@@ -58,14 +58,6 @@ HOST, md-i-s.apptimize.com, REJECT
 # DNS 无响应
 HOST, adttrackingprd.hwwt8.com, REJECT
 
-# ======= F ======= #
-# Foreca & Google
-HOST, pagead2.googlesyndication.com, REJECT
-HOST, www.googleadservices.com, REJECT
-HOST-SUFFIX, adservice.google.com, REJECT
-HOST-KEYWORD, adservice.google.com, REJECT
-HOST-KEYWORD, ads.g.doubleclick, REJECT
-
 # ======= G ======= #
 # 高德地图
 HOST, amap-aos-info-nogw.amap.com, REJECT
@@ -80,8 +72,13 @@ HOST, ad.zijieapi.com, REJECT
 HOST, i.snssdk.com, REJECT
 HOST, is.snssdk.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
+HOST, pagead2.googlesyndication-cn.com, REJECT
+HOST, pagead2.googlesyndication.com, REJECT
+HOST, www.googleadservices.com, REJECT
+HOST-SUFFIX, adservice.google.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
+HOST-KEYWORD, ads.g.doubleclick, REJECT
 HOST-KEYWORD, asiad.byteactivity, REJECT
 HOST-KEYWORD, pangolin-sdk-toutiao, REJECT
 HOST-KEYWORD, pangolin.snssdk.com, REJECT
