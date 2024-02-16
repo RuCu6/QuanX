@@ -1,4 +1,4 @@
-# 2024-02-15 15:20
+# 2024-02-16 10:20
 
 HOST, 4lke.online, REJECT
 HOST, a.adtng.com, REJECT
@@ -7,6 +7,8 @@ HOST, a.magsrv.com, REJECT
 HOST, a.orbsrv.com, REJECT
 HOST, a.shukriya90.com, REJECT
 HOST, ads.exoclick.com, REJECT
+HOST, aff-partners-io.ck-cdn.com, REJECT
+HOST, aff.partners.io, REJECT
 HOST, creative.bbrdbr.com, REJECT
 HOST, creative.myavlive.com, REJECT
 HOST, creative.rmhfrtnd.com, REJECT
