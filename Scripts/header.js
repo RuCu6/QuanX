@@ -1,4 +1,4 @@
-// 2024-02-16 17:25
+// 2024-02-16 17:55
 
 const url = $request.url;
 const header = $request.headers;
@@ -30,8 +30,8 @@ if (url.includes("/amdc/mobileDispatch")) {
     "com.cars.otsmobile.initNewSysCache",
     "com.cars.otsmobile.initProvince",
     "com.cars.otsmobile.integration.activityBanner", // 活动横幅
-    "com.cars.otsmobile.memberInfo.getMemberQa",
-    "com.cars.otsmobile.memberInfo.integrationHomeInit",
+    // "com.cars.otsmobile.memberInfo.getMemberQa",
+    // "com.cars.otsmobile.memberInfo.integrationHomeInit",
     // "com.cars.otsmobile.newHomePage.getWeatherByStationCode", // 天气信息
     "com.cars.otsmobile.newHomePage.initData",
     "com.cars.otsmobile.newHomePageBussData",
