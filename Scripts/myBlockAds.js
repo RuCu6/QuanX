@@ -1,4 +1,4 @@
-// 2024-02-18 19:10
+// 2024-02-18 19:20
 
 const url = $request.url;
 const isResp = typeof $response !== "undefined";
@@ -188,58 +188,6 @@ switch (isResp) {
       body = JSON.stringify(obj);
     } catch (err) {
       console.log(`小米商城-物流页推广, 出现异常: ` + err);
-    }
-    break;
-  // 中国移动云盘-开屏广告
-  case /^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\//.test(url):
-    try {
-      let obj = JSON.parse(body);
-      if (obj?.body) {
-        if (obj?.body?.length > 0) {
-          for (let item of obj.body) {
-            if (item?.onlineTime) {
-              item.onlineTime = "2090-12-31 00:00:00";
-            }
-            if (item?.offlineTime) {
-              item.offlineTime = "2090-12-31 23:59:59";
-            }
-            if (item?.materialList?.length > 0) {
-              item.materialList = [];
-            }
-          }
-        } else {
-          obj.body = {};
-        }
-      }
-      body = JSON.stringify(obj);
-    } catch (err) {
-      console.log(`中国移动云盘-开屏广告, 出现异常: ` + err);
-    }
-    break;
-  // 中国移动云盘-开屏广告2
-  case /^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent/.test(url):
-    try {
-      let obj = JSON.parse(body);
-      if (obj?.data?.length > 0) {
-        for (let item of obj.data) {
-          if (item?.actsList?.length > 0) {
-            for (let i of item.actsList) {
-              if (i?.putStartTime) {
-                i.putStartTime = "2090-12-31 00:00:00.0";
-              }
-              if (i?.putEndTime) {
-                i.putEndTime = "2090-12-31 23:59:59.0";
-              }
-              if (i?.adUrl) {
-                i.adUrl = "";
-              }
-            }
-          }
-        }
-      }
-      body = JSON.stringify(obj);
-    } catch (err) {
-      console.log(`中国移动云盘-开屏广告2, 出现异常: ` + err);
     }
     break;
   // JavDB
