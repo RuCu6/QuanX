@@ -1,4 +1,4 @@
-// 2024-02-18 19:20
+// 2024-02-18 20:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -17,6 +17,7 @@ if (url.includes("ad.mcloud.139.com/advertapi/adv-filter/")) {
             "APP-我的-悬浮窗",
             "APP-我的-文字链",
             "APP-我的-活动推广专区",
+            "APP-相册上传界面-banner",
             "APP-首页-云朵中心卡片"
           ]?.includes(item?.adposname)
         ) {
