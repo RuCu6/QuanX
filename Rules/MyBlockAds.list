@@ -1,4 +1,4 @@
-# 2024-02-19 10:10
+# 2024-02-19 17:25
 
 # ======= A ======= #
 # 阿里巴巴
@@ -38,7 +38,8 @@ HOST-SUFFIX, pos.baidu.com, REJECT
 HOST, afd.baidu.com, REJECT
 HOST, afdconf.baidu.com, REJECT
 HOST, lc.map.baidu.com, REJECT
-# 百度贴吧
+# 百度
+IP-CIDR, 180.76.76.112/32, REJECT
 IP-CIDR, 180.76.76.200/32, REJECT
 
 # ======= C ======= #
