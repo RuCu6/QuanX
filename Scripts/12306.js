@@ -1,7 +1,8 @@
-// 2023-02-22 18:20
+// 2024-02-19 10:45
 
-let body;
+let body = "";
 let obj = JSON.parse($request.body);
+const isQuanX = typeof $task !== "undefined";
 
 if (obj.placementNo === "0007") {
   body =
@@ -12,4 +13,8 @@ if (obj.placementNo === "0007") {
   body = '{"code":"00","message":"无广告返回"}';
 }
 
-$done({ body });
+if (isQuanX) {
+  $done({ body });
+} else {
+  $done({ response: { body } });
+}
