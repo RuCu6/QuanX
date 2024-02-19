@@ -1,4 +1,4 @@
-# 2024-02-15 11:35
+# 2024-02-19 10:10
 
 # ======= A ======= #
 # 阿里巴巴
@@ -64,7 +64,6 @@ HOST, amap-aos-info-nogw.amap.com, REJECT
 HOST, awaken.amap.com, REJECT
 HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行
-HOST, image.mybank.icbc.com.cn, REJECT
 HOST, pageviewp.icbc.com.cn, REJECT
 HOST-SUFFIX, mall.icbc.com.cn, REJECT
 # 广告联盟
@@ -72,10 +71,13 @@ HOST, ad.zijieapi.com, REJECT
 HOST, i.snssdk.com, REJECT
 HOST, is.snssdk.com, REJECT
 HOST, open.e.kuaishou.com, REJECT
+HOST, open.kuaishou.com, REJECT
 HOST, pagead2.googlesyndication-cn.com, REJECT
 HOST, pagead2.googlesyndication.com, REJECT
 HOST, www.googleadservices.com, REJECT
+HOST-SUFFIX, ads.linkedin.com, REJECT
 HOST-SUFFIX, adservice.google.com, REJECT
+HOST-SUFFIX, kuaishouzt.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
 HOST-KEYWORD, ads.g.doubleclick, REJECT
@@ -130,12 +132,9 @@ HOST, rprain.log.mgtv.com, REJECT
 HOST, vip.bz.mgtv.com, REJECT
 HOST-SUFFIX, da.mgtv.com, REJECT
 # 美团
-HOST, al-log.d.meituan.net, REJECT
-HOST, babel-statistics-android.d.meituan.net, REJECT
 HOST, maplocatesdksnapshot.d.meituan.net, REJECT
 HOST, metrics-picture.d.meituan.net, REJECT
-HOST, open.kuaishouzt.com, REJECT
-HOST, route-stats.d.meituan.net, REJECT
+IP-CIDR, 103.37.155.60/32, REJECT
 # 美颜相机
 HOST, aaid.uyunad.com, REJECT
 HOST, adui.tg.meitu.com, REJECT
