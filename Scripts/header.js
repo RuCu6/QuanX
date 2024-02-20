@@ -1,4 +1,4 @@
-// 2024-02-20 17:15
+// 2024-02-20 17:20
 
 const url = $request.url;
 const header = $request.headers;
@@ -34,9 +34,9 @@ if (url.includes("/amdc/mobileDispatch")) {
     // "com.cars.otsmobile.memberInfo.integrationHomeInit", // 铁路会员 会员信息
     // "com.cars.otsmobile.newHomePage.getWeatherByStationCode", // 天气信息
     "com.cars.otsmobile.newHomePage.initData", // 热门资讯
-    "com.cars.otsmobile.newHomePageBussData", // 商品信息流
+    "com.cars.otsmobile.newHomePageBussData" // 商品信息流
     // "com.cars.otsmobile.newHomePageRefresh",
-    "com.cars.otsmobile.travelPage.initData" // 出行服务
+    // "com.cars.otsmobile.travelPage.initData", // 出行服务
   ];
   if (isQuanX) {
     if (list12306?.includes(opt12306)) {
