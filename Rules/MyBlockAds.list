@@ -1,4 +1,4 @@
-# 2024-02-19 17:25
+# 2024-03-01 09:05
 
 # ======= A ======= #
 # 阿里巴巴
@@ -62,7 +62,6 @@ HOST, adttrackingprd.hwwt8.com, REJECT
 # ======= G ======= #
 # 高德地图
 HOST, amap-aos-info-nogw.amap.com, REJECT
-HOST, awaken.amap.com, REJECT
 HOST, free-aos-cdn-image.amap.com, REJECT
 # 工商银行
 HOST, pageviewp.icbc.com.cn, REJECT
