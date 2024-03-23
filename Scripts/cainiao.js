@@ -1,27 +1,10 @@
-// 2024-02-18 15:50
+// 2024-03-23 19:00
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
-if (url.includes("guoguo.nbnetflow.ads.show")) {
-  // 我的页面
-  if (obj?.data?.result?.length > 0) {
-    // 29338 寄件会员
-    // 29339 裹酱积分
-    // 33927 绿色能量
-    // 36649 回收旧物
-    obj.data.result = obj.data.result.filter(
-      (i) =>
-        !(
-          i?.materialContentMapper?.adItemDetail ||
-          (i?.materialContentMapper?.bgImg && i?.materialContentMapper?.advRecGmtModifiedTime) ||
-          ["common_header_banner", "entertainment", "kuaishou_banner"]?.includes(i?.materialContentMapper?.group_id) ||
-          ["29338", "29339", "32103", "33927", "36649"]?.includes(i?.id)
-        )
-    );
-  }
-} else if (url.includes("guoguo.nbnetflow.ads.mshow")) {
+if (url.includes(".guoguo.nbnetflow.ads.mshow")) {
   // 首页
   if (obj?.data) {
     const items = [
@@ -53,11 +36,29 @@ if (url.includes("guoguo.nbnetflow.ads.show")) {
       }
     }
   }
-} else if (url.includes("nbfriend.message.conversation.list")) {
+} else if (url.includes(".guoguo.nbnetflow.ads.show")) {
+  // 我的页面
+  if (obj?.data?.result?.length > 0) {
+    // 29338 寄件会员
+    // 29339 裹酱积分
+    // 33927 绿色能量
+    // 36649 回收旧物
+    obj.data.result = obj.data.result.filter(
+      (i) =>
+        !(
+          i?.materialContentMapper?.adItemDetail ||
+          (i?.materialContentMapper?.bgImg && i?.materialContentMapper?.advRecGmtModifiedTime) ||
+          ["common_header_banner", "entertainment", "kuaishou_banner"]?.includes(i?.materialContentMapper?.group_id) ||
+          ["29338", "29339", "32103", "33927", "36649"]?.includes(i?.id)
+        )
+    );
+  }
+} else if (url.includes(".nbfriend.message.conversation.list")) {
+  // 消息中心
   if (obj?.data?.data?.length > 0) {
     obj.data.data = obj.data.data.filter((i) => i?.conversationId?.includes("logistic_message"));
   }
-} else if (url.includes("nbpresentation.pickup.empty.page.get")) {
+} else if (url.includes(".nbpresentation.pickup.empty.page.get")) {
   // 取件页面
   if (obj?.data?.result) {
     let ggContent = obj.data.result.content;
@@ -72,7 +73,7 @@ if (url.includes("guoguo.nbnetflow.ads.show")) {
       );
     }
   }
-} else if (url.includes("nbpresentation.protocol.homepage.get")) {
+} else if (url.includes(".nbpresentation.protocol.homepage.get")) {
   // 首页
   if (obj?.data?.result?.dataList?.length > 0) {
     let newLists = [];
