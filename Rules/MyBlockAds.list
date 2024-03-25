@@ -1,4 +1,4 @@
-# 2024-03-17 06:05
+# 2024-03-25 12:35
 
 # ======= A ======= #
 # 阿里巴巴
@@ -228,7 +228,6 @@ HOST, youku-acs.m.taobao.com, REJECT
 # 云闪付 开屏广告
 HOST, ads.95516.com, REJECT
 HOST, switch.cup.com.cn, REJECT
-HOST, tysdk.95516.com, REJECT
 # Yandex
 HOST, yandexmetrica.com, REJECT
 
