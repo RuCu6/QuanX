@@ -1,4 +1,4 @@
-// 2024-01-23 09:50
+// 2024-04-03 16:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -111,6 +111,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
             delete floor.data.floatLayer;
           }
         } else if (floor?.mId === "iconToolFloor") {
+          /*
           // 底部工具栏
           if (floor?.data?.nodes?.length > 0) {
             const sortLists = [
@@ -139,6 +140,7 @@ if (url.includes("functionId=deliverLayer") || url.includes("functionId=orderTra
                 .sort((a, b) => sortLists.indexOf(a?.functionId) - sortLists.indexOf(b?.functionId));
             }
           }
+          */
         } else if (floor?.mId === "orderIdFloor") {
           if (floor?.data?.commentRemindInfo?.infos?.length > 0) {
             // 发布评价的提醒
