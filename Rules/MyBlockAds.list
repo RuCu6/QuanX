@@ -1,4 +1,4 @@
-# 2024-04-07 22:30
+# 2024-04-13 17:00
 
 # ======= A ======= #
 # 阿里巴巴
@@ -195,8 +195,6 @@ HOST-SUFFIX, 163jiasu.com, REJECT
 HOST, huodong.weibo.cn, REJECT
 HOST-SUFFIX, biz.weibo.com, REJECT
 # 微信
-HOST, finderks.video.qq.com, REJECT
-HOST, finderv1.video.qq.com, REJECT
 HOST, wxsnsdy.wxs.qq.com, REJECT
 HOST, wxsnsdythumb.wxs.qq.com, REJECT
 
