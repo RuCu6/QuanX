@@ -1,4 +1,4 @@
-// 2024-02-18 19:20
+// 2024-04-19 10:30
 
 const url = $request.url;
 const isResp = typeof $response !== "undefined";
@@ -223,7 +223,7 @@ switch (isResp) {
       } else if (url.includes("/api/v1/users")) {
         // 伪装会员
         if (obj?.data?.user) {
-          obj.data.user.vip_expired_at = "2090-12-31T23:59:59.000+08:00";
+          // obj.data.user.vip_expired_at = "2090-12-31T23:59:59.000+08:00";
           obj.data.user.is_vip = true;
         }
       } else if (url.includes("/api/v4/movies/")) {
