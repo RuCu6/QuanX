@@ -1,4 +1,4 @@
-// 2023-11-17 11:30
+// 2024-04-23 08:45
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -68,6 +68,19 @@ if (url.includes("/api/cloud/config/all")) {
     obj.config.zvideo_max_number = 1;
     obj.config.is_show_followguide_alert = false;
   }
+} else if (url.includes("/bazaar/vip_tab/header")) {
+  if (obj?.activity_banner) {
+    // 一元领会员
+    delete obj.activity_banner;
+  }
+  if (obj?.activity_window) {
+    // 会员弹窗
+    delete obj.activity_window;
+  }
+  if (obj?.vip_tip) {
+    // 开通会员提示信息
+    delete obj.vip_tip;
+  }
 } else if (url.includes("/commercial_api/app_float_layer")) {
   // 悬浮图标
   if ("feed_egg" in obj) {
@@ -136,7 +149,7 @@ if (url.includes("/api/cloud/config/all")) {
   // 热榜排行榜
   if (obj?.data?.length > 0) {
     // 品牌甄选
-    obj.data = obj.data.filter((i) => !i?.hasOwnProperty("ad"));
+    obj.data = obj.data.filter((i) => !i.hasOwnProperty("ad"));
   }
 } else if (url.includes("/topstory/recommend")) {
   // 推荐信息流
@@ -172,7 +185,7 @@ if (url.includes("/api/cloud/config/all")) {
           return false;
         }
         return true;
-      } else if (i.type.includes("aggregation_card")) {
+      } else if (i.type?.includes("aggregation_card")) {
         // 横排卡片 知乎热榜
         return false;
       } else if (i.type === "feed_advert") {
