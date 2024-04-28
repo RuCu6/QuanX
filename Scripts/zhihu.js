@@ -1,10 +1,15 @@
-// 2024-04-23 08:45
+// 2024-04-29 00:55
 
 if (!$response.body) $done({});
 const url = $request.url;
 let obj = JSON.parse($response.body);
 
-if (url.includes("/api/cloud/config/all")) {
+if (url.includes("/answers/v2/") || url.includes("/articles/v2/")) {
+  // 2024-04-29 新版知乎 回答列表下的相关提问
+  if (obj?.third_business?.related_queries?.queries?.length > 0) {
+    obj.third_business.related_queries.queries = [];
+  }
+} else if (url.includes("/api/cloud/config/all")) {
   if (obj?.data?.configs) {
     obj.data.configs.forEach((i) => {
       if (i.configKey === "feed_gray_theme") {
