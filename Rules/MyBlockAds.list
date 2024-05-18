@@ -1,4 +1,4 @@
-# 2024-05-18 10:30
+# 2024-05-18 12:40
 
 # ======= A ======= #
 # 阿里巴巴
@@ -77,11 +77,15 @@ HOST, pagead2.googlesyndication.com, REJECT
 HOST, ws.tapjoyads.com, REJECT
 HOST, www.googleadservices.com, REJECT
 HOST-SUFFIX, ads.linkedin.com, REJECT
+HOST-SUFFIX, ads.vungle.com, REJECT
 HOST-SUFFIX, adservice.google.com, REJECT
+HOST-SUFFIX, applovin.com, REJECT
+HOST-SUFFIX, applvn.com, REJECT
 HOST-SUFFIX, appsflyer.com, REJECT
 HOST-SUFFIX, appsflyersdk.com, REJECT
 HOST-SUFFIX, kuaishouzt.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
+HOST-SUFFIX, unityads.unity3d.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
 HOST-KEYWORD, ads.g.doubleclick, REJECT
 HOST-KEYWORD, asiad.byteactivity, REJECT
