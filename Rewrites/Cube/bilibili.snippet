@@ -1,7 +1,7 @@
 #!name = 哔哩哔哩
 #!desc = 没有广告的哔哩哔哩更值得干杯
 #!author = RuCu6 Maasea
-#!update = 2024-02-08 14:20
+#!update = 2024-05-23 13:25
 
 # Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
 ^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/protoA.js
@@ -25,7 +25,7 @@
 # 开屏广告 //app.bilibili.com
 ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH url reject-dict
 ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH url reject-dict
-^https:\/\/api\.bilibili\.com\/x\/mengqi\/v1\/resource\? url reject-dict
+^https:\/\/(api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download)\? url reject-dict
 ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/json.js
 
 # 我的页面 伪装会员,皮肤推送 //app.bilibili.com
