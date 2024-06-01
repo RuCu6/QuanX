@@ -1,4 +1,4 @@
-# 2024-05-31 17:35
+# 2024-06-01 07:00
 
 # ======= A ======= #
 # 阿里巴巴
@@ -218,10 +218,10 @@ HOST, sdkconfig.ad.xiaomi.com, REJECT
 
 # ======= Y ======= #
 # 移花宫
-HOST, 3117kc.saigmpl.com, REJECT
-HOST, 314240585f1fb7266kcc.fwxhvvd.com, REJECT
-HOST, 314240585f1fb7266kg.oiocklg.com, REJECT
 HOST, tong.8888888888.bid, REJECT
+HOST-KEYWORD, kc.saigmpl.com, REJECT
+HOST-KEYWORD, kcc.fwxhvvd.com, REJECT
+HOST-KEYWORD, kg.oiocklg.com, REJECT
 # 优酷 & 菜鸟
 ;HOST, acs.youku.com, REJECT
 HOST, acs4baichuan.m.taobao.com, REJECT
