@@ -1,4 +1,4 @@
-// 2024-02-20 19:55
+// 2024-06-11 20:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -60,13 +60,13 @@ if (url.includes("/boss/car/order/content_info")) {
   }
 } else if (url.includes("/perception/drive/routePlan")) {
   // 路线规划页
+  const items = [
+    "assistant", // 左上角悬浮动图
+    "global_guide_data",
+    "route_search",
+    "start_button_tips" // 开始导航 悬浮提示 全国车道级
+  ];
   if (obj?.data?.front_end) {
-    const items = [
-      "assistant", // 左上角悬浮动图
-      "global_guide_data",
-      "route_search",
-      "start_button_tips" // 开始导航 悬浮提示 全国车道级
-    ];
     for (let i of items) {
       delete obj.data.front_end[i];
     }
@@ -230,8 +230,8 @@ if (url.includes("/boss/car/order/content_info")) {
   }
 } else if (url.includes("/shield/search/nearbyrec_smart")) {
   // 附近页面
+  const items = ["head", "search_hot_words", "feed_rec"];
   if (obj?.data?.modules?.length > 0) {
-    const items = ["head", "search_hot_words", "feed_rec"];
     if (obj?.data?.modules?.length > 0) {
       obj.data.modules = obj.data.modules.filter((i) => items?.includes(i));
     }
@@ -268,6 +268,7 @@ if (url.includes("/boss/car/order/content_info")) {
     "cpt_service_shop", //买卖二手房
     // "craftsman_entry",
     // "crowd_index", // 人流量情况
+    "dayTripList", // 热门一日游
     // "detailFeedCommodity",
     // "detail_bottom_shop_service",
     "discount_commodity", // 优惠团购
@@ -307,12 +308,14 @@ if (url.includes("/boss/car/order/content_info")) {
     "house_rent_sale_agency",
     // "human_traffic", // 人流量情况 有统计图
     "image_banner",
+    "legSameIndustryRecEntrance", // 全城最热景点推荐
     "legal_document", // 房源法律信息
     "listBizRec_1",
     "listBizRec_2", // 周边餐饮
     "matrix_banner", // 高德车服
     "merchantSettlement", // 商家店铺管理
     "membership", // 高德菲住卡 会员项目
+    "mini_hook_shelf", // 购票迷你模块
     "movie_info", // 优惠购票 景点宣传片
     "multi_page_anchor", // 二级导航菜单 门票 评论 推荐
     // "navbarMore", // 右上角三点
@@ -394,6 +397,7 @@ if (url.includes("/boss/car/order/content_info")) {
     "upload_bar", // 上传照片
     "verification", // 商家已入驻
     // "video",
+    "waistRecEntrance", // 更多人气好去处
     "waterFallFeed", // 附近景点瀑布流
     "waterFallFeedTitle" // 更多好去处
   ];
