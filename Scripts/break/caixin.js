@@ -1,5 +1,7 @@
 // 2024-07-13 12:15
 
+if (!$response) $done({});
+if (!$response.body) $done({});
 var url = $request.url;
 var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
