@@ -1,4 +1,4 @@
-// 2023-12-13 16:00
+// 2024-07-13 12:15
 
 var url = $request.url;
 var header = $request.headers;
@@ -24,7 +24,7 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
     delete header["user-agent"];
   }
   $done({ headers: header });
-} else if (url.includes("/validate?")) {
+} else if (url.includes("/validate?") || url.includes("/neWValidate?")) {
   // 会员数据
   url = url
     .replace(/uid=\d+/g, myUid)
