@@ -1,50 +1,8 @@
-// 2024-07-13 12:15
+// 2024-07-16 17:00
 
-if (!$response) $done({});
-if (!$response.body) $done({});
 var url = $request.url;
-var header = $request.headers;
 const isQuanX = typeof $task !== "undefined";
 
-// 到期时间 即将到期
-const myAppinfo = "";
-const myUid = "uid=12983287";
-const myCode = "code=C4CE1DC9446504809B719B97D4DAA5FF";
-const myDevice = "device=4877567e479337d1c4b5d7e327883b3677c2b16e";
-
-if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
-  // 会员数据
-  header["appinfo"] = myAppinfo;
-  delete header["authentication"];
-  if (isQuanX) {
-    delete header["Cookie"];
-    delete header["User-Agent"];
-    delete header["requestTime"];
-  } else {
-    delete header["cookie"];
-    delete header["requesttime"];
-    delete header["user-agent"];
-  }
-  $done({ headers: header });
-} else if (url.includes("/validate?") || url.includes("/neWValidate?")) {
-  // 会员数据
-  url = url
-    .replace(/uid=\d+/g, myUid)
-    .replace(/code=\w+/g, myCode)
-    .replace(/device=\w+/g, myDevice)
-    .replace(/deviceType=\d+/g, "deviceType=1")
-    .replace(/&_t=\d+/g, "");
-  if (isQuanX) {
-    delete header["Cookie"];
-    delete header["Referer"];
-    delete header["User-Agent"];
-  } else {
-    delete header["cookie"];
-    delete header["referer"];
-    delete header["user-agent"];
-  }
-  $done({ url: url, headers: header });
-} else {
   if (url.includes("/gg.caixin.com/s")) {
     // 开屏广告
     let body = $response.body;
@@ -62,6 +20,8 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
       $done({ body });
     }
   } else {
+    if (!$response) $done({});
+    if (!$response.body) $done({});
     let obj = JSON.parse($response.body);
     if (url.includes("/api/dataplus/columns")) {
       // 首页-数据通
@@ -113,4 +73,4 @@ if (url.includes("/validateAudioAuth") || url.includes("/groupImageValidate")) {
     }
     $done({ body: JSON.stringify(obj) });
   }
-}
+  
