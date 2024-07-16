@@ -1,7 +1,7 @@
 #!name = 财新
 #!desc = 移除所有推广，解锁会员。
 #!author = RuCu6
-#!update = 2024-07-16 17:00
+#!update = 2024-07-16 20:00
 
 # 财新数据通
 ^https:\/\/entities\.caixin\.com\/api\/(dataplus\/promotionHints|public\/push\/appIndex|public\/recommendNews) url reject-dict
@@ -22,7 +22,7 @@
 
 # 文章中间推广,文章底部相关阅读
 ^https:\/\/gg\.caixin\.com\/s\?z=caixin&slot=\d+ url reject-dict
-^https:\/\/mappsv5\.caixin\.com\/articlev5\/\d+\/\d+\.json url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
+^https:\/\/mappsv5\.caixin\.com\/articlev5\/\d+\/\d+\.json$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 ^https:\/\/mapps?v5\.caixin\.com\/(channelv5\/list|\/?index_page_v5\/)\w+ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 首页弹出框
