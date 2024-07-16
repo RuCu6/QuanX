@@ -1,14 +1,11 @@
 #!name = 财新
 #!desc = 移除所有推广，解锁会员。
 #!author = RuCu6
-#!update = 2024-07-13 12:10
+#!update = 2024-07-16 17:00
 
 # 财新数据通
 ^https:\/\/entities\.caixin\.com\/api\/(dataplus\/promotionHints|public\/push\/appIndex|public\/recommendNews) url reject-dict
 ^https:\/\/entities\.caixin\.com\/api\/dataplus\/columns url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
-
-# 会员解锁
-^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/(groupImageValidate|neWValidate|validate|validateAudioAuth) url script-request-header https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
 
 # 文章底部广告,搜索框填充词
 ^https:\/\/gateway\.caixin\.com\/api\/app-api\/(caixinapp\/appinfo|search\/getkeyword) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/break/caixin.js
