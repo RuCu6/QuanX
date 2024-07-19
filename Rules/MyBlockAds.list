@@ -1,4 +1,4 @@
-# 2024-07-13 22:40
+# 2024-07-19 15:15
 
 # ======= A ======= #
 # 阿里巴巴
@@ -45,6 +45,7 @@ IP-CIDR, 180.76.76.200/32, REJECT
 
 # ======= C ======= #
 # 彩云天气
+HOST, abyss.cyapi.cn, REJECT
 HOST, ad.cyapi.cn, REJECT
 # 昌原云充
 HOST, m.adyounger.com, REJECT
@@ -72,15 +73,24 @@ HOST, pageviewp.icbc.com.cn, REJECT
 HOST-SUFFIX, mall.icbc.com.cn, REJECT
 # 广告联盟
 HOST, ad.zijieapi.com, REJECT
+HOST, adapi.izuiyou.com, REJECT
 HOST, adtracker.adfunlink.com, REJECT
+HOST, dig.bdurl.net, REJECT
+HOST, dsp-x.jd.com, REJECT
+HOST, et.tanx.com, REJECT
+HOST, gdfp.gifshow.com, REJECT
 HOST, init.supersonicads.com, REJECT
 HOST, is.snssdk.com, REJECT
+HOST, janapi.jd.com, REJECT
+HOST, mercury-gateway.ixiaochuan.cn, REJECT
 HOST, open.e.kuaishou.com, REJECT
 HOST, open.kuaishou.com, REJECT
 HOST, pagead2.googlesyndication-cn.com, REJECT
 HOST, pagead2.googlesyndication.com, REJECT
+HOST, sdk.e.qq.com, REJECT
 HOST, ws.tapjoyads.com, REJECT
 HOST, www.googleadservices.com, REJECT
+HOST, xlog.jd.com, REJECT
 HOST-SUFFIX, ads.linkedin.com, REJECT
 HOST-SUFFIX, ads.vungle.com, REJECT
 HOST-SUFFIX, adservice.google.com, REJECT
@@ -91,7 +101,9 @@ HOST-SUFFIX, appsflyer.com, REJECT
 HOST-SUFFIX, appsflyersdk.com, REJECT
 HOST-SUFFIX, kuaishouzt.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
+HOST-SUFFIX, ubixioe.com, REJECT
 HOST-SUFFIX, unityads.unity3d.com, REJECT
+HOST-SUFFIX, zijieapi.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
 HOST-KEYWORD, ads.g.doubleclick, REJECT
 HOST-KEYWORD, asiad.byteactivity, REJECT
