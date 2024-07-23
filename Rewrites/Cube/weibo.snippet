@@ -1,7 +1,7 @@
 #!name = 微博
 #!desc = 全面净化
 #!author = RuCu6 zmqcherish
-#!update = 2024-01-22 17:00
+#!update = 2024-07-23 10:45
 
 # 首页 签到,发布按钮,侧边栏,右上角红包,顶部tab,侧边栏提醒,超话tab悬浮,顶部直播
 ^https:\/\/api\.weibo\.cn\/2\/(checkin\/show|client\/publisher_list|push\/active)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
@@ -41,7 +41,7 @@
 
 # 开屏广告 //*.uve.weibo.com
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime url reject-dict
-^https:\/\/bootpreload\.uve\.weibo\.com\/v1\/ad\/preload url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
+^https:\/\/bootpreload\.uve\.weibo\.com\/v[12]\/ad\/preload url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(get-lbs-cell-info\.php|sdkconfig\.php) url reject
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
 ^https:\/\/wbapp\.uve\.weibo\.com\/(preload\/get_ad|wbapplua\/wbpullad\.lua)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
