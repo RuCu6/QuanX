@@ -1,4 +1,4 @@
-// 2024-04-29 00:55
+// 2024-07-27 22:30
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -143,6 +143,11 @@ if (url.includes("/answers/v2/") || url.includes("/articles/v2/")) {
   }
   if (obj?.query_info) {
     delete obj.query_info;
+  }
+} else if (url.includes("/root/tab")) {
+  // 首页顶部标签页
+  if (obj?.tab_list?.length > 0) {
+    obj.tab_list = obj.tab_list.filter((i) => !["想法", "故事"]?.includes(i?.tab_name));
   }
 } else if (url.includes("/topstory/hot-lists/everyone-seeing")) {
   // 热榜信息流
