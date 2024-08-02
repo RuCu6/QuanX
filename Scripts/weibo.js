@@ -1,4 +1,4 @@
-// 2024-07-26 13:00
+// 2024-08-02 23:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -110,6 +110,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     // 首页签到
     if (obj?.show) {
       obj.show = 0;
+    }
+    if (obj?.show_time) {
+      obj.show_time = 0;
     }
   } else if (url.includes("/2/client/publisher_list")) {
     // 首页右上角按钮
@@ -650,8 +653,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               newItems.push(item);
             }
           } else if (item?.category === "card") {
-            // 19热议等tab 118横版广告图片 206,249横版视频广告 208实况热聊 217错过了热词 236微博趋势
-            if ([19, 118, 206, 208, 217, 236, 249]?.includes(item?.data?.card_type)) {
+            // 19热议等tab 118横版广告图片 206,249横版视频广告 208实况热聊 217错过了热词 236微博趋势 261奥运滚动横幅
+            if ([19, 118, 206, 208, 217, 236, 249, 261]?.includes(item?.data?.card_type)) {
               continue;
             } else if (item?.data?.card_type === 101 && item?.data?.cate_id === "1114") {
               // 微博趋势标题
@@ -716,8 +719,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                     newItems.push(item);
                   }
                 } else if (item?.category === "card") {
-                  // 19热议等tab 118横版广告图片 206,249横版视频广告 208实况热聊 217错过了热词 236微博趋势
-                  if ([19, 118, 206, 208, 217, 236, 249]?.includes(item?.data?.card_type)) {
+                  // 19热议等tab 118横版广告图片 206,249横版视频广告 208实况热聊 217错过了热词 236微博趋势 261奥运滚动横幅
+                  if ([19, 118, 206, 208, 217, 236, 249, 261]?.includes(item?.data?.card_type)) {
                     continue;
                   } else if (item?.data?.card_type === 101 && item?.data?.cate_id === "1114") {
                     // 微博趋势标题
