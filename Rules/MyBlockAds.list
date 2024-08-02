@@ -1,4 +1,4 @@
-# 2024-07-21 21:35
+# 2024-08-02 16:45
 
 # ======= A ======= #
 # 阿里巴巴
@@ -90,7 +90,6 @@ HOST, pagead2.googlesyndication.com, REJECT
 HOST, sdk.e.qq.com, REJECT
 HOST, ws.tapjoyads.com, REJECT
 HOST, www.googleadservices.com, REJECT
-HOST, xlog.jd.com, REJECT
 HOST-SUFFIX, ads.linkedin.com, REJECT
 HOST-SUFFIX, ads.vungle.com, REJECT
 HOST-SUFFIX, adservice.google.com, REJECT
@@ -131,6 +130,10 @@ IP6-CIDR, 2402:db40:5100:1011::5/128, REJECT
 HOST, api.liquidlink.cn, REJECT
 
 # ======= K ======= #
+# 酷狗音乐
+HOST, ads.service.kugou.com, REJECT
+HOST, adserviceretry.kglink.cn, REJECT
+HOST, adserviceretry.kugou.com, REJECT
 # 酷我音乐
 HOST, ad.tencentmusic.com, REJECT
 HOST, g.koowo.com, REJECT
@@ -222,6 +225,8 @@ HOST, huodong.weibo.cn, REJECT
 HOST-SUFFIX, biz.weibo.com, REJECT
 # 微信
 HOST, badjs.weixinbridge.com, REJECT
+HOST, dns.weixin.qq.com.cn, REJECT
+HOST-SUFFIX, wxs.qq.com, REJECT
 
 # ======= X ======= #
 # 小米
