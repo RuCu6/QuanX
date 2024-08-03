@@ -1,4 +1,4 @@
-# 2024-08-02 16:45
+# 2024-08-03 08:30
 
 # ======= A ======= #
 # 阿里巴巴
@@ -132,7 +132,6 @@ HOST, api.liquidlink.cn, REJECT
 # ======= K ======= #
 # 酷狗音乐
 HOST, ads.service.kugou.com, REJECT
-HOST, adserviceretry.kglink.cn, REJECT
 HOST, adserviceretry.kugou.com, REJECT
 # 酷我音乐
 HOST, ad.tencentmusic.com, REJECT
