@@ -1,4 +1,4 @@
-// 2024-06-11 20:25
+// 2024-08-07 19:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -16,6 +16,37 @@ if (url.includes("/boss/car/order/content_info")) {
   if (obj?.data?.["105"]) {
     for (let i of items) {
       delete obj.data["105"][i];
+    }
+  }
+} else if (url.includes("/c3frontend/af-hotel/page/main")) {
+  // 酒店/民宿 景区门票 火车/飞机
+  if (obj?.data?.modules?.CouponPortalCard) {
+    // 横幅推广
+    delete obj.data.modules.CouponPortalCard;
+  }
+  if (obj?.data?.modules?.CouponWidget) {
+    // 右下角活动悬浮窗
+    delete obj.data.modules.CouponWidget;
+  }
+  if (obj?.data?.modules?.recommended_list) {
+    // 高德建议
+    delete obj.data.modules.recommended_list;
+  }
+  if (obj?.data?.modules?.user_filter_card) {
+    const items = [
+      "banner", // 大横幅
+      "bannerList", // 滚动横幅推广
+      "service_data", // 全网比价 退订便捷 入住保障 资质规则
+      "sug_items_data" // 高德建议
+    ];
+    if (obj?.data?.modules?.user_filter_card?.data) {
+      for (let i of items) {
+        delete obj.data.modules.user_filter_card.data[i];
+      }
+      if (obj?.data?.modules?.user_filter_card?.data?.search_button_data?.rightbgText) {
+        // 查询按钮右上角角标
+        delete obj.data.modules.user_filter_card.data.search_button_data.rightbgText;
+      }
     }
   }
 } else if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
@@ -119,7 +150,7 @@ if (url.includes("/boss/car/order/content_info")) {
   if (obj?.data?.memberInfo) {
     delete obj.data.memberInfo;
   }
-} else if (url.includes("/shield/frogserver/aocs")) {
+} else if (url.includes("/shield/frogserver/aocs/updatable/")) {
   // 整体图层
   const items = [
     // "ARWalkNavi", // AR导航
@@ -153,7 +184,7 @@ if (url.includes("/boss/car/order/content_info")) {
     "hotel_activity",
     "hotel_fillin_opt",
     "hotel_loop",
-    "hotel_portal",
+    // "hotel_portal", // 附近-酒店-页面布局
     "hotel_tipsicon",
     "hotsaleConfig", // 酒店限时抢购
     // "icon_show",
@@ -308,6 +339,8 @@ if (url.includes("/boss/car/order/content_info")) {
     "house_rent_sale_agency",
     // "human_traffic", // 人流量情况 有统计图
     "image_banner",
+    "kaMarketingCampaign", // 附近品牌动态
+    "ka_not_enter", // 移动办卡 套餐服务
     "legSameIndustryRecEntrance", // 全城最热景点推荐
     "legal_document", // 房源法律信息
     "listBizRec_1",
