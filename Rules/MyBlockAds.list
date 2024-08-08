@@ -1,4 +1,4 @@
-# 2024-08-03 08:30
+# 2024-08-08 08:50
 
 # ======= A ======= #
 # 阿里巴巴
@@ -88,6 +88,7 @@ HOST, open.kuaishou.com, REJECT
 HOST, pagead2.googlesyndication-cn.com, REJECT
 HOST, pagead2.googlesyndication.com, REJECT
 HOST, sdk.e.qq.com, REJECT
+HOST, tangram.e.qq.com, REJECT
 HOST, ws.tapjoyads.com, REJECT
 HOST, www.googleadservices.com, REJECT
 HOST-SUFFIX, ads.linkedin.com, REJECT
