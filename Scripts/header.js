@@ -1,7 +1,8 @@
-// 2024-03-15 14:45
+// 2024-08-11 13:40
 
 const url = $request.url;
 const header = $request.headers;
+const contype = header["Content-Type"] || header["content-type"];
 const headopt = header["Operation-Type"] || header["operation-type"];
 const ua = header["User-Agent"] || header["user-agent"];
 const isQuanX = typeof $task !== "undefined";
@@ -35,8 +36,9 @@ if (url.includes("/amdc/mobileDispatch")) {
     // "com.cars.otsmobile.memberInfo.integrationHomeInit", // 铁路会员 会员信息
     // "com.cars.otsmobile.newHomePage.getWeatherByStationCode", // 天气信息
     "com.cars.otsmobile.newHomePage.initData", // 热门资讯
-    "com.cars.otsmobile.newHomePageBussData" // 商品信息流
+    "com.cars.otsmobile.newHomePageBussData", // 商品信息流
     // "com.cars.otsmobile.newHomePageRefresh",
+    "com.cars.otsmobile.paySuccBuss.bussEntryShow" // 商业推广
     // "com.cars.otsmobile.travelPage.initData", // 出行服务
   ];
   if (isQuanX) {
@@ -66,6 +68,21 @@ if (url.includes("/amdc/mobileDispatch")) {
     }
   } else {
     if (listbankabc?.includes(headopt)) {
+      $done();
+    } else {
+      $done({});
+    }
+  }
+} else if (url.includes("/sec.sginput.qq.com/q")) {
+  // 搜狗输入法候选词推广
+  if (isQuanX) {
+    if (contype === "application/octet-stream") {
+      $done({ status: "HTTP/1.1 404 Not Found" });
+    } else {
+      $done({});
+    }
+  } else {
+    if (contype === "application/octet-stream") {
       $done();
     } else {
       $done({});
