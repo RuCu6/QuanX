@@ -1,4 +1,4 @@
-// 2024-08-07 19:25
+// 2024-08-07 20:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -48,6 +48,11 @@ if (url.includes("/boss/car/order/content_info")) {
         delete obj.data.modules.user_filter_card.data.search_button_data.rightbgText;
       }
     }
+  }
+} else if (url.includes("/c3frontend/af-launch/page/main")) {
+  // 步行导航结束推广卡片
+  if (obj?.data?.modules?.C1EndNaviEngine?.data) {
+    obj.data.modules.C1EndNaviEngine.data = {};
   }
 } else if (url.includes("/faas/amap-navigation/card-service-plan-home")) {
   // 路线规划页
@@ -153,72 +158,33 @@ if (url.includes("/boss/car/order/content_info")) {
 } else if (url.includes("/shield/frogserver/aocs/updatable/")) {
   // 整体图层
   const items = [
-    // "ARWalkNavi", // AR导航
-    // "Clipboard", // 剪贴板
-    // "DIYMap", // DIY地图
-    // "GuiJi", // 轨迹
+    "EndNaviC3AdCard", // 导航结束推广
     "Naviendpage_Searchwords",
     "SplashScreenControl",
     "TipsTaxiButton",
-    // "TrainOrderBanner", // 火车票订单
-    // "_testmark_info",
-    // "_user_profile_",
-    // "air_card",
-    // "amap_basemap_config", // 基本库
+    "TrainOrderBanner", // 公交顶部滚动横图
     "amapCoin",
-    // "aos_feedback",
-    // "app_improve", // app改进
-    // "apple_location_log_collect",
-    // "collect",
-    // "comment_info",
-    // "deviceml_force_recommend",
-    // "deviceml_update_apk_conf",
     "feedback_banner", // 店主专属通道
     "footprint", // 足迹
-    // "gd_code_cover",
-    // "gd_notch_logo",
     "his_input_tip",
     "home_business_position_config", // 首页右上角动图
-    // "homepage_resource_config",
-    // "hotcity", // 热门城市
     "hotel_activity",
     "hotel_fillin_opt",
     "hotel_loop",
     // "hotel_portal", // 附近-酒店-页面布局
     "hotel_tipsicon",
     "hotsaleConfig", // 酒店限时抢购
-    // "icon_show",
-    // "info_env_setting",
-    // "ip_square",
-    // "ip_square_share",
-    // "isNewSearchMapCard", // 可能是足迹
-    // "isPoiBubbleDisplay",
-    // "lab_beta",
-    // "lab_screenrecording",
     "landing_page_info", // 发现吃喝玩乐好去处
-    // "list_action_drawer",
-    // "listguide",
-    // "map_environment_air",
     // "map_weather_switch", // 天气
     // "maplayers", // 赏花地图
-    // "message_tab",
     "navi_end", // 导航结束 领油滴
     // "nearby",
     "nearby_business_popup",
     "nearby_map_entry_guide",
     "nearby_map_pull_down_guide",
-    // "newcommentreply",
-    // "nore_rec",
     "operation_layer", // 首页右上角图层
-    // "photo_with_location",
     // "poi_rec",
-    // "preword",
-    // "profileHeaderPic",
-    // "profiletTopBtn",
-    // "recommend_api",
-    // "recommend_key",
-    // "redesign_user",
-    // "renovate_control", // 今夜特价
+    "preword",
     "route_banner", // 搜索路线 免费抽机票
     "routeresult_banner",
     "search_homepage",
@@ -237,16 +203,10 @@ if (url.includes("/boss/car/order/content_info")) {
     "splashview_config",
     "sur_bar", // 十一特惠
     "taxi_activity", // 打车活动
-    // "tel_retention_popup",
     "testflight_adiu",
     "tf_remind", // tf测试版
-    // "third_party_places",
     "tips_bar_black_list",
-    // "tips_hook",
-    // "trackupload",
-    // "user_insight", // 您对本次导航满意吗
     "vip"
-    // "weather_restrict_config",
   ];
   if (obj?.data) {
     for (let i of items) {
