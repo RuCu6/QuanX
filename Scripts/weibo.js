@@ -1,4 +1,4 @@
-// 2024-08-02 23:00
+// 2024-08-13 14:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -384,10 +384,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (/没有公开博文，为你推荐以下精彩内容/.test(item?.data?.name)) {
               // 个人微博页刷完后的推荐信息流
               continue;
-            } else {
-              newItems.push(item);
             }
           }
+          newItems.push(item);
         } else if (item?.category === "group") {
           // 遍历group,保留置顶微博
           if (item?.header?.data?.icon) {
@@ -416,6 +415,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 if (ii?.data?.enable_comment_guide) {
                   ii.data.enable_comment_guide = false;
                 }
+                newII.push(ii);
               } else if (ii?.category === "card") {
                 if ([48, 176]?.includes(ii?.data?.card_type)) {
                   // 最近关注与互动过的博主
@@ -429,8 +429,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   // 新版置顶微博背景图
                   delete ii.data.backgroundImage;
                 }
+                newII.push(ii);
               }
-              newII.push(ii);
             }
             item.items = newII;
           }
