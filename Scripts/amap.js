@@ -1,11 +1,19 @@
-// 2024-08-14 15:30
+// 2024-08-14 19:45
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
 if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
-  // 导航选路线页面左上角动图
+  if (obj?.data?.common_data?.bus_plan_bottom_event?.data?.length > 0) {
+    // 公交出行 底部卡路里数值
+    obj.data.common_data.bus_plan_bottom_event.data = [];
+  }
+  if (obj?.data?.common_data?.bus_plan_segment_event?.data?.length > 0) {
+    // 公交出行 中转站 卡路里数值
+    obj.data.common_data.bus_plan_segment_event.data = [];
+  }
+  // 导航选择路线页面 左上角动图
   if (obj?.data?.front_end?.assistant?.length > 0) {
     obj.data.front_end.assistant = [];
   }
@@ -178,7 +186,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
   const items = [
     "Naviendpage_Searchwords",
     "SplashScreenControl",
-    "TipsTaxiButton",
+    "TipsTaxiButton", // 选路线页面 打车图标
     "amapCoin",
     "feedback_banner", // 店主专属通道
     "footprint", // 足迹
@@ -191,15 +199,14 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "hotel_tipsicon",
     "hotsaleConfig", // 酒店限时抢购
     "landing_page_info", // 发现吃喝玩乐好去处
-    // "map_weather_switch", // 天气
-    // "maplayers", // 赏花地图
+    "map_weather_switch", // 天气
+    "maplayers", // 赏花地图
     "navi_end", // 导航结束 领油滴
-    // "nearby",
     "nearby_business_popup",
     "nearby_map_entry_guide",
     "nearby_map_pull_down_guide",
     "operation_layer", // 首页右上角图层
-    // "poi_rec",
+    "poi_rec",
     "preword",
     "route_banner", // 搜索路线 免费抽机票
     "routeresult_banner",
