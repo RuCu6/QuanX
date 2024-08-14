@@ -1,10 +1,15 @@
-// 2024-08-07 20:40
+// 2024-08-14 15:30
 
 const url = $request.url;
 if (!$response.body) $done({});
 let obj = JSON.parse($response.body);
 
-if (url.includes("/boss/car/order/content_info")) {
+if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
+  // 导航选路线页面左上角动图
+  if (obj?.data?.front_end?.assistant?.length > 0) {
+    obj.data.front_end.assistant = [];
+  }
+} else if (url.includes("/boss/car/order/content_info")) {
   // 打车页面
   if (obj?.data?.lubanData?.skin?.dataList?.length > 0) {
     // oss营销皮肤
@@ -17,6 +22,19 @@ if (url.includes("/boss/car/order/content_info")) {
     for (let i of items) {
       delete obj.data["105"][i];
     }
+  }
+} else if (url.includes("/bus/plan/integrate")) {
+  // 公交列表
+  if (obj?.data?.banner_lists?.data?.length > 0) {
+    // 公交列表 顶部滚动横图
+    obj.data.banner_lists.data = [];
+  }
+  if (obj?.data?.banner_lists?.tips?.length > 0) {
+    obj.data.banner_lists.tips = [];
+  }
+  if (obj?.data?.mixed_plans?.data?.taxiPlans?.length > 0) {
+    // 公交列表 推广打车出行
+    obj.data.mixed_plans.data.taxiPlans = [];
   }
 } else if (url.includes("/c3frontend/af-hotel/page/main")) {
   // 酒店/民宿 景区门票 火车/飞机
@@ -158,11 +176,9 @@ if (url.includes("/boss/car/order/content_info")) {
 } else if (url.includes("/shield/frogserver/aocs/updatable/")) {
   // 整体图层
   const items = [
-    "EndNaviC3AdCard", // 导航结束推广
     "Naviendpage_Searchwords",
     "SplashScreenControl",
     "TipsTaxiButton",
-    "TrainOrderBanner", // 公交顶部滚动横图
     "amapCoin",
     "feedback_banner", // 店主专属通道
     "footprint", // 足迹
