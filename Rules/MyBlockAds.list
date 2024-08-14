@@ -1,4 +1,4 @@
-# 2024-08-08 08:50
+# 2024-08-14 16:05
 
 # ======= A ======= #
 # 阿里巴巴
@@ -103,6 +103,7 @@ HOST-SUFFIX, kuaishouzt.com, REJECT
 HOST-SUFFIX, miaozhen.com, REJECT
 HOST-SUFFIX, ubixioe.com, REJECT
 HOST-SUFFIX, unityads.unity3d.com, REJECT
+HOST-SUFFIX, v.smtcdns.com, REJECT
 HOST-SUFFIX, zijieapi.com, REJECT
 HOST-KEYWORD, -ad-sign.byteimg.com, REJECT
 HOST-KEYWORD, ads.g.doubleclick, REJECT
