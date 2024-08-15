@@ -1,4 +1,4 @@
-// 2024-08-13 14:45
+// 2024-08-14 17:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -417,7 +417,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 }
                 newII.push(ii);
               } else if (ii?.category === "card") {
-                if ([48, 176]?.includes(ii?.data?.card_type)) {
+                if ([10, 48, 176]?.includes(ii?.data?.card_type)) {
                   // 最近关注与互动过的博主
                   continue;
                 }
@@ -436,26 +436,24 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
           newItems.push(item);
         } else if (item?.category === "feed") {
-          if (item?.data) {
-            if (!isAd(item?.data)) {
-              // 信息流推广
-              removeFeedAd(item?.data);
-              // 投票窗口
-              removeVoteInfo(item?.data);
-              if (item?.data?.source?.includes("生日动态")) {
-                // 移除生日祝福微博
-                continue;
-              }
-              if (item?.data?.title?.text !== "热门" && item?.data?.title?.structs?.length > 0) {
-                // 移除赞过的微博 保留热门内容
-                continue;
-              }
-              if (item?.data?.cleaned !== true) {
-                // 个人微博页刷完后的推荐微博
-                continue;
-              }
-              newItems.push(item);
+          if (!isAd(item?.data)) {
+            // 信息流推广
+            removeFeedAd(item?.data);
+            // 投票窗口
+            removeVoteInfo(item?.data);
+            if (item?.data?.source?.includes("生日动态")) {
+              // 移除生日祝福微博
+              continue;
             }
+            if (item?.data?.title?.text !== "热门" && item?.data?.title?.structs?.length > 0) {
+              // 移除赞过的微博 保留热门内容
+              continue;
+            }
+            if (item?.data?.cleaned !== true) {
+              // 个人微博页刷完后的推荐微博
+              continue;
+            }
+            newItems.push(item);
           }
         }
       }
