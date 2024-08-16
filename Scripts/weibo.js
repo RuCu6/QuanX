@@ -1,4 +1,4 @@
-// 2024-08-16 13:50
+// 2024-08-16 15:00
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -447,6 +447,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             }
             if (item?.data?.title?.text !== "热门" && item?.data?.title?.structs?.length > 0) {
               // 移除赞过的微博 保留热门内容
+              continue;
+            }
+            if (item?.data?.hide_from_prefix === 1) {
+              // 个人微博页刷完后的推荐微博
               continue;
             }
             newItems.push(item);
