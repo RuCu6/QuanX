@@ -1,4 +1,4 @@
-// 2024-08-17 08:25
+// 2024-08-17 11:10
 
 const url = $request.url;
 if (!$response) $done({});
@@ -379,6 +379,13 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     if (obj?.items?.length > 0) {
       let newItems = [];
       for (let item of obj.items) {
+        if (item?.data?.left_hint?.[0]?.content === "全部微博(0)" && item?.data?.card_type === 216) {
+          break;
+        }
+        if (/内容/?.test(item?.data?.name) && item?.data?.card_type === 58) {
+          // 个人微博页刷完后的推荐微博
+          break;
+        }
         if (item?.category === "card") {
           // 58微博展示时间段提示 216筛选按钮
           if ([58, 216]?.includes(item?.data?.card_type)) {
@@ -449,10 +456,6 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item?.data?.title?.text !== "热门" && item?.data?.title?.structs?.length > 0) {
               // 移除赞过的微博 保留热门内容
               continue;
-            }
-            if (/内容/?.test(item?.data?.name) && item?.data?.card_type === 58) {
-              // 个人微博页刷完后的推荐微博
-              break;
             }
             newItems.push(item);
           }
