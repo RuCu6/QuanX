@@ -1,6 +1,7 @@
-// 2024-08-16 15:00
+// 2024-08-17 08:25
 
 const url = $request.url;
+if (!$response) $done({});
 if (!$response.body) $done({});
 let body = $response.body;
 
@@ -449,9 +450,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               // 移除赞过的微博 保留热门内容
               continue;
             }
-            if (item?.data?.hide_from_prefix === 1) {
+            if (/内容/?.test(item?.data?.name) && item?.data?.card_type === 58) {
               // 个人微博页刷完后的推荐微博
-              continue;
+              break;
             }
             newItems.push(item);
           }
