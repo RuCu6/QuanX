@@ -1,4 +1,4 @@
-// 2024-08-17 11:30
+// 2024-08-17 12:25
 
 const url = $request.url;
 if (!$response) $done({});
@@ -233,6 +233,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
         if (item?.items?.length > 0) {
           for (let i of item.items) {
+            // 背景卡片
+            removeAvatar(i?.data);
             // 投票窗口
             removeVoteInfo(i?.data);
           }
@@ -251,6 +253,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       for (let item of obj.items) {
         if (item?.items?.length > 0) {
           for (let i of item.items) {
+            // 背景卡片
+            removeAvatar(i?.data);
             // 投票窗口
             removeVoteInfo(i?.data);
           }
@@ -1225,6 +1229,9 @@ function isAd(data) {
 
 // 移除头像挂件,关注按钮
 function removeAvatar(data) {
+  if (data?.block_card_bg) {
+    delete data.block_card_bg;
+  }
   if (data?.buttons) {
     delete data.buttons;
   }
