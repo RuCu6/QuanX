@@ -1,4 +1,4 @@
-// 2024-08-17 12:25
+// 2024-08-17 13:30
 
 const url = $request.url;
 if (!$response) $done({});
@@ -384,6 +384,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       let newItems = [];
       for (let item of obj.items) {
         if (item?.data?.left_hint?.[0]?.content === "全部微博(0)" && item?.data?.card_type === 216) {
+          // 全部微博为0的博主
           break;
         } else if (/内容/?.test(item?.data?.name) && item?.data?.card_type === 58) {
           // 个人微博页刷完后的推荐微博
@@ -774,6 +775,21 @@ if (url.includes("/interface/sdk/sdkad.php")) {
       // 搜索结果 悬浮窗
       delete obj.loadedInfo.serviceMap.layer;
     }
+    if (obj?.footer) {
+      if (obj?.footer?.data?.bg_lottie) {
+        // 讨论区动画
+        delete obj.footer.data.bg_lottie;
+        delete obj.footer.data.bg_lottie_dark;
+      }
+      if (obj?.footer?.data?.discuss_avatars?.length > 0) {
+        // 进入讨论区气泡动画头像
+        delete obj.footer.data.discuss_avatars;
+      }
+      if (obj?.footer?.data?.menus?.length > 0) {
+        // 底部菜单
+        obj.footer.data.menus = obj.footer.data.menus.filter((i) => !/\d+_ai\./?.test(i?.pic));
+      }
+    }
     if (obj?.cards?.length > 0) {
       let newCards = [];
       for (let card of obj.cards) {
@@ -879,8 +895,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 if (!isAd(ii?.data)) {
                   if (ii?.data) {
                     removeAvatar(ii?.data);
-                    // 3推广卡片 17相关搜索 22广告图 42,236智搜问答 89商品推广视频 206推广视频
-                    if ([3, 17, 22, 42, 89, 206, 236]?.includes(ii?.data?.card_type)) {
+                    // 3推广卡片 17相关搜索 22广告图 30推荐博主 42,236智搜问答 89商品推广视频 206推广视频
+                    if ([3, 17, 22, 30, 42, 89, 206, 236]?.includes(ii?.data?.card_type)) {
                       continue;
                     }
                     // 商品推广desc
@@ -888,9 +904,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                       continue;
                     }
                     // 商品橱窗
-                    if (ii?.data?.semantic_brand_params) {
-                      delete ii.data?.semantic_brand_params;
-                    }
+                    removeFeedAd(ii?.data);
                   }
                   newII.push(ii);
                 }
