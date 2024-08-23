@@ -1,4 +1,4 @@
-// 2024-08-14 19:45
+// 2024-08-23 21:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -188,6 +188,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "SplashScreenControl",
     "TipsTaxiButton", // 选路线页面 打车图标
     "amapCoin",
+    "favorites_info", // 收藏夹顶部横图推广
     "feedback_banner", // 店主专属通道
     "footprint", // 足迹
     "his_input_tip",
@@ -217,6 +218,12 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "search_poi_recommend",
     "search_service_adcode",
     "search_word",
+    "sportsGroupConfig",
+    "sportsHealthConfig",
+    "sportsHomeConfig",
+    "sportsRouteConfig",
+    "sportsTaskConfig",
+    "sports_walk",
     "small_biz_b2b_kb", // 入驻高德
     "small_biz_case", // 推广
     "small_biz_fun",
@@ -357,6 +364,8 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "packageShelf", // 附近酒景推荐
     "parentBizRec",
     "parentPoiRecEntrance", // 所在商圈
+    "poiDetailWaterFeed", // 附近景点瀑布流 新
+    "poiDetailWaterFeedTitle", // 更多人气好去处 新
     "poster_banner",
     // "poi_intercept",
     "portal_entrance", // 高德旅游版块 引流到旅游频道
@@ -415,7 +424,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     // "video",
     "waistRecEntrance", // 更多人气好去处
     "waterFallFeed", // 附近景点瀑布流
-    "waterFallFeedTitle" // 更多好去处
+    "waterFallFeedTitle" // 更多人气好去处
   ];
   if (obj?.data?.modules) {
     for (let i of items) {
