@@ -1,4 +1,4 @@
-// 2024-06-08 09:40
+// 2024-08-24 12:35
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -49,7 +49,7 @@ if (url.includes(".guoguo.nbnetflow.ads.mshow")) {
         !(
           i?.materialContentMapper?.adItemDetail ||
           (i?.materialContentMapper?.bgImg && i?.materialContentMapper?.advRecGmtModifiedTime) ||
-          ["common_header_banner", "entertainment", "kuaishou_banner"]?.includes(i?.materialContentMapper?.group_id) ||
+          ["common_header_banner", "entertainment", "interests", "kuaishou_banner"]?.includes(i?.materialContentMapper?.group_id) ||
           ["29338", "29339", "32103", "33927", "36649"]?.includes(i?.id)
         )
     );
