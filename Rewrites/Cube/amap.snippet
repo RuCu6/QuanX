@@ -1,7 +1,7 @@
 #!name = 高德地图
 #!desc = 缺德地图有治了
 #!author = RuCu6 kokoryh
-#!update = 2024-08-14 15:25
+#!update = 2024-08-24 07:50
 
 # 此条可以屏蔽首次进入的天气动效图层  但是会导致足迹不显示地图数据
 ;^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? url reject-dict
@@ -15,7 +15,6 @@
 ^https:\/\/m5\.amap\.com\/ws\/c3frontend\/af-(hotel|launch)\/page\/main\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(car-end|route-plan) url reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/perception\/drive\/(routeInfo|routePlan) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
-^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? url reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/(common\/coupon\/info|poi\/detail) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_adv\? url reject-dict
