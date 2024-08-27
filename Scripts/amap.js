@@ -1,4 +1,4 @@
-// 2024-08-23 21:50
+// 2024-08-27 11:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -430,6 +430,11 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     for (let i of items) {
       delete obj.data.modules[i];
     }
+  }
+} else if (url.includes("/shield/search_bff/hotword")) {
+  // 搜索框 热榜logo
+  if (obj?.data?.headerHotWord?.length > 0) {
+    obj.data.headerHotWord = [];
   }
 } else if (url.includes("/shield/search_business/process/marketingOperationStructured")) {
   // 详情页 顶部优惠横幅
