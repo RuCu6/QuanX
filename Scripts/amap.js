@@ -1,4 +1,4 @@
-// 2024-08-28 15:05
+// 2024-08-31 17:15
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -343,6 +343,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     "movie_info", // 优惠购票 景点宣传片
     "multi_page_anchor", // 二级导航菜单 门票 评论 推荐
     // "navbarMore", // 右上角三点
+    "nearbyGoodCar", // 附近热门新车
     "nearbyRecommendModule", // 周边推荐
     "nearby_house",
     "nearby_new_house_estate",
@@ -410,6 +411,7 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
     // "shop_news",
     "smallListBizRec", // 周边热门酒店
     "smallOrListBizRec",
+    "surroundHouseTab", //周边房源
     "surroundOldSellHouse", // 同城二手房
     "surroundRentHouse", // 附近租房
     "surround_facility",
