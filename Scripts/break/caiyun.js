@@ -1,4 +1,4 @@
-// 2024-09-01 09:15
+// 2024-09-01 17:00
 
 const url = $request.url;
 const isQuanX = typeof $task !== "undefined";
@@ -8,7 +8,7 @@ if (typeof $response === "undefined") {
   const cyTK =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJzaW9uIjoxLCJ1c2VyX2lkIjoiNWY1YmZjNTdkMmM2ODkwMDE0ZTI2YmI4Iiwic3ZpcF9leHBpcmVkX2F0IjoxNzA1MzMxMTY2LjQxNjc3MSwidmlwX2V4cGlyZWRfYXQiOjB9.h_Cem89QarTXxVX9Z_Wt-Mak6ZHAjAJqgv3hEY6wpps";
   header["device-token"] = cyTK;
-  if (compareVersions(header.version, "7.1.9") > 0) {
+  if (compareVersions(header.version, "7.19.0") > 0) {
     if (isQuanX) {
       header["Authorization"] = "Bearer " + cyTK;
     } else {
@@ -91,11 +91,11 @@ if (typeof $response === "undefined") {
 }
 
 function compareVersions(t, r) {
-  const e = t.split(".").map(Number),
-    n = r.split(".").map(Number);
+  const e = t.split(".").map(Number);
+  const n = r.split(".").map(Number);
   for (let t = 0; t < Math.max(e.length, n.length); t++) {
-    const r = e[t] || 0,
-      i = n[t] || 0;
+    const r = e[t] || 0;
+    const i = n[t] || 0;
     if (r > i) return 1;
     if (r < i) return -1;
   }
