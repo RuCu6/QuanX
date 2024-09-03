@@ -1,4 +1,4 @@
-// 2024-08-31 17:15
+// 2024-09-03 21:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -180,6 +180,10 @@ if (url.includes("/aos/perception/publicTravel/beforeNavi")) {
   // 成就勋章 lv1见习达人
   if (obj?.data?.memberInfo) {
     delete obj.data.memberInfo;
+  }
+  if (obj?.data?.topMixedCard) {
+    // 顶部足迹、贡献卡片
+    delete obj.data.topMixedCard;
   }
 } else if (url.includes("/shield/frogserver/aocs/updatable/")) {
   // 整体图层
