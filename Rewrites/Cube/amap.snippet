@@ -1,7 +1,7 @@
 #!name = 高德地图
 #!desc = 缺德地图有治了
 #!author = RuCu6 kokoryh
-#!update = 2024-08-27 11:45
+#!update = 2024-09-12 10:40
 
 # 此条可以屏蔽首次进入的天气动效图层  但是会导致足迹不显示地图数据
 ;^https:\/\/mps\.amap\.com\/ws\/mps\/scene\? url reject-dict
@@ -23,6 +23,7 @@
 ^https:\/\/oss\.amap\.com\/ws\/banner\/lists\/\? url reject-dict
 
 # 首页,推广卡片,红点角标,右上角动图,搜索框热词,左下角天气,消息横幅
+^https:\/\/m5\.amap\.com\/ws\/aos\/main\/page\/product\/list\? url reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(card-service-plan-home|main-page) url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/(main-page-assets|main-page-location|ridewalk-end-fc) url reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/(mapapi\/hint_text\/offline_data|message\/notice\/list|shield\/search\/new_hotword) url reject-dict
